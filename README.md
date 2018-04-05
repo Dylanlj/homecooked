@@ -39,4 +39,8 @@ When pushing to a non-default branch, you need to specify the source ref (branch
 
 git push origin branch1:branch2
 
-To merge with master, pull latest updates from development branch and push to master.
+To merge with master, first pull latest updates from development branch. This will be added to a local development branch.
+
+git pull origin master:development
+
+Then merge with your local master, and push to master.
