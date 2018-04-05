@@ -44,3 +44,13 @@ To merge with master, first pull latest updates from development branch. This wi
 git pull origin master:development
 
 Then merge with your local master, and push to master.
+
+## Multiple local servers
+
+To override default (3000):
+
+rails s -p 4000 -b 0.0.0.0
+
+## Generate commands
+
+rails generate
