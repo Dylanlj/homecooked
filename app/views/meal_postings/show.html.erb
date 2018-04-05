@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Base time:</strong>
+  <%= @meal_posting.base_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @meal_posting.end_time %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @meal_posting.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @meal_posting.description %>
+</p>
+
+<p>
+  <strong>Allergy notice:</strong>
+  <%= @meal_posting.allergy_notice %>
+</p>
+
+<p>
+  <strong>Servings:</strong>
+  <%= @meal_posting.servings %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @meal_posting.cost %>
+</p>
+
+<%= link_to 'Edit', edit_meal_posting_path(@meal_posting) %> |
+<%= link_to 'Back', meal_postings_path %>

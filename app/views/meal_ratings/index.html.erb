@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Meal Ratings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Meal posting</th>
+      <th>User</th>
+      <th>Comment</th>
+      <th>Rating</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @meal_ratings.each do |meal_rating| %>
+      <tr>
+        <td><%= meal_rating.meal_posting_id %></td>
+        <td><%= meal_rating.user_id %></td>
+        <td><%= meal_rating.comment %></td>
+        <td><%= meal_rating.rating %></td>
+        <td><%= link_to 'Show', meal_rating %></td>
+        <td><%= link_to 'Edit', edit_meal_rating_path(meal_rating) %></td>
+        <td><%= link_to 'Destroy', meal_rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Meal Rating', new_meal_rating_path %>
