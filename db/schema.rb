@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180405223057) do
+ActiveRecord::Schema.define(version: 20180405233334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 20180405223057) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "categories_meal_postings", id: false, force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.bigint "meal_posting_id", null: false
+    t.index ["category_id", "meal_posting_id"], name: "category_meal_id"
+    t.index ["meal_posting_id", "category_id"], name: "meal_category_id"
   end
 
   create_table "meal_postings", force: :cascade do |t|
@@ -81,13 +88,13 @@ ActiveRecord::Schema.define(version: 20180405223057) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "meal_postings", "users"
+  add_foreign_key "categories", "meal_postings"
   add_foreign_key "meal_postings", "categories"
+  add_foreign_key "meal_postings", "users"
   add_foreign_key "meal_ratings", "meal_postings"
   add_foreign_key "meal_ratings", "users"
   add_foreign_key "media", "meal_postings"
   add_foreign_key "reservations", "meal_postings"
   add_foreign_key "reservations", "users"
   add_foreign_key "user_ratings", "users"
-  add_foreign_key "categories", "meal_postings"
 end
