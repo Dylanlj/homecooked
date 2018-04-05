@@ -7,18 +7,9 @@ class UserRatingsController < ApplicationController
     @user_ratings = UserRating.all
   end
 
-  # GET /user_ratings/1
-  # GET /user_ratings/1.json
-  def show
-  end
-
   # GET /user_ratings/new
   def new
     @user_rating = UserRating.new
-  end
-
-  # GET /user_ratings/1/edit
-  def edit
   end
 
   # POST /user_ratings
@@ -32,20 +23,6 @@ class UserRatingsController < ApplicationController
         format.json { render :show, status: :created, location: @user_rating }
       else
         format.html { render :new }
-        format.json { render json: @user_rating.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /user_ratings/1
-  # PATCH/PUT /user_ratings/1.json
-  def update
-    respond_to do |format|
-      if @user_rating.update(user_rating_params)
-        format.html { redirect_to @user_rating, notice: 'User rating was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user_rating }
-      else
-        format.html { render :edit }
         format.json { render json: @user_rating.errors, status: :unprocessable_entity }
       end
     end

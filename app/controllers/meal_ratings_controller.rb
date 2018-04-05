@@ -7,19 +7,11 @@ class MealRatingsController < ApplicationController
     @meal_ratings = MealRating.all
   end
 
-  # GET /meal_ratings/1
-  # GET /meal_ratings/1.json
-  def show
-  end
-
   # GET /meal_ratings/new
   def new
     @meal_rating = MealRating.new
   end
 
-  # GET /meal_ratings/1/edit
-  def edit
-  end
 
   # POST /meal_ratings
   # POST /meal_ratings.json
@@ -37,19 +29,6 @@ class MealRatingsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /meal_ratings/1
-  # PATCH/PUT /meal_ratings/1.json
-  def update
-    respond_to do |format|
-      if @meal_rating.update(meal_rating_params)
-        format.html { redirect_to @meal_rating, notice: 'Meal rating was successfully updated.' }
-        format.json { render :show, status: :ok, location: @meal_rating }
-      else
-        format.html { render :edit }
-        format.json { render json: @meal_rating.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   # DELETE /meal_ratings/1
   # DELETE /meal_ratings/1.json

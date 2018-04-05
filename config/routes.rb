@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  # root to:
+  root to: "meal_postings#index"
 
   resources :users, except: [:index] do
     resources :meal_postings
