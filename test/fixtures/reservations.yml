@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  meal_posting_id: 1
+  user_id: 1
+  number_of_people: 1
+
+two:
+  meal_posting_id: 1
+  user_id: 1
+  number_of_people: 1
