@@ -33,12 +33,10 @@ Will integrate google maps to display nearby locations to potential customers on
 
 - Try to iterate quickly. May be good to ask other users, how they would use your app, to get another view on how your app would work.
 
-## Pushing to development branch
+## Pushing to development branch, updating master
 
 When pushing to a non-default branch, you need to specify the source ref (branch1) and the target ref (branch2):
 
 git push origin branch1:branch2
 
-## Merging development with master
-
-Test data
+To merge with master, pull latest updates from development branch and push to master.
