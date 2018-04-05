@@ -32,3 +32,13 @@ Will integrate google maps to display nearby locations to potential customers on
 - Check in with mentors every day! Talk about what you did, any roadblocks, make sure you communicate.
 
 - Try to iterate quickly. May be good to ask other users, how they would use your app, to get another view on how your app would work.
+
+## Pushing to development branch
+
+When pushing to a non-default branch, you need to specify the source ref (branch1) and the target ref (branch2):
+
+git push origin branch1:branch2
+
+## Merging development with master
+
+Test data
