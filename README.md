@@ -41,7 +41,7 @@ git push origin branch1:branch2
 
 To merge with master, first pull latest updates from development branch. This will be added to a local development branch.
 
-git pull origin master:development
+git pull origin development
 
 Then merge with your local master, and push to master.
 
@@ -54,3 +54,5 @@ rails s -p 4000 -b 0.0.0.0
 ## Generate commands
 
 rails generate
+
+git reset --hard origin/master (or origin/branch)

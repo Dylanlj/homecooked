@@ -1,3 +1,25 @@
+<header class="navbar">
+<nav>
+  <div id="nav-container" class="container-fluid">
+    <div class="row">
+      <div id="nav-login" class="col-md-4">
+        Welcome User!
+        <button class="btn btn-default">Login
+          <%= link_to '/login' %>
+        </button>
+      </div>
+      <div id="nav-links" class="col-md-4">
+      </div>
+      <div id="nav-search" class="col-md-4">
+      </div>
+    </div>
+  </div>
+</nav>
+</header>
+<section class="postings-list">
+Here are the postings
+</section>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Meal Postings</h1>
@@ -60,4 +82,6 @@
 <%= link_to 'New Meal Posting', new_meal_posting_path %>
 </section>
 
+  <iframe src="https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyByNciii-g02FhwJ_zhxMQ6SA49jODh4lw" allowfullscreen>
+  </iframe>
 
