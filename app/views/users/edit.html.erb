@@ -1,6 +1,8 @@
-<h1>Editing User</h1>
+<h1>Edit User Profile</h1>
 
-<%= render 'form', user: @user %>
+<%= render 'editform', user: @user %>
 
 <%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+
+<!-- Now Links back to the SHOW for the user -->
+<%= link_to 'Back', user_path(@user) %>

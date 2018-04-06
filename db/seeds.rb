@@ -8,20 +8,21 @@
 
 puts "Seeding Data ..."
 
-
 # Only run on development (local) instances not on production, etc.
 unless Rails.env.development?
  puts "Development seeds only (for now)!"
  exit 0
 end
 
-puts "Seeding Users ..."
 
-# MealPosting.destroy_all
-# User.destroy_all
-# UserRating.destroy_all
-# Category.destroy_all
-# MealRating.destroy_all
+# NOT WORKING PROPERLY
+Category.delete_all
+MealRating.delete_all
+MealPosting.delete_all
+UserRating.delete_all
+User.delete_all
+
+puts "Seeding Users ..."
 
 user1 = User.create!({
  user_status: "host",
@@ -75,7 +76,6 @@ cat5 = Category.create!({
 
 puts "Seeding Meal Postings ..."
 
-
 mealposting1 = user1.meal_postings.create!({
  base_time: 630,
  title: "Chicken Pasta",
@@ -108,36 +108,35 @@ mealposting2.media.create!({
 puts "Seeding Meal Ratings ..."
 
 user2.meal_ratings.create!({
- meal_posting_id: 1,
+ meal_posting: mealposting1,
  comment: "This meal was pretty good and the kitchen and dining area were very clean which was nice.  Lady Gaga is a pretty good host.",
  rating: 7.5
 })
 
 user2.meal_ratings.create!({
- meal_posting_id: 2,
+ meal_posting: mealposting2,
  comment: "Salmon was overcooked and there was a bug in my broccoli.  Rice was delicious even though I should have stopped eating when I found the bug...",
  rating: 3.5
 })
 
 user3.meal_ratings.create!({
- meal_posting_id: 1,
+ meal_posting: mealposting1,
  comment: "The Chicken and Peppers and Onions were nice, but to keep fit I avoid eating pasta so maybe I shouldn’t have attended this meal.",
  rating: 6
 })
 
 user3.meal_ratings.create!({
- meal_posting_id: 2,
+ meal_posting: mealposting2,
  comment: "The Salmon was great I just wish I had booked out all of the servings so I could have had more to eat.",
  rating: 8.5
 })
 
 puts "Seeding User Ratings ..."
 
-
 user1.user_ratings.create!({
  ratee_id: 2,
  rating: 8,
- comment: "Denzel was a treat to have over for dinner.  He is kind, polite, and a very clean.  He even offered to help clean up!"
+ comment: "Denzel was a treat to have over for dinner.  He is kind, polite, and very clean.  He even offered to help clean up!"
 })
 
 user1.user_ratings.create!({
