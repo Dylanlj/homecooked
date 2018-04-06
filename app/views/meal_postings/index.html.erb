@@ -2,6 +2,27 @@
 
 <h1>Meal Postings</h1>
 
+<header class="navbar">
+<nav>
+  <div id="nav-container" class="container-fluid">
+    <div class="row">
+      <div id="nav-login" class="col-md-4">
+        Welcome User!
+        <button class="btn btn-default">Login
+          <%= link_to '/login' %>
+        </button>
+      </div>
+      <div id="nav-links" class="col-md-4">
+      </div>
+      <div id="nav-search" class="col-md-4">
+      </div>
+    </div>
+  </div>
+</nav>
+</header>
+
+<section class="postings-list">
+
 <table>
   <thead>
     <tr>
@@ -37,3 +58,6 @@
 <br>
 
 <%= link_to 'New Meal Posting', new_meal_posting_path %>
+</section>
+
+
