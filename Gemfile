@@ -40,6 +40,8 @@ gem 'bootstrap', '~> 4.0.0'
 
 gem 'pg'
 
+gem 'google_maps_service'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
