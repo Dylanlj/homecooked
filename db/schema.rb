@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 20180405233334) do
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.integer "meal_posting_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -88,13 +87,4 @@ ActiveRecord::Schema.define(version: 20180405233334) do
     t.datetime "updated_at", null: false
   end
 
-  # add_foreign_key "categories", "meal_postings"
-  # add_foreign_key "meal_postings", "categories"
-  # add_foreign_key "meal_postings", "users"
-  # add_foreign_key "meal_ratings", "meal_postings"
-  # add_foreign_key "meal_ratings", "users"
-  # add_foreign_key "media", "meal_postings"
-  # add_foreign_key "reservations", "meal_postings"
-  # add_foreign_key "reservations", "users"
-  # add_foreign_key "user_ratings", "users"
 end
