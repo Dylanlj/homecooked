@@ -95,8 +95,17 @@ mealposting2 = user1.meal_postings.create!({
  cost: 12.00
 })
 
-puts "Seeding Meal Ratings ..."
+puts "Seeding Media ..."
 
+mealposting1.media.create!({
+  url: "https://pbs.twimg.com/profile_images/3240741454/9080e76653a80e43ae2058432bc76806_400x400.jpeg"
+})
+
+mealposting2.media.create!({
+  url: "https://pbs.twimg.com/profile_images/3240741454/9080e76653a80e43ae2058432bc76806_400x400.jpeg"
+})
+
+puts "Seeding Meal Ratings ..."
 
 user2.meal_ratings.create!({
  meal_posting_id: 1,
