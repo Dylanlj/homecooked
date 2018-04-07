@@ -59,9 +59,14 @@
   width: 100%;
 }
 
-// The height should be the same as the image height (set using cl_image_tag)
+// The media-object (image) height should be the same as the media-body (text) height above
+.media-object {
+  height: 15vh;
+  width: 10vw;
+}
+
 .media-body {
-  height: 30vh;
+  height: 15vh;
   .media-container {
     height: 100%;
     .row-heading {
