@@ -56,3 +56,8 @@ rails s -p 4000 -b 0.0.0.0
 rails generate
 
 git reset --hard origin/master (or origin/branch)
+
+
+## Google maps keys
+
+Piotr: AIzaSyCWxnm39QBvy4HIpXRu82ucKN4-0WpS35I
