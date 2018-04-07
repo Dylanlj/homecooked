@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: drdumqp4e
+  api_key: '635191363272492'
+  api_secret: a-t-UISOZw3gFX_uyTAkvPpA--Y
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: drdumqp4e
+  api_key: '635191363272492'
+  api_secret: a-t-UISOZw3gFX_uyTAkvPpA--Y
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: drdumqp4e
+  api_key: '635191363272492'
+  api_secret: a-t-UISOZw3gFX_uyTAkvPpA--Y
+  enhance_image_tag: true
+  static_image_support: false

@@ -38,6 +38,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap', '~> 4.0.0'
 gem 'font-awesome-rails'
 
+gem 'carrierwave'
+gem 'cloudinary'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

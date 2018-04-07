@@ -6,4 +6,22 @@
   border-radius: 0px;
 }
 
+.container-fluid {
+    height: 100%;
+
+    .row-heading {
+      height: 20%;
+      background-color: blue;
+    }
+
+    .row-body {
+      height: 60%;
+      background-color: red;
+    }
+
+    .row-footer {
+      height: 20%;
+      background-color: green;
+    }
+}
 

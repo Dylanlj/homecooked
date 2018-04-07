@@ -23,44 +23,63 @@
 
 <section class="postings-list">
 
+<% @meal_postings.each do |meal_posting| %>
 
+  <!-- Image -->
+  <div class="meal-div">
+    <div class="media">
+      <div class="media-left media-middle">
+        <%= cl_image_tag(meal_posting.media[0].url, :width=>100, :height=>100, class: 'media-object') %>
+      </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Base time</th>
-      <th>End time</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Allergy notice</th>
-      <th>Servings</th>
-      <th>Cost</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <div class="media-body">
+        <div class="container">
 
-  <tbody>
-    <% @meal_postings.each do |meal_posting| %>
-      <tr>
-        <td><%= meal_posting.media.url %></td>
-        <td><%= meal_posting.base_time %></td>
-        <td><%= meal_posting.end_time %></td>
-        <td><%= meal_posting.title %></td>
-        <td><%= meal_posting.description %></td>
-        <td><%= meal_posting.allergy_notice %></td>
-        <td><%= meal_posting.servings %></td>
-        <td><%= meal_posting.cost %></td>
-        <td><%= link_to 'Show', meal_posting %></td>
-        <td><%= link_to 'Edit', edit_meal_posting_path(meal_posting) %></td>
-        <td><%= link_to 'Destroy', meal_posting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <!-- Title, meal time(s), cost -->
+          <div class="row row-heading">
+            <div class="col-xs-4">
+              <%= meal_posting.title %>
+            </div>
+          <% if meal_posting.end_time %>
+            <div class="col-xs-2">
+              Serving from: <%= meal_posting.base_time %> - <%= meal_posting.end_time%>
+            </div>
+          <% else %>
+            <div class="col-xs-2">
+              Serving at: <%= meal_posting.base_time%>
+            </div>
+          <% end %>
+            <div class="col-xs-2">
+            </div>
+            <div class="col-xs-4">
+              Cost: $<%= meal_posting.cost %>
+            </div>
+          <div>
 
-<br>
+          <!-- Description -->
+          <div class="row row-body">
+            <%= meal_posting.description %>
+          </div>
 
-<%= link_to 'New Meal Posting', new_meal_posting_path %>
+          <!-- Servings left, allergy notices -->
+          <div class="row row-footer">
+            <div class="col-xs-4">
+              Servings Left: <%= meal_posting.servings %>
+            </div>
+            <div class="col-xs-4">
+            </div>
+            <div class="col-xs-4">
+              Allergies: <%= meal_posting.allergy_notice %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 </section>
 
+<%= link_to 'New Meal Posting', new_meal_posting_path %>
 

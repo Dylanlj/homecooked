@@ -98,11 +98,11 @@ mealposting2 = user1.meal_postings.create!({
 puts "Seeding Media ..."
 
 mealposting1.media.create!({
-  url: "https://pbs.twimg.com/profile_images/3240741454/9080e76653a80e43ae2058432bc76806_400x400.jpeg"
+  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1522949303/sample.jpg"
 })
 
 mealposting2.media.create!({
-  url: "https://pbs.twimg.com/profile_images/3240741454/9080e76653a80e43ae2058432bc76806_400x400.jpeg"
+  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1522949303/sample.jpg"
 })
 
 puts "Seeding Meal Ratings ..."
