@@ -2,17 +2,47 @@
 // Section for navigation //
 ////////////////////////////
 
+.nav {
+  height: 7vh;
+}
+
 .navbar {
-  border-radius: 0px;
+    margin-bottom: 5px;
+    background-color: #f4511e;
+    z-index: 9999;
+    border: 0;
+    font-size: 14px;
+    line-height: 1.42857143;
+    letter-spacing: 4px;
+    border-radius: 0;
 }
 
-.form-control {
-
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
 }
 
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #f4511e !important;
+    background-color: #fff !important;
+}
 
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
 
+/////////////////////////////
+// Section for google maps //
+/////////////////////////////
 
+.google-maps {
+  // width: 80%;
+  #googleMap {
+    float: right;
+    width: 60%;
+    height: 92vh;
+  }
+}
 
 
 ///////////////////////
