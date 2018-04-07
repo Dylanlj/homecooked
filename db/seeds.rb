@@ -9,6 +9,7 @@
 puts "Seeding Data ..."
 
 # Only run on development (local) instances not on production, etc.
+# IS THIS NEEDED? ################
 unless Rails.env.development?
  puts "Development seeds only (for now)!"
  exit 0
@@ -28,7 +29,7 @@ user1 = User.create!({
  user_status: "host",
  name: "Lady Gaga",
  email: "lgaga@pokerface.com",
- address: "123 Gaga Lane",
+ address: "46 Spadina Avenue",
  phone_number: 1234567890,
  password_digest: "hashedpass"
 })
@@ -37,7 +38,7 @@ user2 = User.create!({
  user_status: "user",
  name: "Denzel Washington",
  email: "denzel@moviestar.com",
- address: "123 Action Blvd",
+ address: "126 Bloor Street West",
  phone_number: 1098765432,
  password_digest: "passhashed"
 })
@@ -46,9 +47,18 @@ user3 = User.create!({
  user_status: "user",
  name: "Dwayne Johnson",
  email: "dwayne@therock.com",
- address: "The Gym",
+ address: "379 Queen Street West",
  phone_number: 1231049384,
  password_digest: "littlerock"
+})
+
+user4 = User.create!({
+ user_status: "host",
+ name: "Tom Cruise",
+ email: "mission@impossible.com",
+ address: "300 King Street East",
+ phone_number: 1234567890,
+ password_digest: "tommyboy"
 })
 
 puts "Seeding Categories ..."
@@ -63,15 +73,63 @@ cat2 = Category.create!({
 })
 
 cat3 = Category.create!({
- name: "Asian"
-})
-
-cat4 = Category.create!({
  name: "American"
 })
 
+cat4 = Category.create!({
+ name: "Caribbean"
+})
+
 cat5 = Category.create!({
- name: "Fusion"
+ name: "British"
+})
+
+cat6 = Category.create!({
+ name: "Chinese"
+})
+
+cat7 = Category.create!({
+ name: "French"
+})
+
+cat8 = Category.create!({
+ name: "Greek"
+})
+
+cat9 = Category.create!({
+ name: "Indian"
+})
+
+cat10 = Category.create!({
+ name: "Japanese"
+})
+
+cat11 = Category.create!({
+ name: "Mediterranean"
+})
+
+cat12 = Category.create!({
+ name: "Moroccan"
+})
+
+cat13 = Category.create!({
+ name: "Spanish"
+})
+
+cat14 = Category.create!({
+ name: "Thai"
+})
+
+cat15 = Category.create!({
+ name: "Turkish"
+})
+
+cat16 = Category.create!({
+ name: "Vietnamese"
+})
+
+cat17 = Category.create!({
+ name: "Vegetarian"
 })
 
 puts "Seeding Meal Postings ..."
@@ -79,7 +137,7 @@ puts "Seeding Meal Postings ..."
 mealposting1 = user1.meal_postings.create!({
  base_time: 630,
  title: "Chicken Pasta",
- description: "Chicken strips, red peppers, onions, cooked in tomato sauce and served over a bed of penne pasta.",
+ description: "Chicken strips, red peppers, onions, cooked in white wine sauce and served over a bed of penne pasta.",
  allergy_notice: "Peanut oil is used in this dish.",
  servings: 5,
  cost: 9.50
@@ -95,14 +153,149 @@ mealposting2 = user1.meal_postings.create!({
  cost: 12.00
 })
 
+mealposting3 = user1.meal_postings.create!({
+ base_time: 530,
+ title: "Kraft Dinner",
+ description: "Noodles with cheese powder and a bit of butter and milk.",
+ allergy_notice: "Gotta Be KD.",
+ servings: 3,
+ cost: 18.50
+})
+
+mealposting4 = user1.meal_postings.create!({
+ base_time: 730,
+ title: "Peanut butter and jelly sandwiches",
+ description: "Two buttered whole wheat pieces of bread, covered in peanut butter and jelly and slapped together.",
+ allergy_notice: "Peanut Butter",
+ servings: 10,
+ cost: 4.25
+})
+
+mealposting5 = user1.meal_postings.create!({
+ base_time: 530,
+ end_time: 800,
+ title: "Hotdogs",
+ description: "Not sure what kind of meat is in there but it tastes okay.  Includes a bun.",
+ allergy_notice: "Dunno what's in it anyways.",
+ servings: 15,
+ cost: 3.00
+})
+
+mealposting6 = user1.meal_postings.create!({
+ base_time: 500,
+ end_time: 700,
+ title: "Fajitas",
+ description: "Chicken thighs cut into strips and cooked with peppers, onions and various spices.  Served on a tortilla wrap.",
+ allergy_notice: "Let me know if youre allergic to something.",
+ servings: 7,
+ cost: 7.50
+})
+
+mealposting7 = user4.meal_postings.create!({
+ base_time: 600,
+ title: "Ice Cubes",
+ description: "Fresh mount spring water collected by our aqua gathering engineers and frozen to the perfect temperature into uniform cubes.",
+ allergy_notice: "It's frozen water..",
+ servings: 25,
+ cost: 2.50
+})
+
+mealposting8 = user4.meal_postings.create!({
+ base_time: 600,
+ title: "Steak Frites",
+ description: "Classic Alberta beef BBQ'd to a nice medium rare, unless otherwise specified.  Served with fries.",
+ allergy_notice: "Let me know.",
+ servings: 6,
+ cost: 15.00
+})
+
+mealposting9 = user4.meal_postings.create!({
+ base_time: 500,
+ end_time: 730,
+ title: "Portobello Mushroom Burgers",
+ description: "They're like burgers but less good!  These are a great vegetarian option.",
+ allergy_notice: "Let me know about your allergies.",
+ servings: 8,
+ cost: 8.00
+})
+
+mealposting10 = user4.meal_postings.create!({
+ base_time: 500,
+ end_time: 730,
+ title: "Quinoa",
+ description: "Whatever that is.  Served with other healthy stuff as well.",
+ allergy_notice: "Let me know about your allergies.",
+ servings: 12,
+ cost: 7.50
+})
+
+mealposting11 = user4.meal_postings.create!({
+ base_time: 500,
+ title: "Spaghetti and Meatballs",
+ description: "Big ol' plate of spaghetti served with meatballs and covered in marinara sauce.",
+ allergy_notice: "Let me know about your allergies.",
+ servings: 10,
+ cost: 8.25
+})
+
+mealposting12 = user4.meal_postings.create!({
+ base_time: 500,
+ end_time: 730,
+ title: "Fresh Air",
+ description: "Filtered, triple-distilled, fresh air.",
+ allergy_notice: "If you are allergic then you have a big problem.",
+ servings: 200,
+ cost: 2.00
+})
+
 puts "Seeding Media ..."
 
 mealposting1.media.create!({
-  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1522949303/sample.jpg"
+  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123384/1467150710-lemon-butter-chicken-pasta-04.jpg"
 })
 
 mealposting2.media.create!({
-  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1522949303/sample.jpg"
+  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123122/tz1riiqxm3qa9ixtucoc.jpg"
+})
+
+mealposting3.media.create!({
+  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123029/bigstock-Homemade-Macaroni-And-Cheese-59176988.jpg"
+})
+
+mealposting4.media.create!({
+  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123318/fisaobewqwfp9ey9grnd.jpg"
+})
+
+mealposting5.media.create!({
+  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123150/pjlbqbisxjphpypflk9u.jpg"
+})
+
+mealposting6.media.create!({
+  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123286/Flavorful-Chicken-Fajitas_exps12540_BOS3149327B02_08_5bC_RMS.jpg"
+})
+
+mealposting7.media.create!({
+  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123061/106595821.jpg"
+})
+
+mealposting8.media.create!({
+  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123226/uceisaqtnhfey6gokmrj.jpg"
+})
+
+mealposting9.media.create!({
+  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123171/fwcwyzfovysbrb4u7bue.jpg"
+})
+
+mealposting10.media.create!({
+  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123194/ank1h1rgms3zbgcot9so.jpg"
+})
+
+mealposting11.media.create!({
+  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123089/jqhlzqmsugoxuggmpzkl.jpg"
+})
+
+mealposting12.media.create!({
+  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123273/1.jpg"
 })
 
 puts "Seeding Meal Ratings ..."
