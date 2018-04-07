@@ -27,7 +27,7 @@ user1 = User.create!({
  user_status: "host",
  name: "Lady Gaga",
  email: "lgaga@pokerface.com",
- address: "123 Gaga Lane",
+ address: "Tiff Bell Lightbox",
  phone_number: 1234567890,
  password_digest: "hashedpass"
 })

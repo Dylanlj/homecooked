@@ -5,9 +5,58 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+<style>
+      #map {
+        width: 350px;
+        height: 350px;
+        background-color: grey;
+      }
+    </style>
+    <script>
+    var geocoder;
+      var map;
+      function initialize(address) {
+        geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(43.646517, -79.395197);
+        var mapOptions = {
+          zoom: 15,
+          center: latlng
+        }
+        map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
+      }
+
+      function codeAddress(address, callback) {
+        console.log(address)
+        geocoder.geocode( { 'address': address}, function(results, status) {
+          if (status == 'OK') {
+            callback(results)
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+
+      function moveLocation(geoObject) {
+        map.setCenter(geoObject[0].geometry.location)
+      }
+
+      // function allMarkers(postings){
+      //   console.log(postings)
+      //   for each(meal_posting in postings)
+      //   codeAddress(meal_posting.user.address, makeMarker)
+      // }
+
+      function makeMarker(geoObject) {
+        var marker = new google.maps.Marker({
+          map: map,
+          position: geoObject[0].geometry.location
+        });
+      }
+
+    </script>
   </head>
-  <body>
+  <body onload="initialize('46 spadina avenue toronto ontario'), codeAddress('90 spadina avenue toronto ontario', makeMarker), allMarkers(@meal_postings)">
     <%= yield %>
   </body>
 </html>

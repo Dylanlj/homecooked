@@ -85,17 +85,19 @@ Here are the postings
 </section>
 <!-- AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA  -->
 
+ <h3>My Google Maps Demo</h3>
 
-  <iframe
-  width="300"
-  height="300"
-  src="//www.google.com/maps/embed/v1/place?q=Lighthouse Labs, Spadina Avenue, Toronto, ON
-      &zoom=15
-      &attribution_source=Google+Maps+Embed+API
-      &attribution_web_url=https://developers.google.com/maps/documentation/embed/
-      &key=AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA" allowfullscreen>
-  </iframe>
+ <div id="map" style="width: 320px; height: 380px;"></div>
+  <div>
+    <!-- the address here will be set if the user is signed in and we have their location -->
+    <% user =  "ottawa ontario" %>
+      <input id="address" type="textbox" value="46 Spadina Avenue Toronto Ontario" >
 
+    <input type="button" value="your location" onclick="codeAddress(<%=user%>, moveLocation)">
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA&callback=initialize"></script>
+
+  </div>
 
 
 
