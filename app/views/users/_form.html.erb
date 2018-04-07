@@ -44,13 +44,13 @@
   <div class="field">
     <%= form.label "Password: " %>
     <!-- Changed below to work with password_digest -->
-    <%= form.text_field(:password, {id: :user_password}) %>
+    <%= form.password_field(:password, {id: :user_password}) %>
   </div>
 
   <div class="field">
     <%= form.label "Password Confirm: " %>
     <!-- Changed below to work with password_digest -->
-    <%= form.text_field(:password_confirmation, {id: :user_password_confirmation}) %>
+    <%= form.password_field(:password_confirmation, {id: :user_password_confirmation}) %>
   </div>
 
   <div class="actions">

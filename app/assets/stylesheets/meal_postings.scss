@@ -2,30 +2,67 @@
 // Section for navigation //
 ////////////////////////////
 
+.nav {
+  height: 7vh;
+}
+
 .navbar {
-  border-radius: 0px;
+    margin-bottom: 5px;
+    background-color: #f4511e;
+    z-index: 9999;
+    border: 0;
+    font-size: 14px;
+    line-height: 1.42857143;
+    letter-spacing: 4px;
+    border-radius: 0;
 }
 
-.form-control {
-
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
 }
 
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #f4511e !important;
+    background-color: #fff !important;
+}
 
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
 
+/////////////////////////////
+// Section for google maps //
+/////////////////////////////
 
+.google-maps {
+  // width: 80%;
+  #googleMap {
+    float: right;
+    width: 50%;
+    height: 91vh;
+  }
+}
 
 
 ///////////////////////
 // Section for meals //
 ///////////////////////
 
+.postings-list {
+  overflow: scroll;
+  height: 91vh;
+}
+
+
 .meal-div{
   padding: 0 10px 0 10px;
+  width: 100%;
 }
 
 // The height should be the same as the image height (set using cl_image_tag)
 .media-body {
-  height: 100px;
+  height: 30vh;
   .media-container {
     height: 100%;
     .row-heading {

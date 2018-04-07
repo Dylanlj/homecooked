@@ -5,79 +5,13 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-<style>
-      #map {
-        width: 350px;
-        height: 350px;
-        background-color: grey;
-      }
-    </style>
-    <script>
-    let geocoder;
-      let map;
-      let yourMarker
-      let postingMarkers = []
-      function initialize(address) {
-        geocoder = new google.maps.Geocoder();
-        let latlng = new google.maps.LatLng(43.646517, -79.395197);
-        let mapOptions = {
-          zoom: 15,
-          center: latlng
-        }
-        mealPostingMarkers()
-        map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-      }
 
-// may need to do something about regenerating this when they switch categories and such
-      function mealPostingMarkers() {
-        postingMarkers.length = 0
-        for (let element of document.getElementsByClassName("meal-div")) {
-          let address = element.dataset.address
+    <!-- apparently not needed -->
+   <!--  <script type="text/javascript" src="google_maps_api.js"></script> -->
 
-          codeAddress(address, function (geoObject) {
-            var marker = new google.maps.Marker({
-              map: map,
-              position: geoObject[0].geometry.location
-            });
-            postingMarkers.push(marker)
-          })
-        }
-      }
-
-      function codeAddress(address, callback) {
-        console.log(address)
-        geocoder.geocode( { 'address': address}, function(results, status) {
-          if (status == 'OK') {
-            callback(results)
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-      }
-
-      function moveYourLocation() {
-        let address = document.getElementById('address').value;
-        codeAddress(address, function(geoObject){
-          map.setCenter(geoObject[0].geometry.location)
-        })
-        codeAddress(address, function (geoObject) {
-          if (yourMarker){
-           yourMarker.setMap(null)
-          }
-          yourMarker = new google.maps.Marker({
-            map: map,
-            title: "Your Location!",
-            position: geoObject[0].geometry.location
-          });
-
-        })
-
-      }
-
-    </script>
   </head>
-  <body onload="initialize('46 spadina avenue toronto ontario')">
+  <body onload="initialize('200 spadina avenue toronto ontario')">
     <%= yield %>
   </body>
 </html>

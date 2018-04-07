@@ -1,25 +1,35 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">HomeCooked</a>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Maps</a></li>
-      <li><a href="#">Reviews</a></li>
-    </ul>
-    <form class="navbar-form navbar-left" action="/action_page.php">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search">
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+      <form class="navbar-form" action="/action_page.php">
+        <div class="form-group">
+          <input id="address" type="text" class="form-control" placeholder="Location">
+        </div>
+        <button type="submit" onclick="moveYourLocation()" class="btn btn-default btn-location">Go</button>
+      </form>
+      </li>
+    </ul>
   </div>
 </nav>
+
+<!-- Google Maps; on right hand side -->
+<aside class="google-maps">
+
+  <div id="googleMap"></div>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA&callback=initialize" ></script>
+</aside>
+ <!--  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA&callback=initialize" data-turbolinks-eval="false"
+></script> -->
 
 <section class="postings-list">
 
@@ -86,20 +96,19 @@
 </section>
 
 
-
+<!-- this code should be deleted but I need to test that  -->
 <!-- AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA  -->
 
- <h3>My Google Maps Demo</h3>
+<!--  <h3>My Google Maps Demo</h3>
 
  <div id="map" style="width: 320px; height: 380px;"></div>
   <div>
-    <!-- the address here will be set if the user is signed in and we have their location -->
+    the address here will be set if the user is signed in and we have their location
 
       <input id="address" type="textbox" value="46 Spadina Avenue Toronto Ontario" >
 
     <input type="button" value="your location" onclick="moveYourLocation()">
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA&callback=initialize"></script>
+
 
   </div>
-
+ -->
