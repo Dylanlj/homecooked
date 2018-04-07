@@ -13,12 +13,13 @@
       }
     </style>
     <script>
-    var geocoder;
-      var map;
+    let geocoder;
+      let map;
+      let yourMarker
       function initialize(address) {
         geocoder = new google.maps.Geocoder();
-        var latlng = new google.maps.LatLng(43.646517, -79.395197);
-        var mapOptions = {
+        let latlng = new google.maps.LatLng(43.646517, -79.395197);
+        let mapOptions = {
           zoom: 15,
           center: latlng
         }
@@ -37,12 +38,22 @@
         });
       }
 
-      function moveLocation() {
+      function moveYourLocation() {
         let address = document.getElementById('address').value;
         codeAddress(address, function(geoObject){
           map.setCenter(geoObject[0].geometry.location)
         })
-        codeAddress(address, makeMarker)
+        codeAddress(address, function (geoObject) {
+          if (yourMarker){
+           yourMarker.setMap(null)
+          }
+          yourMarker = new google.maps.Marker({
+            map: map,
+            title: "Your Location!",
+            position: geoObject[0].geometry.location
+          });
+
+        })
 
       }
 
