@@ -20,10 +20,15 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+
+        # Setting cookie to recognize logged in user
+        session[:user_id] = @user.id
+
+        # Changed 'redirect_to' to point to 'root_path' instead of @user.
+        # format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to root_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -64,6 +69,8 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:user_status, :address, :name, :email, :password_digest, :phone_number, :image)
+
+      # REMOVED :password_digest and added :password and :password_confirmation
+      params.require(:user).permit(:user_status, :address, :name, :email, :phone_number, :image, :password, :password_confirmation)
     end
 end

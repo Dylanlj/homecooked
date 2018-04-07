@@ -1,3 +1,47 @@
-// Place all the styles related to the MealPostings controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+////////////////////////////
+// Section for navigation //
+////////////////////////////
+
+.navbar {
+  border-radius: 0px;
+}
+
+.form-control {
+
+}
+
+
+
+
+
+
+///////////////////////
+// Section for meals //
+///////////////////////
+
+.meal-div{
+  padding: 0 10px 0 10px;
+}
+
+// The height should be the same as the image height (set using cl_image_tag)
+.media-body {
+  height: 100px;
+  .media-container {
+    height: 100%;
+    .row-heading {
+        height: 20%;
+        // background-color: blue;
+    }
+    .row-body {
+        height: 60%;
+        // background-color: red;
+    }
+    .row-footer {
+        height: 20%;
+        // background-color: green;
+    }
+  }
+}
+
+
+

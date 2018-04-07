@@ -5,6 +5,7 @@ class MealPostingsController < ApplicationController
   # GET /meal_postings.json
   def index
     @meal_postings = MealPosting.all
+    puts "==========MEAL POSTINGS===========", @meal_postings[0]
   end
 
   # GET /meal_postings/1
