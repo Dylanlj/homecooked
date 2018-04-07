@@ -35,7 +35,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'pry-rails'
 
 gem 'bootstrap-sass', '~> 3.3.6'
-gem 'bootstrap', '~> 4.0.0'
+# gem 'bootstrap', '~> 4.0.0'
 gem 'font-awesome-rails'
 
 gem 'carrierwave'

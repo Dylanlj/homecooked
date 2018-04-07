@@ -39,8 +39,8 @@
   // width: 80%;
   #googleMap {
     float: right;
-    width: 60%;
-    height: 92vh;
+    width: 50%;
+    height: 91vh;
   }
 }
 
@@ -49,13 +49,20 @@
 // Section for meals //
 ///////////////////////
 
+.postings-list {
+  overflow: scroll;
+  height: 91vh;
+}
+
+
 .meal-div{
   padding: 0 10px 0 10px;
+  width: 100%;
 }
 
 // The height should be the same as the image height (set using cl_image_tag)
 .media-body {
-  height: 100px;
+  height: 30vh;
   .media-container {
     height: 100%;
     .row-heading {
