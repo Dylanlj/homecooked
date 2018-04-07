@@ -26,7 +26,7 @@
 <% @meal_postings.each do |meal_posting| %>
 
   <!-- Image -->
-  <div class="meal-div">
+  <div class="meal-div" data-address='<%=meal_posting.user.address%>'>
     <div class="media">
       <div class="media-left media-middle">
         <%= cl_image_tag(meal_posting.media[0].url, :width=>100, :height=>100, class: 'media-object') %>
@@ -94,7 +94,7 @@
  <div id="map" style="width: 320px; height: 380px;"></div>
   <div>
     <!-- the address here will be set if the user is signed in and we have their location -->
-    <% user =  "ottawa ontario" %>
+
       <input id="address" type="textbox" value="46 Spadina Avenue Toronto Ontario" >
 
     <input type="button" value="your location" onclick="moveYourLocation()">

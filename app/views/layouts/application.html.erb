@@ -23,8 +23,20 @@
           zoom: 15,
           center: latlng
         }
+      for (let element of document.getElementsByClassName("meal-div")) {
+        mealPostingMarkers(element.dataset.address)
+      }
         map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
+      }
+
+      function mealPostingMarkers(address) {
+        codeAddress(address, function (geoObject) {
+        var marker = new google.maps.Marker({
+          map: map,
+          position: geoObject[0].geometry.location
+        });
+      })
       }
 
       function codeAddress(address, callback) {
@@ -55,19 +67,6 @@
 
         })
 
-      }
-
-      // function allMarkers(postings){
-      //   console.log(postings)
-      //   for each(meal_posting in postings)
-      //   codeAddress(meal_posting.user.address, makeMarker)
-      // }
-
-      function makeMarker(geoObject) {
-        var marker = new google.maps.Marker({
-          map: map,
-          position: geoObject[0].geometry.location
-        });
       }
 
     </script>
