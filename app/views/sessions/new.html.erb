@@ -1,11 +1,22 @@
-<div class="login-form">
-  <h1>Login</h1>
+<h2 class="login-header">Login</h2>
+<div class="user-register">
 
   <%= form_tag '/login' do %>
 
-    Email: <%= text_field_tag :email %>
-    Password: <%= password_field_tag :password %>
-    <%= submit_tag "Submit" %>
-
+  <table class="register-table">
+    <tr>
+      <div class="form-group">
+        <th class="login-field">Email: </th>
+        <td><%= text_field_tag :email %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="form-group">
+        <th class="login-field">Password: </th>
+        <td><%= password_field_tag :password %></td>
+      </div>
+    </tr>
+  </table>
+    <%= submit_tag "Submit", :class=>"login-submit btn btn-primary" %>
   <% end %>
 </div>
