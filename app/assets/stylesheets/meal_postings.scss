@@ -6,22 +6,29 @@
   border-radius: 0px;
 }
 
-.container-fluid {
-    height: 100%;
-
-    .row-heading {
-      height: 20%;
-      background-color: blue;
-    }
-
-    .row-body {
-      height: 60%;
-      background-color: red;
-    }
-
-    .row-footer {
-      height: 20%;
-      background-color: green;
-    }
+.meal-div{
+  padding: 0 10px 0 10px;
 }
+
+// The height should be the same as the image height (set using cl_image_tag)
+.media-body {
+  height: 100px;
+  .media-container {
+    height: 100%;
+    .row-heading {
+        height: 20%;
+        // background-color: blue;
+    }
+    .row-body {
+        height: 60%;
+        // background-color: red;
+    }
+    .row-footer {
+        height: 20%;
+        // background-color: green;
+    }
+  }
+}
+
+
 

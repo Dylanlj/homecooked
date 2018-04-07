@@ -33,32 +33,32 @@
       </div>
 
       <div class="media-body">
-        <div class="container">
+        <div class="container-fluid media-container">
 
           <!-- Title, meal time(s), cost -->
           <div class="row row-heading">
             <div class="col-xs-4">
               <%= meal_posting.title %>
             </div>
-          <% if meal_posting.end_time %>
-            <div class="col-xs-2">
+
+            <div class="col-xs-4">
+            <% if meal_posting.end_time %>
               Serving from: <%= meal_posting.base_time %> - <%= meal_posting.end_time%>
-            </div>
-          <% else %>
-            <div class="col-xs-2">
+            <% else %>
               Serving at: <%= meal_posting.base_time%>
+            <% end %>
             </div>
-          <% end %>
-            <div class="col-xs-2">
-            </div>
+
             <div class="col-xs-4">
               Cost: $<%= meal_posting.cost %>
             </div>
-          <div>
+          </div>
 
           <!-- Description -->
           <div class="row row-body">
+            <div class="col-xs-12">
             <%= meal_posting.description %>
+            </div>
           </div>
 
           <!-- Servings left, allergy notices -->
@@ -75,11 +75,12 @@
 
         </div>
       </div>
+
     </div>
   </div>
+</br>
 <% end %>
 
 </section>
 
-<%= link_to 'New Meal Posting', new_meal_posting_path %>
-
+<!-- Deleted: %= link_to 'new meal posting', new_meal_posting_path % -->
