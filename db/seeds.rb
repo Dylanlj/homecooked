@@ -31,7 +31,8 @@ user1 = User.create!({
  email: "lgaga@pokerface.com",
  address: "46 Spadina Avenue",
  phone_number: 1234567890,
- password_digest: "hashedpass"
+ password: "hashedpass",
+ password_confirmation: "hashedpass"
 })
 
 user2 = User.create!({
@@ -40,7 +41,8 @@ user2 = User.create!({
  email: "denzel@moviestar.com",
  address: "126 Bloor Street West",
  phone_number: 1098765432,
- password_digest: "passhashed"
+ password: "passhashed",
+ password_confirmation: "passhashed"
 })
 
 user3 = User.create!({
@@ -49,7 +51,8 @@ user3 = User.create!({
  email: "dwayne@therock.com",
  address: "379 Queen Street West",
  phone_number: 1231049384,
- password_digest: "littlerock"
+ password: "littlerock",
+ password_confirmation: "littlerock"
 })
 
 user4 = User.create!({
@@ -58,7 +61,8 @@ user4 = User.create!({
  email: "mission@impossible.com",
  address: "300 King Street East",
  phone_number: 1234567890,
- password_digest: "tommyboy"
+ password: "tommyboy",
+ password_confirmation: "tommyboy"
 })
 
 puts "Seeding Categories ..."
