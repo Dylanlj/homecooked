@@ -29,7 +29,7 @@ user1 = User.create!({
  user_status: "host",
  name: "Lady Gaga",
  email: "lgaga@pokerface.com",
- address: "46 Spadina Avenue",
+ address: "150 Spadina Avenue Toronto",
  phone_number: 1234567890,
  password: "hashedpass",
  password_confirmation: "hashedpass"
@@ -39,7 +39,7 @@ user2 = User.create!({
  user_status: "user",
  name: "Denzel Washington",
  email: "denzel@moviestar.com",
- address: "126 Bloor Street West",
+ address: "126 Bloor Street West Toronto",
  phone_number: 1098765432,
  password: "passhashed",
  password_confirmation: "passhashed"
@@ -49,7 +49,7 @@ user3 = User.create!({
  user_status: "user",
  name: "Dwayne Johnson",
  email: "dwayne@therock.com",
- address: "379 Queen Street West",
+ address: "379 Queen Street West Toronto",
  phone_number: 1231049384,
  password: "littlerock",
  password_confirmation: "littlerock"
@@ -59,7 +59,7 @@ user4 = User.create!({
  user_status: "host",
  name: "Tom Cruise",
  email: "mission@impossible.com",
- address: "300 King Street East",
+ address: "300 King Street East Toronto",
  phone_number: 1234567890,
  password: "tommyboy",
  password_confirmation: "tommyboy"
@@ -147,7 +147,7 @@ mealposting1 = user1.meal_postings.create!({
  cost: 9.50
 })
 
-mealposting2 = user1.meal_postings.create!({
+mealposting2 = user2.meal_postings.create!({
  base_time: 430,
  end_time: 730,
  title: "Salmon with Broccoli and Rice",
@@ -166,7 +166,7 @@ mealposting3 = user1.meal_postings.create!({
  cost: 18.50
 })
 
-mealposting4 = user1.meal_postings.create!({
+mealposting4 = user3.meal_postings.create!({
  base_time: 730,
  title: "Peanut butter and jelly sandwiches",
  description: "Two buttered whole wheat pieces of bread, covered in peanut butter and jelly and slapped together.",
@@ -175,7 +175,7 @@ mealposting4 = user1.meal_postings.create!({
  cost: 4.25
 })
 
-mealposting5 = user1.meal_postings.create!({
+mealposting5 = user3.meal_postings.create!({
  base_time: 530,
  end_time: 800,
  title: "Hotdogs",

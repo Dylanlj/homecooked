@@ -7,11 +7,9 @@
     <%= csrf_meta_tags %>
 
 
-    <!-- apparently not needed -->
-   <!--  <script type="text/javascript" src="google_maps_api.js"></script> -->
-
+<!-- onload="initialize('200 spadina avenue toronto ontario')" -->
   </head>
-  <body onload="initialize('200 spadina avenue toronto ontario')">
+  <body>
     <%= yield %>
   </body>
 </html>
