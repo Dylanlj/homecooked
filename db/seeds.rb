@@ -29,40 +29,44 @@ user1 = User.create!({
  user_status: "host",
  name: "Lady Gaga",
  email: "lgaga@pokerface.com",
- address: "46 Spadina Avenue",
+ address: "150 Spadina Avenue Toronto",
  phone_number: 1234567890,
  password: "hashedpass",
- password_confirmation: "hashedpass"
+ password_confirmation: "hashedpass",
+ image: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523314174/MV5BNjBjZjA5YzAtM2ZmNS00MTI5LThlOWEtNmJlOTA5MjgwZDkxXkEyXkFqcGdeQXVyNTk1NTMyNzM_._V1_.jpg"
 })
 
 user2 = User.create!({
  user_status: "user",
  name: "Denzel Washington",
  email: "denzel@moviestar.com",
- address: "126 Bloor Street West",
+ address: "126 Bloor Street West Toronto",
  phone_number: 1098765432,
  password: "passhashed",
- password_confirmation: "passhashed"
+ password_confirmation: "passhashed",
+ image: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523314330/dz2_thumb.jpg"
 })
 
 user3 = User.create!({
  user_status: "user",
  name: "Dwayne Johnson",
  email: "dwayne@therock.com",
- address: "379 Queen Street West",
+ address: "379 Queen Street West Toronto",
  phone_number: 1231049384,
  password: "littlerock",
- password_confirmation: "littlerock"
+ password_confirmation: "littlerock",
+ image: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523314303/dwayne-fanny-pack.jpg"
 })
 
 user4 = User.create!({
  user_status: "host",
  name: "Tom Cruise",
  email: "mission@impossible.com",
- address: "300 King Street East",
+ address: "300 King Street East Toronto",
  phone_number: 1234567890,
  password: "tommyboy",
- password_confirmation: "tommyboy"
+ password_confirmation: "tommyboy",
+ image: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523313753/1341605986_tomcruise-350.jpg"
 })
 
 puts "Seeding Categories ..."
@@ -152,6 +156,7 @@ mealposting1 = user1.meal_postings.create!({
  servings: 5,
  cost: 9.50
 })
+
 
 mealposting2 = user1.meal_postings.create!({
  category_id: 3,

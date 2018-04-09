@@ -20,6 +20,7 @@ class MealPostingsController < ApplicationController
   # GET /meal_postings/1
   # GET /meal_postings/1.json
   def show
+    @user = User.find(@meal_posting.user_id)
   end
 
   def category

@@ -1,39 +1,82 @@
-<p id="notice"><%= notice %></p>
+<!-- Nav Bar -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">HomeCooked</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+      <form class="navbar-form" action="/action_page.php">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Location">
+        </div>
+        <button type="submit" class="btn btn-default btn-location">Go</button>
+      </form>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-<p>
-  <strong>Base time:</strong>
-  <%= @meal_posting.base_time %>
-</p>
+<!-- User information at top of page -->
+<div class="container meal-posting-user-info">
+  <div class="row">
+    <div class="row">
+      <div class="col-xs-4 col-sm-3 col-md-3">
+        <%= cl_image_tag(@meal_posting.media[0].url, class: 'circle img-thumbnail img-box') %>
+      </div>
+      <h4><strong>Host Information: </strong></h4>
+      <h5><strong>Name: <%= @user.name %></strong></h5>
+      <p><strong>Address: <%= @user.address %></strong></p>
+      <p><strong>Phone: <%= @user.phone_number %></strong></p>
+      <p><strong>Email: <%= @user.email %></strong></p>
+      <%= link_to 'Reviews', user_path(@user), :class => "btn btn-warning btn-md user-reviews-btn" %>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>End time:</strong>
-  <%= @meal_posting.end_time %>
-</p>
+<!-- Separation from User info to Meal Postings -->
+<hr class="user-meal-posting-separate">
 
-<p>
-  <strong>Title:</strong>
-  <%= @meal_posting.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @meal_posting.description %>
-</p>
-
-<p>
-  <strong>Allergy notice:</strong>
-  <%= @meal_posting.allergy_notice %>
-</p>
-
-<p>
-  <strong>Servings:</strong>
-  <%= @meal_posting.servings %>
-</p>
-
-<p>
-  <strong>Cost:</strong>
-  <%= @meal_posting.cost %>
-</p>
-
-<%= link_to 'Edit', edit_meal_posting_path(@meal_posting) %> |
-<%= link_to 'Back', meal_postings_path %>
+<!-- Shows as many meal postings as the user currently has -->
+<div class="container">
+  <div class="row">
+    <% @user.meal_postings.each do |meal_posting| %>
+    <div class="row">
+      <div class="col-xs-4 col-sm-3 col-md-3">
+        <%= cl_image_tag(meal_posting.media[0].url, class: 'circle img-thumbnail img-box') %>
+      </div>
+      <div class="col-xs-4 col-sm-9 col-md-9">
+        <h4><%= meal_posting.title %></h4>
+        <div class="list-group-item meal-post-desc">
+          <p>Description: <%= meal_posting.description %><br/><br/>Allergy Notice: <%= meal_posting.allergy_notice %></p>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 meal-posting-bottom-info">
+            <p>
+              <% if meal_posting.end_time %>
+                Serving from: <%= meal_posting.base_time %> - <%= meal_posting.end_time%>
+              <% else %>
+                Serving at: <%= meal_posting.base_time%>
+              <% end %>
+            </p>
+          </div>
+          <div class="col-sm-2 meal-posting-bottom-info">
+            <p>Price: $<%= meal_posting.cost %></p>
+          </div>
+          <div class="col-sm-3 meal-posting-bottom-info">
+            <p>Servings Available: <%= meal_posting.servings %></p>
+          </div>
+          <div class="reserve-button">
+            <%= button_to 'Reserve', new_meal_posting_reservation_path(meal_posting), :class => "btn btn-warning btn-md reserve" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <% end %>
+  </div>
+</div>
