@@ -5,6 +5,7 @@ class MealPostingsController < ApplicationController
   # GET /meal_postings.json
   def index
     @meal_postings = MealPosting.all
+    @categories = Category.all
   end
 
   # GET /meal_postings/1

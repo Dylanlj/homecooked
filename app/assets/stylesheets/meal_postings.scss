@@ -44,14 +44,27 @@
   }
 }
 
-
 ///////////////////////
 // Section for meals //
 ///////////////////////
 
+.categories-area{
+  position: relative;
+  height: 5vh;
+  width: 50%;
+  background: repeating-radial-gradient(
+    circle,
+    #f4511e,
+    #f4511e 80px,
+    #ffffff 20px,
+    #ffffff 100px
+  );
+  margin-bottom: 7px
+}
+
 .postings-list {
+  height: 85vh;
   overflow: scroll;
-  height: 91vh;
 }
 
 .meal-div{

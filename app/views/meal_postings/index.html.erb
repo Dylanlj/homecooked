@@ -1,5 +1,3 @@
-
-
 <!-- Navbar at the top -->
 
 <nav class="navbar navbar-default">
@@ -39,9 +37,33 @@
 
 
 <!-- Meals posted on left hand side -->
+<section class="postings">
 
+<!-- First, the categories area and button -->
+<div class="categories-area">
+  <div class="categories-btn">
+    <div class="row row-heading">
+      <div class="col-xs-4">
+        <div class="container">
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Categories
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <% @categories.each do |category| %>
+                <li><a href="#"><%= category.name %></a></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-8">
+      </div>
+    </div>
+  </div>
+</div>
 
-<section class="postings-list">
+<!-- Then, all the meals -->
+<div class="postings-list">
 
 <% @meal_postings.each do |meal_posting| %>
 
@@ -98,8 +120,9 @@
 
     </div>
   </div>
-</br>
 <% end %>
+
+</div>
 
 </section>
 
