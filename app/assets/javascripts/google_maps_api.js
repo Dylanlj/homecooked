@@ -18,8 +18,12 @@ function codeAddress(address, callback) {
   });
 }
 
-function initialize(address = "46 spadina avenue toronto") {
+function initialize() {
   geocoder = new google.maps.Geocoder();
+  // let userPlace = document.getElementById('googleMap').dataset.userLocation
+  // console.log(codeAddress(userPlace , (geoObject) => {console.log(geoObject}))
+  // let userLongitude = (43.646517, -79.395197)
+  // let userLatitude =
 
   let latlng = new google.maps.LatLng(43.646517, -79.395197);
   let mapOptions = {
@@ -75,19 +79,16 @@ function mealPostingMarkers() {
       postingMarkers.push(marker)
 
       orderMarkerByProximity()
-
     }
-
   }
 
   postingMarkers.length = 0
 
   let geoCount = 0
   for (let element of document.getElementsByClassName("meal-div")) {
-
     let address = element.dataset.address
     geoCount++
-    if ((geoCount % 10) === 0) {
+    if ((geoCount % 9) === 0) {
           setTimeout(function() {codeAddress(address, mealMarkerCallback)}, 1300);
     } else {
       codeAddress(address, mealMarkerCallback)
