@@ -15,9 +15,9 @@
       <li>
       <form class="navbar-form" action="/action_page.php">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Location">
+          <input id="address" type="text" class="form-control" placeholder="Location">
         </div>
-        <button type="submit" class="btn btn-default btn-location">Go</button>
+        <button type="submit" onclick="moveYourLocation()" class="btn btn-default btn-location">Go</button>
       </form>
       </li>
     </ul>
@@ -27,29 +27,26 @@
 <!-- Google Maps; on right hand side -->
 
 <aside class="google-maps">
+
   <div id="googleMap"></div>
-
-  <script>
-  function myMap() {
-  var mapProp= {
-      center:new google.maps.LatLng(51.508742,-0.120850),
-      zoom:5,
-  };
-  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-  }
-  </script>
-
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWxnm39QBvy4HIpXRu82ucKN4-0WpS35I&callback=myMap"></script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA&callback=initialize" ></script>
 </aside>
 
+ <!--  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA&callback=initialize" data-turbolinks-eval="false"
+></script> -->
+
+
 <!-- Meals posted on left hand side -->
+
 
 <section class="postings-list">
 
 <% @meal_postings.each do |meal_posting| %>
 
   <!-- Image -->
-  <div class="meal-div">
+  <div class="meal-div" data-address='<%=meal_posting.user.address%>'>
     <div class="media">
       <div class="media-left media-middle">
         <%= cl_image_tag(meal_posting.media[0].url, class: 'media-object') %>
@@ -76,6 +73,8 @@
               Cost: $<%= meal_posting.cost %>
             </div>
           </div>
+
+
 
           <!-- Description -->
           <div class="row row-body">
@@ -105,4 +104,21 @@
 </section>
 
 
-<!-- Deleted: %= link_to 'new meal posting', new_meal_posting_path % -->
+
+<!-- this code should be deleted but I need to test that  -->
+<!-- AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA  -->
+
+<!--  <h3>My Google Maps Demo</h3>
+
+ <div id="map" style="width: 320px; height: 380px;"></div>
+  <div>
+    the address here will be set if the user is signed in and we have their location
+
+      <input id="address" type="textbox" value="46 Spadina Avenue Toronto Ontario" >
+
+    <input type="button" value="your location" onclick="moveYourLocation()">
+
+
+  </div>
+ -->
+
