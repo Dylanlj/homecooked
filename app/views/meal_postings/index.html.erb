@@ -6,8 +6,8 @@
       <a class="navbar-brand" href="#">HomeCooked</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><%= link_to new_user_path do %><span class="glyphicon glyphicon-user"></span> Sign Up <% end %></li>
+      <li><%= link_to login_path do %><span class="glyphicon glyphicon-log-in"></span> Login <% end %></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li>
@@ -23,6 +23,8 @@
 </nav>
 
 <!-- Google Maps; on right hand side -->
+
+<%= current_user.address %>
 
 <aside class="google-maps">
 

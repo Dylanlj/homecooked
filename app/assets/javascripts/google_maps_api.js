@@ -7,8 +7,20 @@ let postingMarkers = []
 let labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 let labelIndex = 0
 
-function initialize(address) {
+
+function codeAddress(address, callback) {
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == 'OK') {
+      callback(results)
+    } else {
+      console.log('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+
+function initialize(address = "46 spadina avenue toronto") {
   geocoder = new google.maps.Geocoder();
+
   let latlng = new google.maps.LatLng(43.646517, -79.395197);
   let mapOptions = {
     zoom: 15,
@@ -24,10 +36,7 @@ function initialize(address) {
 
 
 function orderMarkerByProximity() {
-  console.log(postingMarkers[0].label)
-
   labelIndex = 0
-
   postingMarkers.sort(function(a, b){
     let aLat = a.position.lat()
     let aLng = a.position.lng()
@@ -38,14 +47,10 @@ function orderMarkerByProximity() {
 
     let aDistance = Math.sqrt(Math.pow((aLat - mLat), 2) + Math.pow((aLng - mLng), 2))
     let bDistance = Math.sqrt(Math.pow((bLat - mLat), 2) + Math.pow((bLng - mLng), 2))
-
-console.log(aDistance - bDistance)
     return (aDistance - bDistance)
-
   })
 
   for (let marker of postingMarkers) {
-
     marker.label = labels[labelIndex++ % labels.length]
     marker.setMap(map)
   }
@@ -83,10 +88,8 @@ function mealPostingMarkers() {
     let address = element.dataset.address
     geoCount++
     if ((geoCount % 10) === 0) {
-          setTimeout(function() {codeAddress(address, mealMarkerCallback);
-            console.log("slow")}, 1300);
+          setTimeout(function() {codeAddress(address, mealMarkerCallback)}, 1300);
     } else {
-      console.log("quick")
       codeAddress(address, mealMarkerCallback)
     }
 
@@ -95,17 +98,6 @@ function mealPostingMarkers() {
 
 }
 
-
-
-function codeAddress(address, callback) {
-  geocoder.geocode( { 'address': address}, function(results, status) {
-    if (status == 'OK') {
-      callback(results)
-    } else {
-      console.log('Geocode was not successful for the following reason: ' + status);
-    }
-  });
-}
 
 function moveYourLocation() {
   let address = document.getElementById('address').value;
