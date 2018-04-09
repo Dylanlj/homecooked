@@ -5,7 +5,6 @@ class MealPostingsController < ApplicationController
   # GET /meal_postings.json
   def index
     @meal_postings = MealPosting.all
-    puts "==========MEAL POSTINGS===========", @meal_postings[0]
   end
 
   # GET /meal_postings/1
@@ -69,7 +68,15 @@ class MealPostingsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def meal_posting_params
-      params.require(:meal_posting).permit(:base_time, :end_time, :title, :description, :allergy_notice, :servings, :cost)
-    end
+    # def meal_posting_params
+    #   params.require(:meal_posting).permit(
+    #     :base_time,
+    #     :end_time,
+    #     :title,
+    #     :description,
+    #     :allergy_notice,
+    #     :servings,
+    #     :cost
+    #   )
+    # end
 end
