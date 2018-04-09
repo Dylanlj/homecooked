@@ -26,8 +26,12 @@
 
 
 <aside class="google-maps">
-
-  <div id="googleMap" data-user-location='<%=current_user.address%>'></div>
+<% if current_user %>
+<% theAddress = current_user.address %>
+<% else %>
+<% theAddress = "46 Spadina Avenue Toronto" %>
+<% end %>
+  <div id="googleMap" data-user-location='<%=theAddress%>'></div>
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA&callback=initialize" data-turbolinks-eval="false"
 ></script>
