@@ -23,40 +23,79 @@ function initialize(address) {
 }
 
 
+function orderMarkerByProximity() {
+  console.log(postingMarkers[0].label)
 
-
-function mealPostingMarkers() {
-  postingMarkers.length = 0
   labelIndex = 0
-  let markerCount = 0
-  for (let element of document.getElementsByClassName("meal-div")) {
 
-    let address = element.dataset.address
+  postingMarkers.sort(function(a, b){
+    let aLat = a.position.lat()
+    let aLng = a.position.lng()
+    let bLat = b.position.lat()
+    let bLng = b.position.lng()
+    let mLat = yourMarker.position.lat()
+    let mLng = yourMarker.position.lng()
 
-    codeAddress(address, (geoObject) => {
-      function checkLocation(postings) {
-        if (markerCount === 0) { return false }
-        return (geoObject[0].formatted_address === postings.address)
-      }
+    let aDistance = Math.sqrt(Math.pow((aLat - mLat), 2) + Math.pow((aLng - mLng), 2))
+    let bDistance = Math.sqrt(Math.pow((bLat - mLat), 2) + Math.pow((bLng - mLng), 2))
 
-      if(!postingMarkers.find(checkLocation)){
-        let marker = new google.maps.Marker({
-          map: map,
-          position: geoObject[0].geometry.location,
-          label: labels[labelIndex++ % labels.length],
-          address: geoObject[0].formatted_address
-        })
-        postingMarkers.push(marker)
-      }
-    })
-      markerCount++
-      console.log(markerCount)
-      if (markerCount > 10) {
-       return false
-      }
+console.log(aDistance - bDistance)
+    return (aDistance - bDistance)
+
+  })
+
+  for (let marker of postingMarkers) {
+
+    marker.label = labels[labelIndex++ % labels.length]
+    marker.setMap(map)
   }
 
 }
+
+function mealPostingMarkers() {
+
+  function mealMarkerCallback (geoObject) {
+    function checkLocation(postings) {
+      if (geoCount === 0) { return false }
+      return (geoObject[0].formatted_address === postings.address)
+    }
+
+    if(!postingMarkers.find(checkLocation)){
+      let marker = new google.maps.Marker({
+        map: map,
+        position: geoObject[0].geometry.location,
+        label: labels[labelIndex++ % labels.length],
+        address: geoObject[0].formatted_address
+      })
+      postingMarkers.push(marker)
+
+      orderMarkerByProximity()
+
+    }
+
+  }
+
+  postingMarkers.length = 0
+
+  let geoCount = 0
+  for (let element of document.getElementsByClassName("meal-div")) {
+
+    let address = element.dataset.address
+    geoCount++
+    if ((geoCount % 10) === 0) {
+          setTimeout(function() {codeAddress(address, mealMarkerCallback);
+            console.log("slow")}, 1300);
+    } else {
+      console.log("quick")
+      codeAddress(address, mealMarkerCallback)
+    }
+
+
+  }
+
+}
+
+
 
 function codeAddress(address, callback) {
   geocoder.geocode( { 'address': address}, function(results, status) {
