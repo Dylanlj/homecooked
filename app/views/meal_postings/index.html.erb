@@ -1,3 +1,5 @@
+<!-- Navbar at the top -->
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -21,15 +23,21 @@
 </nav>
 
 <!-- Google Maps; on right hand side -->
+
 <aside class="google-maps">
 
   <div id="googleMap"></div>
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA&callback=initialize" ></script>
 </aside>
+
  <!--  <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA&callback=initialize" data-turbolinks-eval="false"
 ></script> -->
+
+
+<!-- Meals posted on left hand side -->
+
 
 <section class="postings-list">
 
@@ -39,7 +47,7 @@
   <div class="meal-div" data-address='<%=meal_posting.user.address%>'>
     <div class="media">
       <div class="media-left media-middle">
-        <%= cl_image_tag(meal_posting.media[0].url, :width=>100, :height=>100, class: 'media-object') %>
+        <%= cl_image_tag(meal_posting.media[0].url, class: 'media-object') %>
       </div>
 
       <div class="media-body">
@@ -78,9 +86,7 @@
             <div class="col-xs-4">
               Servings Left: <%= meal_posting.servings %>
             </div>
-            <div class="col-xs-4">
-            </div>
-            <div class="col-xs-4">
+            <div class="col-xs-8">
               Allergies: <%= meal_posting.allergy_notice %>
             </div>
           </div>

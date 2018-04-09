@@ -1,59 +1,73 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="user-register">
+  <%= form_with(model: user, local: true) do |form| %>
+    <% if user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <table class="register-table">
+      <tr>
+        <div class="form-group">
+          <th class="register-field"><%= form.label "User Status: " %></th>
+          <td><%= form.select :user_status, ['User', 'Host'], id: :user_user_status %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="form-group">
+          <th class="register-field"><%= form.label "Name: " %></th>
+          <td><%= form.text_field :name, id: :user_name %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="form-group">
+          <th class="register-field"><%= form.label "Email: " %></th>
+          <td><%= form.text_field :email, id: :user_email %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="form-group">
+          <th class="register-field"><%= form.label "Address: " %></th>
+          <td><%= form.text_field :address, id: :user_address %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="form-group">
+          <th class="register-field"><%= form.label "Phone Number: " %></th>
+          <td><%= form.text_field :phone_number, id: :user_phone_number %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="form-group">
+          <th class="register-field"><%= form.label "Image: " %></th>
+          <td><%= form.text_field :image, id: :user_image %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="form-group">
+          <th class="register-field"><%= form.label "Password: " %></th>
+          <!-- Changed below to work with password_digest -->
+          <td><%= form.password_field(:password, {id: :user_password}) %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="form-group">
+          <th class="register-field"><%= form.label "Password Confirm: " %></th>
+          <!-- Changed below to work with password_digest -->
+          <td><%= form.password_field(:password_confirmation, {id: :user_password_confirmation}) %></td>
+        </div>
+      </tr>
+    </table>
+
+    <div class="actions">
+      <%= form.submit class: 'new-user-submit btn btn-primary' %>
     </div>
   <% end %>
+</div>
 
-  <div class="field">
-    <%= form.label "User Status: " %>
-    <%= form.select :user_status, ['User', 'Host'], id: :user_user_status %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Address: " %>
-    <%= form.text_field :address, id: :user_address %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Name: " %>
-    <%= form.text_field :name, id: :user_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Email: " %>
-    <%= form.text_field :email, id: :user_email %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Phone Number: " %>
-    <%= form.text_field :phone_number, id: :user_phone_number %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Image: " %>
-    <%= form.text_field :image, id: :user_image %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Password: " %>
-    <!-- Changed below to work with password_digest -->
-    <%= form.password_field(:password, {id: :user_password}) %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Password Confirm: " %>
-    <!-- Changed below to work with password_digest -->
-    <%= form.password_field(:password_confirmation, {id: :user_password_confirmation}) %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>

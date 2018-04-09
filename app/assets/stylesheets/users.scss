@@ -1,3 +1,41 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+th.register-field {
+  width: 150px;
+  padding: 7px;
+}
+
+th.login-field {
+  width: 90px;
+  padding: 7px;
+}
+
+.new-user-submit {
+  margin-top: 10px;
+  margin-left: 100px;
+}
+
+.login-submit {
+  margin-top: 10px;
+  margin-left: 90px;
+}
+
+div.user-register,
+div.user-login {
+  display: flex;
+  justify-content: center;
+}
+
+table.register-table,
+table.login-table {
+  align-self: center;
+}
+
+h2.new-user-header,
+h2.login-header {
+  display: flex;
+  justify-content: center;
+}
