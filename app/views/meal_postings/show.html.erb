@@ -24,17 +24,17 @@
 <!-- User information at top of page -->
 <div class="container meal-posting-user-info">
   <div class="row">
-    <!-- <div class="row"> -->
-      <!-- <div class="col-xs-4 col-sm-3 col-md-3"> -->
+    <div class="row">
+      <div class="col-xs-4 col-sm-3 col-md-3">
         <%= cl_image_tag(@meal_posting.media[0].url, class: 'circle img-thumbnail img-box') %>
-      <!-- </div> -->
+      </div>
       <h4><strong>Host Information: </strong></h4>
       <h5><strong>Name: <%= @user.name %></strong></h5>
       <p><strong>Address: <%= @user.address %></strong></p>
       <p><strong>Phone: <%= @user.phone_number %></strong></p>
       <p><strong>Email: <%= @user.email %></strong></p>
       <%= link_to 'Reviews', user_path(@user), :class => "btn btn-warning btn-md user-reviews-btn" %>
-    <!-- </div> -->
+    </div>
   </div>
 </div>
 
