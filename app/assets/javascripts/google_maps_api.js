@@ -5,7 +5,6 @@ let geocoder;
       let yourMarker
       let postingMarkers = []
       function initialize(address) {
-        console.log("found me")
         geocoder = new google.maps.Geocoder();
         let latlng = new google.maps.LatLng(43.646517, -79.395197);
         let mapOptions = {
