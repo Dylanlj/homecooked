@@ -50,7 +50,11 @@
             <span class="caret"></span></button>
             <ul class="dropdown-menu">
               <% @categories.each do |category| %>
-                <li><a href="#"><%= category.name %></a></li>
+                <li>
+                  <%= link_to meals_category_path(id: category.id), method: :put do %>
+                    <%= category.name %>
+                  <% end %>
+                </li>
               <% end %>
             </ul>
           </div>
@@ -84,11 +88,7 @@
             </div>
 
             <div class="col-xs-4">
-            <% if meal_posting.end_time %>
-              Serving from: <%= meal_posting.base_time %> - <%= meal_posting.end_time%>
-            <% else %>
-              Serving at: <%= meal_posting.base_time%>
-            <% end %>
+
             </div>
 
             <div class="col-xs-4">
@@ -96,22 +96,23 @@
             </div>
           </div>
 
-
-
           <!-- Description -->
           <div class="row row-body">
             <div class="col-xs-12">
-            <%= meal_posting.description %>
             </div>
           </div>
 
           <!-- Servings left, allergy notices -->
           <div class="row row-footer">
+            <div class="col-xs-8">
+              <% if meal_posting.end_time %>
+                Serving from: <%= meal_posting.base_time %> - <%= meal_posting.end_time%>
+              <% else %>
+                Serving at: <%= meal_posting.base_time%>
+              <% end %>
+            </div>
             <div class="col-xs-4">
               Servings Left: <%= meal_posting.servings %>
-            </div>
-            <div class="col-xs-8">
-              Allergies: <%= meal_posting.allergy_notice %>
             </div>
           </div>
 
