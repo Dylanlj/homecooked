@@ -84,5 +84,50 @@
   }
 }
 
+// Meal Posting Show Page
+.meal-posting-bottom-info {
+  margin-top: 18px;
+}
 
+.reserve-button {
+  float: right;
+  margin-right: 15px;
+  margin-top: 10px;
+}
+
+.reserve {
+  background-color: #f4511e;
+}
+
+.meal-posting-user-info {
+  margin-top: 20px;
+}
+
+hr {
+  height: 1px;
+  border-color: gray;
+}
+
+hr.user-meal-posting-separate {
+    border: none;
+    height: 8px;
+    width: 95%;
+    color: #f4511e;
+    background-color: #f4511e;
+}
+
+.host-info {
+  margin-left: 15px;
+}
+
+.user-reviews-btn {
+  background-color: #f4511e;
+}
+
+.user-show {
+  width: 75%;
+  margin: auto;
+  content-align: center;
+  text-align: center;
+}
 
