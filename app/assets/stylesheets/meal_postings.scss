@@ -1,4 +1,26 @@
 ////////////////////////////
+//   Section for fonts    //
+////////////////////////////
+
+//Can add local .woff to get other formats (for other browsers). Remember format ('woff') at the end!
+@font-face {
+ font-family: 'Cambay';
+ font-style: normal;
+ font-weight: 400;
+ src: local('../fonts/Cambay/Cambay-Regular.ttf') format('truetype')
+}
+// For some reason, bold and italic don't seem to be working. I think it has to do with setting the font-weight
+// more than it does changing the source file (?). Not sure about italic though.
+
+// @font-face {
+// font-family: 'Cambay-Bold';
+// font-style: normal;
+// font-weight: 400;
+// src: local('../fonts/Cambay/Cambay-Bold.ttf') format('truetype')
+// }
+
+
+////////////////////////////
 // Section for navigation //
 ////////////////////////////
 
@@ -68,7 +90,7 @@
 }
 
 .meal-div{
-  padding: 10px 5px 5px 10px;
+  margin: 10px 5px 5px 10px;
   width: 100%;
 }
 
@@ -80,6 +102,7 @@
 
 .media-body {
   height: 15vh;
+  font-family: Cambay;
   .media-container {
     height: 100%;
     .row-heading {
@@ -87,7 +110,7 @@
         // background-color: blue;
     }
     .row-body {
-        height: 60%;
+        height: 40%;
         // background-color: red;
     }
     .row-footer {
@@ -95,6 +118,10 @@
         // background-color: green;
     }
   }
+}
+
+.btn-info {
+  // padding: 0;
 }
 
 // Meal Posting Show Page

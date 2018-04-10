@@ -3,7 +3,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">HomeCooked</a>
+      <a class="navbar-brand" href="/">HomeCooked</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
       <li><%= link_to new_user_path do %><span class="glyphicon glyphicon-user"></span> Sign Up <% end %></li>
@@ -57,7 +57,7 @@
             <ul class="dropdown-menu">
               <% @categories.each do |category| %>
                 <li>
-                  <%= link_to meals_category_path(id: category.id), method: :put do %>
+                  <%= link_to meals_category_path(id: category.id, ), method: :put do %>
                     <%= category.name %>
                   <% end %>
                 </li>
@@ -89,12 +89,8 @@
 
           <!-- Title, meal time(s), cost -->
           <div class="row row-heading">
-            <div class="col-xs-4">
-              <%= meal_posting.title %>
-            </div>
-
-            <div class="col-xs-4">
-
+            <div class="col-xs-8">
+              <b><%= meal_posting.title %></b>
             </div>
 
             <div class="col-xs-4">
@@ -104,12 +100,6 @@
 
           <!-- Description -->
           <div class="row row-body">
-            <div class="col-xs-12">
-            </div>
-          </div>
-
-          <!-- Servings left, allergy notices -->
-          <div class="row row-footer">
             <div class="col-xs-8">
               <% if meal_posting.end_time %>
                 Serving from: <%= meal_posting.base_time %> - <%= meal_posting.end_time%>
@@ -119,6 +109,15 @@
             </div>
             <div class="col-xs-4">
               Servings Left: <%= meal_posting.servings %>
+            </div>
+          </div>
+          <!-- Servings left, allergy notices -->
+          <div class="row row-footer">
+            <div class="col-xs-8">
+            </div>
+            <div class="col-xs-4">
+              <!-- <button type="button" class="btn btn-primary">Order Info</button> -->
+              <%= button_to "Order Info", meal_posting_path(meal_posting), class: "btn btn-primary", method: "get" %>
             </div>
           </div>
 
