@@ -20,6 +20,8 @@ class User < ApplicationRecord
   has_many :meal_postings
   has_many :meal_ratings
   has_many :reservations
+  # Allows the user_show page to access ratings by ratee_id
+  has_many :received_ratings, foreign_key: "ratee_id", class_name: "UserRating"
 
   # Authentication function to check user details on login
   def self.authenticate_with_credentials(email, password)

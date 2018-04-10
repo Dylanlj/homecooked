@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// body {
+//   background-image: url("https://cleanfoodcrush.com/wp-content/uploads/2018/02/One-Pan-Crispy-Chicken-Garlic-Veggies-Recipe.jpg");
+//   background-size: cover;
+// }
 
 th.register-field {
   width: 150px;
@@ -38,4 +42,52 @@ h2.new-user-header,
 h2.login-header {
   display: flex;
   justify-content: center;
+}
+
+.user-show {
+  padding-top: 15px;
+}
+
+.profile-picture-div {
+  height: 250px;
+  width: 300px;
+  overflow: hidden;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-pic {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+.user-info {
+  padding-left: 50px;
+}
+
+h1.user-info-title {
+  margin-top: 0px;
+}
+
+.review-table {
+  background-color: #fff;
+}
+
+.review-rating,
+.review-comment {
+  font-size: 120%;
+}
+
+.submit-user-review {
+  margin-top: 10px;
+  background-color: #f4511e;
+}
+
+.user-review-text {
+  width: 350px;
+  height:100px;
 }

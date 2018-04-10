@@ -15,11 +15,16 @@ class UserRatingsController < ApplicationController
   # POST /user_ratings
   # POST /user_ratings.json
   def create
-    @user_rating = UserRating.new(user_rating_params)
+    @user = User.find(params[:user_id])
+    @review = current_user.user_ratings.new(user_rating_params)
+
+    # @user_rating = UserRating.new(user_rating_params)
 
     respond_to do |format|
-      if @user_rating.save
-        format.html { redirect_to @user_rating, notice: 'User rating was successfully created.' }
+      if @review.save
+      # if @user_rating.save
+        format.html { redirect_to user_path(@review.ratee_id), notice: 'User rating was successfully created.' }
+        #format.html { redirect_to @user_rating, notice: 'User rating was successfully created.' }
         format.json { render :show, status: :created, location: @user_rating }
       else
         format.html { render :new }
@@ -46,6 +51,6 @@ class UserRatingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_rating_params
-      params.require(:user_rating).permit(:user_id, :rating, :comment)
+      params.require(:user_rating).permit(:user_id, :ratee_id, :rating, :comment)
     end
 end

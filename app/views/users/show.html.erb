@@ -1,3 +1,4 @@
+<body>
 <!-- Nav Bar -->
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -26,14 +27,17 @@
 <div class="container meal-posting-user-info user-show">
   <div class="row">
     <div class="row">
-      <div class="col-xs-4 col-sm-3 col-md-3">
-        <%= cl_image_tag(@user.image, class: 'circle img-thumbnail img-box', :width => 250, :height => 250, :crop => :fit) %>
-      </div>
-      <div class="col-xs-8 col-sm-9 col-md-9">
+      <div class="col-xs-5 col-sm-5 col-md-5">
+          <div class="profile-picture-div">
+            <span class="helper"></span>
+            <%= cl_image_tag(@user.image, class: 'circle img-thumbnail img-box profile-pic') %>
+          </div>
+        </div>
+      <div class="col-xs-7 col-sm-7 col-md-7 user-info">
         <% if @user.user_status == 'host' %>
-          <h1>Host Information: </h1>
+          <h1 class="user-info-title">Host Information: </h1>
         <% else %>
-          <h1>User Information: </h1>
+          <h1 class="user-info-title">User Information: </h1>
         <% end %>
         <h3>Name: <%= @user.name %></h3>
         <h3>Address: <%= @user.address %></h3>
@@ -43,6 +47,43 @@
     </div>
   </div>
 </div>
+
+<hr class="user-meal-posting-separate">
+
+<div class="container">
+
+  <% if current_user %>
+    <h2>Add a review:</h2>
+    <%= form_for [@user, @review] do |f| %>
+      <%= f.hidden_field :ratee_id,  value: @user.id %>
+      <dt>Comment: </dt>
+      <dd><%= f.text_area :comment, class: "user-review-text" %></dd>
+      <dt>Rating: <%= f.select :rating, [10, 9, 8, 7, 6, 5, 4, 3, 2, 1] %></dt>
+      <dd class="submit"><%= f.submit "Submit", class: "btn btn-warning submit-user-review" %></dd>
+    <% end %>
+  <% end %>
+
+  <h2>Reviews: </h2>
+  <table class = "table table-bordered review-table">
+    <thead>
+      <tr>
+        <th class="review-rating">Rating</th>
+        <th class="review-comment">Comment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.received_ratings.reverse.each do |review| %>
+        <tr>
+          <td class="review-rating"><%= review.rating %> / 10</td>
+          <td class="review-comment"><%= review.comment %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+</body>
+
 
 
 <!-- <%= link_to 'Edit', edit_user_path(@user) %> | -->

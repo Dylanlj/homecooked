@@ -311,13 +311,13 @@ puts "Seeding Meal Ratings ..."
 user2.meal_ratings.create!({
  meal_posting: mealposting1,
  comment: "This meal was pretty good and the kitchen and dining area were very clean which was nice.  Lady Gaga is a pretty good host.",
- rating: 7.5
+ rating: 7
 })
 
 user2.meal_ratings.create!({
  meal_posting: mealposting2,
  comment: "Salmon was overcooked and there was a bug in my broccoli.  Rice was delicious even though I should have stopped eating when I found the bug...",
- rating: 3.5
+ rating: 3
 })
 
 user3.meal_ratings.create!({
@@ -329,7 +329,7 @@ user3.meal_ratings.create!({
 user3.meal_ratings.create!({
  meal_posting: mealposting2,
  comment: "The Salmon was great I just wish I had booked out all of the servings so I could have had more to eat.",
- rating: 8.5
+ rating: 8
 })
 
 puts "Seeding User Ratings ..."
@@ -342,6 +342,18 @@ user1.user_ratings.create!({
 
 user1.user_ratings.create!({
  ratee_id: 3,
- rating: 2.5,
+ rating: 2,
  comment: "Dwayne insisted we call him ‘The Rock’ the entire time and wouldn’t stop eating.  He spent the whole meal talking about some furious and fast movie franchise.  Dwayne was annoying."
+})
+
+user4.user_ratings.create!({
+ ratee_id: 2,
+ rating: 7,
+ comment: "Denzel was a good time!  We talked about how we were both super big movie stars and stuff.  Scientology WOOOO!"
+})
+
+user4.user_ratings.create!({
+ ratee_id: 3,
+ rating: 4,
+ comment: "Dwayne isn't even that big.  I could probably bench more than him.  I think I am in better shape than Dwayne."
 })

@@ -127,7 +127,11 @@ hr.user-meal-posting-separate {
 .user-show {
   width: 75%;
   margin: auto;
-  content-align: center;
-  text-align: center;
+}
+
+.profile-pic {
+  float: right;
+  // width: 300px;
+  // height: 300px;
 }
 
