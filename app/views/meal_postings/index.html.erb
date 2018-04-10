@@ -1,32 +1,8 @@
-<!-- Navbar at the top -->
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">HomeCooked</a>
-    </div>
-    <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to new_user_path do %><span class="glyphicon glyphicon-user"></span> Sign Up <% end %></li>
-      <li><%= link_to login_path do %><span class="glyphicon glyphicon-log-in"></span> Login <% end %></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li>
-
-  <%= form_tag user_location_path, :method => :put, :class => "navbar-form" do %>
-    <div class="form-group">
-    <%= text_field_tag :address, nil, placeholder: "Location", class: "form-control" %>
-    </div>
-    <%= submit_tag 'Go', class: "btn btn-default btn-location" %>
-  <% end %>
-
-      </li>
-    </ul>
-  </div>
-</nav>
 
 <!-- Google Maps; on right hand side -->
 
 <aside class="google-maps">
+  <%= current_user_location%>
   <% if current_user_location %>
     <% theAddress = current_user_location %>
   <% else %>
@@ -136,23 +112,4 @@
 </div>
 
 </section>
-
-
-
-<!-- this code should be deleted but I need to test that  -->
-<!-- AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA  -->
-
-<!--  <h3>My Google Maps Demo</h3>
-
- <div id="map" style="width: 320px; height: 380px;"></div>
-  <div>
-    the address here will be set if the user is signed in and we have their location
-
-      <input id="address" type="textbox" value="46 Spadina Avenue Toronto Ontario" >
-
-    <input type="button" value="your location" onclick="moveYourLocation()">
-
-
-  </div>
- -->
 

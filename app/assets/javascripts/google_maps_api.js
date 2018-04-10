@@ -34,7 +34,7 @@ function initialize() {
       map: map,
       position: latlng
     });
-
+    // console.log(`this is your marker ${yourMarker}`)
   }
 
   codeAddress(document.getElementById('googleMap').dataset.userLocation, setUpMap)
@@ -43,28 +43,27 @@ function initialize() {
 
 
 function orderMarkerByProximity() {
-  // console.log(postingMarkers)
+  // console.log(yourMarker)
   labelIndex = 0
+  if (yourMarker) {
+    postingMarkers.sort(function(a, b){
+      let aLat = a.position.lat()
+      let aLng = a.position.lng()
+      let bLat = b.position.lat()
+      let bLng = b.position.lng()
+      let mLat = yourMarker.position.lat()
+      let mLng = yourMarker.position.lng()
 
-  postingMarkers.sort(function(a, b){
-    let aLat = a.position.lat()
-    let aLng = a.position.lng()
-    let bLat = b.position.lat()
-    let bLng = b.position.lng()
-    let mLat = yourMarker.position.lat()
-    let mLng = yourMarker.position.lng()
-
-    let aDistance = Math.sqrt(Math.pow((aLat - mLat), 2) + Math.pow((aLng - mLng), 2))
-    let bDistance = Math.sqrt(Math.pow((bLat - mLat), 2) + Math.pow((bLng - mLng), 2))
-    return (aDistance - bDistance)
-  })
-
+      let aDistance = Math.sqrt(Math.pow((aLat - mLat), 2) + Math.pow((aLng - mLng), 2))
+      let bDistance = Math.sqrt(Math.pow((bLat - mLat), 2) + Math.pow((bLng - mLng), 2))
+      return (aDistance - bDistance)
+    })
+  }
   for (let marker of postingMarkers) {
 
     marker.label = labels[labelIndex++ % labels.length]
     marker.setMap(map)
   }
-  // debugger
 }
 
 function mealPostingMarkers() {
@@ -83,6 +82,7 @@ function mealPostingMarkers() {
         address: geoObject[0].formatted_address
       })
       postingMarkers.push(marker)
+
       orderMarkerByProximity()
     }
   }
@@ -92,6 +92,7 @@ function mealPostingMarkers() {
   postingMarkers.length = 0
 
   let geoCount = 0
+  let userAddresses = []
   for (let element of document.getElementsByClassName("meal-div")) {
 
     let address = element.dataset.address
