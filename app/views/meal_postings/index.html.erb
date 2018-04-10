@@ -53,8 +53,8 @@
 <!-- First, the categories area and button -->
 <div class="categories-area">
   <div class="categories-btn">
-    <div class="row row-heading">
-      <div class="col-xs-4">
+    <div class="row row-heading cat-row">
+      <div class="col-xs-4 cat-col">
         <div class="container">
           <div class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Categories
@@ -62,7 +62,7 @@
             <ul class="dropdown-menu">
               <% @categories.each do |category| %>
                 <li>
-                  <%= link_to meals_category_path(id: category.id), method: :put do %>
+                  <%= link_to meals_category_path(id: category.id, ), method: :put do %>
                     <%= category.name %>
                   <% end %>
                 </li>
@@ -94,12 +94,8 @@
 
           <!-- Title, meal time(s), cost -->
           <div class="row row-heading">
-            <div class="col-xs-4">
-              <%= meal_posting.title %>
-            </div>
-
-            <div class="col-xs-4">
-
+            <div class="col-xs-8">
+              <b><%= meal_posting.title %></b>
             </div>
 
             <div class="col-xs-4">
@@ -109,12 +105,6 @@
 
           <!-- Description -->
           <div class="row row-body">
-            <div class="col-xs-12">
-            </div>
-          </div>
-
-          <!-- Servings left, allergy notices -->
-          <div class="row row-footer">
             <div class="col-xs-8">
               <% if meal_posting.end_time %>
                 Serving from: <%= meal_posting.base_time %> - <%= meal_posting.end_time%>
@@ -124,6 +114,15 @@
             </div>
             <div class="col-xs-4">
               Servings Left: <%= meal_posting.servings %>
+            </div>
+          </div>
+          <!-- Servings left, allergy notices -->
+          <div class="row row-footer">
+            <div class="col-xs-8">
+            </div>
+            <div class="col-xs-4">
+              <!-- <button type="button" class="btn btn-primary">Order Info</button> -->
+              <%= button_to "Order Info", meal_posting_path(meal_posting), class: "btn btn-warning order-info", method: "get" %>
             </div>
           </div>
 
