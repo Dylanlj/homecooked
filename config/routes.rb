@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get '/login' => 'sessions#new'
     post '/login' => 'sessions#create'
     get '/logout' => 'sessions#destroy'
+    put '/user/location' => 'sessions#update'
 
     # CREATED FOR MEAL POSTING CATEGORIES
     put '/meal_postings/categories/:id' => 'meal_postings#category', :as => :meals_category
