@@ -19,7 +19,6 @@ function codeAddress(address, callback) {
 }
 
 function initialize() {
-  console.log("initialize")
   geocoder = new google.maps.Geocoder();
 
   function setUpMap (geoObject) {
@@ -75,7 +74,7 @@ function mealPostingMarkers() {
       if (geoCount === 0) { return false }
       return (geoObject[0].formatted_address === postings.address)
     }
-
+// redo this better, still throwing google maps api error
     if(!postingMarkers.find(checkLocation)){
       let marker = new google.maps.Marker({
         map: map,

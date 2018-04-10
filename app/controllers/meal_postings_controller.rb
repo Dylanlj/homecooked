@@ -8,6 +8,7 @@ class MealPostingsController < ApplicationController
   # GET /meal_postings
   # GET /meal_postings.json
   def index
+    puts "params[:address]"
     if @categorized_meals != nil
       @meal_postings = @categorized_meals
     else

@@ -3,7 +3,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">HomeCooked</a>
+      <a class="navbar-brand" href="/">HomeCooked</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
       <li><%= link_to new_user_path do %><span class="glyphicon glyphicon-user"></span> Sign Up <% end %></li>
@@ -11,16 +11,20 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li>
-      <form class="navbar-form">
-        <div class="form-group">
-          <input id="address" type="text" class="form-control" placeholder="Location">
-        </div>
-        <button type="button" onclick="moveYourLocation()" class="btn btn-default btn-location">Go</button>
-      </form>
+
+  <%= form_tag meal_postings_path, :method => :get, :class => "navbar-form" do %>
+    <div class="form-group">
+    <%= text_field_tag :address, nil, placeholder: "Location", class: "form-control" %>
+    </div>
+    <%= submit_tag 'Go', class: "btn btn-default btn-location" %>
+  <% end %>
+
       </li>
     </ul>
   </div>
 </nav>
+
+
 
 
 <!-- Google Maps; on right hand side -->
@@ -33,11 +37,19 @@
 <% theAddress = "46 Spadina Avenue Toronto" %>
 <% end %>
   <div id="googleMap" data-user-location='<%=theAddress%>'></div>
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA&callback=initialize" data-turbolinks-eval="false"
-></script>
-</aside>
+  <script type="text/javascript">
 
+  if(window.google){
+  console.log
+  initialize()
+} else {
+  $.ajax("https://maps.googleapis.com/maps/api/js?key=AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA&callback=initialize", {
+        crossDomain: true,
+      dataType: 'script'
+})
+}
+</script>
+</aside>
 
 
 

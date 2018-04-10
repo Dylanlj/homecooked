@@ -86,7 +86,6 @@ GEM
       railties (>= 3.2, < 5.2)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    google_maps_service (0.4.2)
       hurley (~> 0.1)
       multi_json (~> 1.11)
       retriable (~> 2.0)
@@ -230,7 +229,6 @@ DEPENDENCIES
   cloudinary
   coffee-rails (~> 4.2)
   font-awesome-rails
-  google_maps_service
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
