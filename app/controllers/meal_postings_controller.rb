@@ -1,19 +1,13 @@
 class MealPostingsController < ApplicationController
   before_action :set_meal_posting, only: [:show, :edit, :update, :destroy]
 
-  @categorized_meals = nil
-  # def initialize()
-  # end
-
   # GET /meal_postings
   # GET /meal_postings.json
   def index
-    if @categorized_meals != nil
-      @meal_postings = @categorized_meals
-    else
-      @meal_postings = MealPosting.all
+    @meal_postings = MealPosting.all
+    if params[:category]
+      @meal_postings = MealPosting.where("category_id = #{params[:id].to_i}")
     end
-    # @meal_postings = MealPosting.all
     @categories = Category.all
   end
 
@@ -24,9 +18,7 @@ class MealPostingsController < ApplicationController
   end
 
   def category
-    @categorized_meals = MealPosting.where("category_id = #{params[:id].to_i}")
-
-    redirect_to meal_postings_path(id: @categorized_meals)
+    redirect_to meal_postings_path(id: params[:id], category: true)
   end
 
   # GET /meal_postings/new
