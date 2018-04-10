@@ -5,13 +5,20 @@ class MealPostingsController < ApplicationController
   # GET /meal_postings.json
   def index
     @meal_postings = MealPosting.all
-    puts "==========MEAL POSTINGS===========", @meal_postings[0]
+    if params[:category]
+      @meal_postings = MealPosting.where("category_id = #{params[:id].to_i}")
+    end
+    @categories = Category.all
   end
 
   # GET /meal_postings/1
   # GET /meal_postings/1.json
   def show
     @user = User.find(@meal_posting.user_id)
+  end
+
+  def category
+    redirect_to meal_postings_path(id: params[:id], category: true)
   end
 
   # GET /meal_postings/new
@@ -70,7 +77,15 @@ class MealPostingsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def meal_posting_params
-      params.require(:meal_posting).permit(:base_time, :end_time, :title, :description, :allergy_notice, :servings, :cost)
-    end
+    # def meal_posting_params
+    #   params.require(:meal_posting).permit(
+    #     :base_time,
+    #     :end_time,
+    #     :title,
+    #     :description,
+    #     :allergy_notice,
+    #     :servings,
+    #     :cost
+    #   )
+    # end
 end

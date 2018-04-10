@@ -29,7 +29,7 @@ user1 = User.create!({
  user_status: "host",
  name: "Lady Gaga",
  email: "lgaga@pokerface.com",
- address: "46 Spadina Avenue",
+ address: "150 Spadina Avenue Toronto",
  phone_number: 1234567890,
  password: "hashedpass",
  password_confirmation: "hashedpass",
@@ -40,7 +40,7 @@ user2 = User.create!({
  user_status: "user",
  name: "Denzel Washington",
  email: "denzel@moviestar.com",
- address: "126 Bloor Street West",
+ address: "126 Bloor Street West Toronto",
  phone_number: 1098765432,
  password: "passhashed",
  password_confirmation: "passhashed",
@@ -51,7 +51,7 @@ user3 = User.create!({
  user_status: "user",
  name: "Dwayne Johnson",
  email: "dwayne@therock.com",
- address: "379 Queen Street West",
+ address: "379 Queen Street West Toronto",
  phone_number: 1231049384,
  password: "littlerock",
  password_confirmation: "littlerock",
@@ -62,7 +62,7 @@ user4 = User.create!({
  user_status: "host",
  name: "Tom Cruise",
  email: "mission@impossible.com",
- address: "300 King Street East",
+ address: "300 King Street East Toronto",
  phone_number: 1234567890,
  password: "tommyboy",
  password_confirmation: "tommyboy",
@@ -140,9 +140,15 @@ cat17 = Category.create!({
  name: "Vegetarian"
 })
 
+# has_many_through
+
+# 1:Italian, 2:Mexican, 3:American, 4:Caribbean, 5:British, 6:Chinese, 7:French, 8:Greek, 9:Indian
+# 10:Japanese, 11:Mediterranean, 12:Moroccan, 13:Spanish, 14:Thai, 15:Turkish, 16:Vietnamese, 17:Vegetarian
+
 puts "Seeding Meal Postings ..."
 
 mealposting1 = user1.meal_postings.create!({
+ category_id: 1,
  base_time: 630,
  title: "Chicken Pasta",
  description: "Chicken strips, red peppers, onions, cooked in white wine sauce and served over a bed of penne pasta.",
@@ -151,7 +157,9 @@ mealposting1 = user1.meal_postings.create!({
  cost: 9.50
 })
 
+
 mealposting2 = user1.meal_postings.create!({
+ category_id: 3,
  base_time: 430,
  end_time: 730,
  title: "Salmon with Broccoli and Rice",
@@ -161,7 +169,8 @@ mealposting2 = user1.meal_postings.create!({
  cost: 12.00
 })
 
-mealposting3 = user1.meal_postings.create!({
+mealposting3 = user2.meal_postings.create!({
+ category_id: 6,
  base_time: 530,
  title: "Kraft Dinner",
  description: "Noodles with cheese powder and a bit of butter and milk.",
@@ -170,7 +179,8 @@ mealposting3 = user1.meal_postings.create!({
  cost: 18.50
 })
 
-mealposting4 = user1.meal_postings.create!({
+mealposting4 = user2.meal_postings.create!({
+ category_id: 3,
  base_time: 730,
  title: "Peanut butter and jelly sandwiches",
  description: "Two buttered whole wheat pieces of bread, covered in peanut butter and jelly and slapped together.",
@@ -179,7 +189,8 @@ mealposting4 = user1.meal_postings.create!({
  cost: 4.25
 })
 
-mealposting5 = user1.meal_postings.create!({
+mealposting5 = user3.meal_postings.create!({
+ category_id: 3,
  base_time: 530,
  end_time: 800,
  title: "Hotdogs",
@@ -190,6 +201,7 @@ mealposting5 = user1.meal_postings.create!({
 })
 
 mealposting6 = user1.meal_postings.create!({
+ category_id: 2,
  base_time: 500,
  end_time: 700,
  title: "Fajitas",
@@ -199,7 +211,8 @@ mealposting6 = user1.meal_postings.create!({
  cost: 7.50
 })
 
-mealposting7 = user4.meal_postings.create!({
+mealposting7 = user3.meal_postings.create!({
+ category_id: 17,
  base_time: 600,
  title: "Ice Cubes",
  description: "Fresh mount spring water collected by our aqua gathering engineers and frozen to the perfect temperature into uniform cubes.",
@@ -209,6 +222,7 @@ mealposting7 = user4.meal_postings.create!({
 })
 
 mealposting8 = user4.meal_postings.create!({
+ category_id: 3,
  base_time: 600,
  title: "Steak Frites",
  description: "Classic Alberta beef BBQ'd to a nice medium rare, unless otherwise specified.  Served with fries.",
@@ -218,6 +232,7 @@ mealposting8 = user4.meal_postings.create!({
 })
 
 mealposting9 = user4.meal_postings.create!({
+ category_id: 17,
  base_time: 500,
  end_time: 730,
  title: "Portobello Mushroom Burgers",
@@ -228,6 +243,7 @@ mealposting9 = user4.meal_postings.create!({
 })
 
 mealposting10 = user4.meal_postings.create!({
+ category_id: 17,
  base_time: 500,
  end_time: 730,
  title: "Quinoa",
@@ -238,6 +254,7 @@ mealposting10 = user4.meal_postings.create!({
 })
 
 mealposting11 = user4.meal_postings.create!({
+ category_id: 1,
  base_time: 500,
  title: "Spaghetti and Meatballs",
  description: "Big ol' plate of spaghetti served with meatballs and covered in marinara sauce.",
@@ -247,6 +264,7 @@ mealposting11 = user4.meal_postings.create!({
 })
 
 mealposting12 = user4.meal_postings.create!({
+ category_id: 17,
  base_time: 500,
  end_time: 730,
  title: "Fresh Air",

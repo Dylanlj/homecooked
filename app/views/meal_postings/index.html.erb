@@ -3,20 +3,22 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">HomeCooked</a>
+      <a class="navbar-brand" href="/">HomeCooked</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><%= link_to new_user_path do %><span class="glyphicon glyphicon-user"></span> Sign Up <% end %></li>
+      <li><%= link_to login_path do %><span class="glyphicon glyphicon-log-in"></span> Login <% end %></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li>
-      <form class="navbar-form" action="/action_page.php">
-        <div class="form-group">
-          <input id="address" type="text" class="form-control" placeholder="Location">
-        </div>
-        <button type="submit" onclick="moveYourLocation()" class="btn btn-default btn-location">Go</button>
-      </form>
+
+  <%= form_tag user_location_path, :method => :put, :class => "navbar-form" do %>
+    <div class="form-group">
+    <%= text_field_tag :address, nil, placeholder: "Location", class: "form-control" %>
+    </div>
+    <%= submit_tag 'Go', class: "btn btn-default btn-location" %>
+  <% end %>
+
       </li>
     </ul>
   </div>
@@ -25,21 +27,58 @@
 <!-- Google Maps; on right hand side -->
 
 <aside class="google-maps">
+  <% if current_user_location %>
+    <% theAddress = current_user_location %>
+  <% else %>
+    <% theAddress = "46 Spadina Avenue Toronto" %>
+  <% end %>
+    <div id="googleMap" data-user-location='<%=theAddress%>'></div>
 
-  <div id="googleMap"></div>
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA&callback=initialize" ></script>
+  <script type="text/javascript">
+
+    if(window.google){
+      initialize()
+    } else {
+      $.ajax("https://maps.googleapis.com/maps/api/js?key=AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA&callback=initialize", {
+          crossDomain: true,
+          dataType: 'script'
+      })
+    }
+  </script>
 </aside>
 
- <!--  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA&callback=initialize" data-turbolinks-eval="false"
-></script> -->
-
-
 <!-- Meals posted on left hand side -->
+<section class="postings">
 
+<!-- First, the categories area and button -->
+<div class="categories-area">
+  <div class="categories-btn">
+    <div class="row row-heading cat-row">
+      <div class="col-xs-4 cat-col">
+        <div class="container">
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Categories
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <% @categories.each do |category| %>
+                <li>
+                  <%= link_to meals_category_path(id: category.id, ), method: :put do %>
+                    <%= category.name %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-8">
+      </div>
+    </div>
+  </div>
+</div>
 
-<section class="postings-list">
+<!-- Then, all the meals -->
+<div class="postings-list">
 
 <% @meal_postings.each do |meal_posting| %>
 
@@ -55,16 +94,8 @@
 
           <!-- Title, meal time(s), cost -->
           <div class="row row-heading">
-            <div class="col-xs-4">
-              <%= meal_posting.title %>
-            </div>
-
-            <div class="col-xs-4">
-            <% if meal_posting.end_time %>
-              Serving from: <%= meal_posting.base_time %> - <%= meal_posting.end_time%>
-            <% else %>
-              Serving at: <%= meal_posting.base_time%>
-            <% end %>
+            <div class="col-xs-8">
+              <b><%= meal_posting.title %></b>
             </div>
 
             <div class="col-xs-4">
@@ -72,22 +103,26 @@
             </div>
           </div>
 
-
-
           <!-- Description -->
           <div class="row row-body">
-            <div class="col-xs-12">
-            <%= meal_posting.description %>
+            <div class="col-xs-8">
+              <% if meal_posting.end_time %>
+                Serving from: <%= meal_posting.base_time %> - <%= meal_posting.end_time%>
+              <% else %>
+                Serving at: <%= meal_posting.base_time%>
+              <% end %>
             </div>
-          </div>
-
-          <!-- Servings left, allergy notices -->
-          <div class="row row-footer">
             <div class="col-xs-4">
               Servings Left: <%= meal_posting.servings %>
             </div>
+          </div>
+          <!-- Servings left, allergy notices -->
+          <div class="row row-footer">
             <div class="col-xs-8">
-              Allergies: <%= meal_posting.allergy_notice %>
+            </div>
+            <div class="col-xs-4">
+              <!-- <button type="button" class="btn btn-primary">Order Info</button> -->
+              <%= button_to "Order Info", meal_posting_path(meal_posting), class: "btn btn-warning order-info", method: "get" %>
             </div>
           </div>
 
@@ -96,10 +131,12 @@
 
     </div>
   </div>
-</br>
 <% end %>
 
+</div>
+
 </section>
+
 
 
 <!-- this code should be deleted but I need to test that  -->
@@ -118,3 +155,4 @@
 
   </div>
  -->
+

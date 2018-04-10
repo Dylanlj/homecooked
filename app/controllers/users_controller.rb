@@ -27,6 +27,7 @@ class UsersController < ApplicationController
 
         # Setting cookie to recognize logged in user
         session[:user_id] = @user.id
+        session[:user_address] = @user.address
 
         # Changed 'redirect_to' to point to 'root_path' instead of @user.
         # format.html { redirect_to @user, notice: 'User was successfully created.' }

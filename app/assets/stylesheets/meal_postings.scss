@@ -1,4 +1,26 @@
 ////////////////////////////
+//   Section for fonts    //
+////////////////////////////
+
+//Can add local .woff to get other formats (for other browsers). Remember format ('woff') at the end!
+@font-face {
+ font-family: 'Cambay';
+ font-style: normal;
+ font-weight: 400;
+ src: local('../fonts/Cambay/Cambay-Regular.ttf') format('truetype')
+}
+// For some reason, bold and italic don't seem to be working. I think it has to do with setting the font-weight
+// more than it does changing the source file (?). Not sure about italic though.
+
+// @font-face {
+// font-family: 'Cambay-Bold';
+// font-style: normal;
+// font-weight: 400;
+// src: local('../fonts/Cambay/Cambay-Bold.ttf') format('truetype')
+// }
+
+
+////////////////////////////
 // Section for navigation //
 ////////////////////////////
 
@@ -44,22 +66,45 @@
   }
 }
 
-
 ///////////////////////
 // Section for meals //
 ///////////////////////
 
+.categories-area{
+  height: 7vh;
+  width: 50%;
+  background: repeating-radial-gradient(
+    circle,
+    #f4511e,
+    #f4511e 80px,
+    #ffffff 20px,
+    #ffffff 100px
+  );
+  margin-bottom: 7px
+}
+
+.categories-btn, .cat-row {
+  position: relative;
+  height: 100%;
+}
+
+.cat-col {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .postings-list {
+  height: 85vh;
   overflow: scroll;
-  height: 91vh;
 }
 
 .meal-div{
-  padding: 0 10px 0 10px;
+  margin: 10px 5px 5px 10px;
   width: 100%;
 }
 
-// The media-object (image) height should be the same as the media-body (text) height above
+// The media-object (image) height should be the same as the media-body (text) height below
 .media-object {
   height: 15vh;
   width: 10vw;
@@ -67,6 +112,7 @@
 
 .media-body {
   height: 15vh;
+  font-family: Cambay;
   .media-container {
     height: 100%;
     .row-heading {
@@ -74,17 +120,26 @@
         // background-color: blue;
     }
     .row-body {
-        height: 60%;
+        height: 30%;
         // background-color: red;
     }
     .row-footer {
-        height: 20%;
+        height: 30%;
         // background-color: green;
     }
   }
 }
 
-// Meal Posting Show Page
+.order-info {
+  height: 30px;
+  font-size: 14px;
+  padding: 3px;
+}
+
+////////////////////////////
+// Meal Posting Show Page //
+////////////////////////////
+
 .meal-posting-bottom-info {
   margin-top: 18px;
 }
