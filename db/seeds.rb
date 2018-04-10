@@ -169,7 +169,7 @@ mealposting2 = user1.meal_postings.create!({
  cost: 12.00
 })
 
-mealposting3 = user1.meal_postings.create!({
+mealposting3 = user2.meal_postings.create!({
  category_id: 6,
  base_time: 530,
  title: "Kraft Dinner",
@@ -179,7 +179,7 @@ mealposting3 = user1.meal_postings.create!({
  cost: 18.50
 })
 
-mealposting4 = user1.meal_postings.create!({
+mealposting4 = user2.meal_postings.create!({
  category_id: 3,
  base_time: 730,
  title: "Peanut butter and jelly sandwiches",
@@ -189,7 +189,7 @@ mealposting4 = user1.meal_postings.create!({
  cost: 4.25
 })
 
-mealposting5 = user1.meal_postings.create!({
+mealposting5 = user3.meal_postings.create!({
  category_id: 3,
  base_time: 530,
  end_time: 800,
@@ -211,7 +211,7 @@ mealposting6 = user1.meal_postings.create!({
  cost: 7.50
 })
 
-mealposting7 = user4.meal_postings.create!({
+mealposting7 = user3.meal_postings.create!({
  category_id: 17,
  base_time: 600,
  title: "Ice Cubes",
