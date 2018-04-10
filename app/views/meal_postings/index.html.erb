@@ -48,8 +48,8 @@
 <!-- First, the categories area and button -->
 <div class="categories-area">
   <div class="categories-btn">
-    <div class="row row-heading">
-      <div class="col-xs-4">
+    <div class="row row-heading cat-row">
+      <div class="col-xs-4 cat-col">
         <div class="container">
           <div class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Categories
@@ -117,7 +117,7 @@
             </div>
             <div class="col-xs-4">
               <!-- <button type="button" class="btn btn-primary">Order Info</button> -->
-              <%= button_to "Order Info", meal_posting_path(meal_posting), class: "btn btn-primary", method: "get" %>
+              <%= button_to "Order Info", meal_posting_path(meal_posting), class: "btn btn-warning order-info", method: "get" %>
             </div>
           </div>
 
