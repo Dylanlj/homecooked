@@ -26,7 +26,7 @@ User.delete_all
 puts "Seeding Users ..."
 
 user1 = User.create!({
- user_status: "host",
+ user_status: "Host",
  name: "Lady Gaga",
  email: "lgaga@pokerface.com",
  address: "150 Spadina Avenue Toronto",
@@ -37,7 +37,7 @@ user1 = User.create!({
 })
 
 user2 = User.create!({
- user_status: "user",
+ user_status: "User",
  name: "Denzel Washington",
  email: "denzel@moviestar.com",
  address: "126 Bloor Street West Toronto",
@@ -48,7 +48,7 @@ user2 = User.create!({
 })
 
 user3 = User.create!({
- user_status: "user",
+ user_status: "User",
  name: "Dwayne Johnson",
  email: "dwayne@therock.com",
  address: "379 Queen Street West Toronto",
@@ -59,7 +59,7 @@ user3 = User.create!({
 })
 
 user4 = User.create!({
- user_status: "host",
+ user_status: "Host",
  name: "Tom Cruise",
  email: "mission@impossible.com",
  address: "300 King Street East Toronto",
@@ -323,6 +323,57 @@ mealposting11.media.create!({
 mealposting12.media.create!({
   url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123273/1.jpg"
 })
+
+
+puts "Seeding Reservations ..."
+
+mealposting1.reservations.create!({
+  user_id: 3,
+  number_of_people: 2,
+  allergies: "I am allergic to peanuts and almonds.",
+  status: "Pending Approval"
+})
+
+mealposting6.reservations.create!({
+  user_id: 4,
+  number_of_people: 1,
+  time: 630,
+  status: "Pending Approval"
+})
+
+mealposting2.reservations.create!({
+  user_id: 4,
+  number_of_people: 3,
+  allergies: "Allergic to gluten so I hope this is okay.  Also allergic to Dairy..",
+  time: 530,
+  status: "Pending Approval"
+})
+
+mealposting3.reservations.create!({
+  user_id: 3,
+  number_of_people: 4,
+  allergies: "Allergies include fresh air, water, sun, grass, outdoors in general.",
+  status: "Pending Approval"
+})
+
+mealposting3.reservations.create!({
+  user_id: 4,
+  number_of_people: 1,
+  status: "Pending Approval"
+})
+
+mealposting7.reservations.create!({
+  user_id: 3,
+  number_of_people: 2,
+  status: "Pending Approval"
+})
+
+mealposting8.reservations.create!({
+  user_id: 3,
+  number_of_people: 5,
+  status: "Rejected"
+})
+
 
 puts "Seeding Meal Ratings ..."
 
