@@ -49,6 +49,7 @@
             <p>Servings Available: <%= meal_posting.servings %></p>
           </div>
 
+          <% if current_user %>
           <!-- Reserving a meal opens a modal with a form -->
           <div class="reserve-button">
             <button type="button" class="btn btn-warning btn-md reserve" data-toggle="modal" data-target="#myModal">Reserve</button>
@@ -107,7 +108,7 @@
                   <div class="modal-footer">
                     <%= form.submit "Submit", class: 'btn btn-warning btn-md modal-reserve' %>
                     <button type="button" class="action btn btn-default modal-close" data-dismiss="modal">Close</button>
-                    <p class="reserve error"></p>
+                    <p class="reserve_errors"></p>
                   </div>
                   <% end %>
                 </div>
@@ -115,6 +116,7 @@
 
             </div>
           </div>
+          <% end %>
 
         </div>
       </div>

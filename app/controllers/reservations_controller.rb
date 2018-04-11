@@ -31,10 +31,11 @@ class ReservationsController < ApplicationController
     @reservation.status = "Pending Approval"
     respond_to do |format|
       if @reservation.save
-        format.js { }
+        format.js
         # format.html { redirect_to reservations_url, notice: 'Reservation was successfully created.' }
         # format.json { render :show, status: :created, location: @reservation }
       else
+        format.js
         # format.html { render :new }
         # format.json { render json: @reservation.errors, status: :unprocessable_entity }
       end
@@ -89,6 +90,6 @@ class ReservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.require(:reservation).permit(:meal_posting_id, :user_id, :number_of_people)
+      params.require(:reservation).permit(:meal_posting_id, :user_id, :number_of_people, :allergies, :time)
     end
 end
