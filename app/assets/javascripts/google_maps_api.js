@@ -71,8 +71,8 @@ function orderMarkerByProximity(geoObject) {
 
 
 function addLabelsToDOM () {
-  $(".circle").
-  console.log(postingMarkers)
+  // $(".circle")
+  // console.log(postingMarkers)
 }
 
 function mealMarkerCallback (geoObject) {
