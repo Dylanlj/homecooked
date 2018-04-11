@@ -58,8 +58,8 @@
 
 <% @meal_postings.each do |meal_posting| %>
 
+  <div class="meal-div" data-address='<%=meal_posting.user.address%>'>
   <!-- Image -->
-  <div class="meal-div <%=meal_posting.user.address%>" data-address='<%=meal_posting.user.address%>'>
     <div class="media">
       <div class="media-left media-middle">
         <%= cl_image_tag(meal_posting.media[0].url, class: 'media-object') %>
@@ -97,8 +97,7 @@
           <!-- Servings left, allergy notices -->
           <div class="row row-footer">
             <div class="col-xs-8">
-              <div class="circle">A</div>
-              <div><%= meal_posting.user.address%></div>
+              <div class="marker-circle">A</div>
             </div>
             <div class="col-xs-4">
               <!-- <button type="button" class="btn btn-primary">Order Info</button> -->
