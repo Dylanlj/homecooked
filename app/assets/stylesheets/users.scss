@@ -130,3 +130,29 @@ h1.user-info-title {
   width: 350px;
   height:100px;
 }
+
+.accept-button,
+.reject-button,
+.pay-button,
+.delete-button {
+  float: right;
+  margin-right: 15px;
+  margin-top: 10px;
+}
+
+.accept {
+  background-color: green;
+}
+
+.reject {
+  background-color: #f4511e;
+}
+
+.reservation-pic {
+  margin-top: 37px;
+}
+
+.outgoing-reservations-link {
+  float: right;
+}
+

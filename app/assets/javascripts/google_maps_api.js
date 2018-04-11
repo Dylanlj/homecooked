@@ -65,14 +65,17 @@ function orderMarkerByProximity(geoObject) {
   for (let marker of postingMarkers) {
     marker.label = labels[labelIndex++ % labels.length]
     marker.setMap(map)
+    addLabelsToDOM(marker, postingMarkers)
   }
-
 }
 
+// unecessary amount of requests, fix later if time
+function addLabelsToDOM (marker, allMarkers) {
+  $( document ).ready(function() {
+    let check = $('.meal-div[data-address="' + marker.originalAddress + '"]').find(".marker-circle").text(marker.label)
 
-function addLabelsToDOM () {
-  // $(".circle")
-  // console.log(postingMarkers)
+  });
+
 }
 
 function mealMarkerCallback (geoObject) {
@@ -114,7 +117,8 @@ function mealPostingMarkers() {
   //   for (let marker of postingMarkers) {
   //   console.log(marker.formattedAddress)
   // }
-  addLabelsToDOM()
+  // console.log(postingMarkers[0])
+  // addLabelsToDOM()
 
 }
 
