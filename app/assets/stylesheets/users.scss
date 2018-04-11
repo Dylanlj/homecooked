@@ -7,42 +7,78 @@
 //   background-size: cover;
 // }
 
+// SCSS for sessions/new.html.erb (login form), and users/new.html.erb (new user form) and its partial
+// _form.html.erb.
+
 th.register-field {
   width: 150px;
   padding: 7px;
+  text-align: center;
 }
 
 th.login-field {
   width: 90px;
   padding: 7px;
+  text-align: center;
+
+}
+
+.back-button {
+  margin-top: 10px;
+  text-align: center;
+  // margin: 0 auto;
 }
 
 .new-user-submit {
   margin-top: 10px;
-  margin-left: 100px;
+  // width: 100%;
+  // display: flex;
+  // justify-content: center;
+  text-align: center;
 }
 
+
 .login-submit {
+  margin-top: 20px;
+  text-align: center;
+  // margin-left: 90px;
+  // margin: 0 auto;
+}
+
+.login-back {
   margin-top: 10px;
-  margin-left: 90px;
+  text-align: center;
 }
 
 div.user-register,
 div.user-login {
+
   display: flex;
   justify-content: center;
+  // text-align: center;
+  // margin: 0 auto;
 }
 
 table.register-table,
 table.login-table {
-  align-self: center;
+  // align-self: center;
+  text-align: center;
 }
 
 h2.new-user-header,
 h2.login-header {
-  display: flex;
-  justify-content: center;
+  // display: flex;
+  // justify-content: center;
+  text-align: center;
 }
+
+.actions {
+  text-align: center;
+}
+
+/////////////////
+// New section //
+/////////////////
 
 .user-show {
   padding-top: 15px;

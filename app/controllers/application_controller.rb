@@ -6,10 +6,6 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user_location
-    puts "====================="
-    puts session[:user_address]
-    puts "====================="
-
     session[:user_address]
   end
 

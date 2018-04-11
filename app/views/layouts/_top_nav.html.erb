@@ -1,0 +1,31 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">HomeCooked</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <% if current_user && !current_page?(user_path(current_user)) %>
+        <li><%= link_to user_path(current_user) do %><span class="glyphicon glyphicon-home"></span> Home <% end %></li></li>
+      <% end %>
+      <li><%= link_to new_user_path do %><span class="glyphicon glyphicon-user"></span> Sign Up <% end %></li>
+      <% if current_user %>
+        <li><%= link_to logout_path do %><span class="glyphicon glyphicon-log-out"></span> Logout <% end %></li>
+      <% else %>
+        <li><%= link_to login_path do %><span class="glyphicon glyphicon-log-in"></span> Login <% end %></li>
+      <% end %>
+    </ul>
+    <% if current_page?('/') %>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <%= form_tag user_location_path, :method => :put, :class => "navbar-form" do %>
+            <div class="form-group">
+            <%= text_field_tag :address, nil, placeholder: "Location", class: "form-control" %>
+            </div>
+            <%= submit_tag 'Go', class: "btn btn-default btn-location" %>
+          <% end %>
+        </li>
+      </ul>
+      <% end %>
+  </div>
+</nav>
+

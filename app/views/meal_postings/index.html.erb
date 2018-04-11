@@ -1,28 +1,4 @@
-<!-- Navbar at the top -->
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">HomeCooked</a>
-    </div>
-    <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to new_user_path do %><span class="glyphicon glyphicon-user"></span> Sign Up <% end %></li>
-      <li><%= link_to login_path do %><span class="glyphicon glyphicon-log-in"></span> Login <% end %></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li>
-
-  <%= form_tag user_location_path, :method => :put, :class => "navbar-form" do %>
-    <div class="form-group">
-    <%= text_field_tag :address, nil, placeholder: "Location", class: "form-control" %>
-    </div>
-    <%= submit_tag 'Go', class: "btn btn-default btn-location" %>
-  <% end %>
-
-      </li>
-    </ul>
-  </div>
-</nav>
 
 <!-- Google Maps; on right hand side -->
 
@@ -36,7 +12,7 @@
 
   <script type="text/javascript">
 
-    if(window.google){
+    if(window.google && document.getElementById('googleMap').dataset.userLocation){
       initialize()
     } else {
       $.ajax("https://maps.googleapis.com/maps/api/js?key=AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA&callback=initialize", {
@@ -83,7 +59,7 @@
 <% @meal_postings.each do |meal_posting| %>
 
   <!-- Image -->
-  <div class="meal-div" data-address='<%=meal_posting.user.address%>'>
+  <div class="meal-div <%=meal_posting.user.address%>" data-address='<%=meal_posting.user.address%>'>
     <div class="media">
       <div class="media-left media-middle">
         <%= cl_image_tag(meal_posting.media[0].url, class: 'media-object') %>
@@ -115,10 +91,14 @@
             <div class="col-xs-4">
               Servings Left: <%= meal_posting.servings %>
             </div>
+            <br>
+
           </div>
           <!-- Servings left, allergy notices -->
           <div class="row row-footer">
             <div class="col-xs-8">
+              <div class="circle">A</div>
+              <div><%= meal_posting.user.address%></div>
             </div>
             <div class="col-xs-4">
               <!-- <button type="button" class="btn btn-primary">Order Info</button> -->
@@ -136,23 +116,4 @@
 </div>
 
 </section>
-
-
-
-<!-- this code should be deleted but I need to test that  -->
-<!-- AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA  -->
-
-<!--  <h3>My Google Maps Demo</h3>
-
- <div id="map" style="width: 320px; height: 380px;"></div>
-  <div>
-    the address here will be set if the user is signed in and we have their location
-
-      <input id="address" type="textbox" value="46 Spadina Avenue Toronto Ontario" >
-
-    <input type="button" value="your location" onclick="moveYourLocation()">
-
-
-  </div>
- -->
 

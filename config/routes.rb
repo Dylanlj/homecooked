@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   root to: "meal_postings#index"
 
   resources :users, except: [:index] do
@@ -28,14 +27,12 @@ Rails.application.routes.draw do
 
     # CREATED FOR MEAL POSTING CATEGORIES
     put '/meal_postings/categories/:id' => 'meal_postings#category', :as => :meals_category
-
     # CREATED TO SHOW HOSTS / USERS THEIR CURRENT RESERVATIONS / REQUESTS
     get '/reservations' => 'reservations#index'#, :as => :user_reservations
 
     #TO CHANGE TO ACCEPTED / REJECTED
     put '/reservations/:id/accept' => 'reservations#accept'
     put '/reservations/:id/reject' => 'reservations#reject'
+
 end
-
-
 
