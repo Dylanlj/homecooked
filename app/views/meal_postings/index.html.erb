@@ -2,7 +2,6 @@
 <!-- Google Maps; on right hand side -->
 
 <aside class="google-maps">
-  <%= current_user_location%>
   <% if current_user_location %>
     <% theAddress = current_user_location %>
   <% else %>
@@ -12,7 +11,7 @@
 
   <script type="text/javascript">
 
-    if(window.google){
+    if(window.google && document.getElementById('googleMap').dataset.userLocation){
       initialize()
     } else {
       $.ajax("https://maps.googleapis.com/maps/api/js?key=AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA&callback=initialize", {
@@ -59,7 +58,7 @@
 <% @meal_postings.each do |meal_posting| %>
 
   <!-- Image -->
-  <div class="meal-div" data-address='<%=meal_posting.user.address%>'>
+  <div class="meal-div <%=meal_posting.user.address%>" data-address='<%=meal_posting.user.address%>'>
     <div class="media">
       <div class="media-left media-middle">
         <%= cl_image_tag(meal_posting.media[0].url, class: 'media-object') %>
@@ -91,10 +90,14 @@
             <div class="col-xs-4">
               Servings Left: <%= meal_posting.servings %>
             </div>
+            <br>
+
           </div>
           <!-- Servings left, allergy notices -->
           <div class="row row-footer">
             <div class="col-xs-8">
+              <div class="circle">A</div>
+              <div><%= meal_posting.user.address%></div>
             </div>
             <div class="col-xs-4">
               <!-- <button type="button" class="btn btn-primary">Order Info</button> -->
