@@ -80,6 +80,11 @@ class ReservationsController < ApplicationController
     redirect_to reservations_url
   end
 
+  # ADDED FOR SHOWING HOSTS RESERVATIONS FOR THEIR MEALS
+  def outgoingreservations
+    @user = User.find(current_user.id)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reservation

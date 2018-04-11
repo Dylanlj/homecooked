@@ -64,17 +64,6 @@ class UsersController < ApplicationController
     end
   end
 
-
-
-  # ADDED FOR SHOWING HOSTS RESERVATIONS FOR THEIR MEALS
-  def reservations
-    @user = User.find(params[:id])
-    render 'user_reservations'
-  end
-
-
-
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
