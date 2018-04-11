@@ -36,5 +36,6 @@ Rails.application.routes.draw do
     put '/reservations/:id/reject' => 'reservations#reject'
 
     #TO CREATE A NEW RESERVATION
-    put '/users/reservations/create' => 'reservations#create', :as => :create_reservation
+    post '/reservations/create/:id' => 'reservations#create', :as => :create_reservation
 
+end

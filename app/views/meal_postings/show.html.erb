@@ -67,7 +67,7 @@
                 <div class="modal-body">
 
                 <!-- Submission Form (local true means no ajax request) -->
-                <%= form_with(model: @reservation, local: true, url: create_reservation_path(@meal_posting), method: :post) do |form| %>
+                <%= form_with(model: @reservation, remote: true, url: create_reservation_path, id: 'resForm') do |form| %>
                   <% if @reservation.errors.any? %>
                     <div id="error_explanation">
                       <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this meal_posting from being saved:</h2>
@@ -81,6 +81,7 @@
                   <% end %>
 
                   <%= form.hidden_field :user_id, value: current_user.id %>
+                  <%= form.hidden_field :meal_posting_id, value: meal_posting.id %>
 
                   <!-- http://api.rubyonrails.org/ search "text_field" for format -->
                   <!-- ActionView::Helpers::FormBuilder (search "form") -->
@@ -92,9 +93,21 @@
                     <%= form.label :number_of_people %>
                     <%= form.number_field :number_of_people, id: :number_of_people %>
                   </div>
+
+                  <div class="field">
+                    <%= form.label :allergies %>
+                    <%= form.text_field :allergies, id: :allergies %>
+                  </div>
+
+                  <div class="field">
+                    <%= form.label :time %>
+                    <%= form.number_field :time, id: :time %>
+                  </div>
+
                   <div class="modal-footer">
                     <%= form.submit "Submit", class: 'btn btn-warning btn-md modal-reserve' %>
                     <button type="button" class="action btn btn-default modal-close" data-dismiss="modal">Close</button>
+                    <p class="reserve error"></p>
                   </div>
                   <% end %>
                 </div>
