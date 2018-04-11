@@ -1,5 +1,5 @@
 <div class="user-register">
-  <%= form_with(model: user, local: true) do |form| %>
+  <%= form_with(model: user, local: true, :html => { :multipart => true }) do |form| %>
     <% if user.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -46,8 +46,9 @@
       <tr>
         <div class="form-group">
           <th class="register-field"><%= form.label "Image: " %></th>
-          <td><%= form.text_field :image, id: :user_image %></td>
+          <td><%= form.file_field :image, id: :user_image %></td>
         </div>
+
       </tr>
       <tr>
         <div class="form-group">

@@ -1,5 +1,9 @@
 class User < ApplicationRecord
 
+  attr_accessor :image
+
+  mount_uploader :image, AvatarUploader
+
   validates :name, presence: true
   validates :address, presence: true
   validates :email, presence: true, uniqueness: { case_sensitive: false }
