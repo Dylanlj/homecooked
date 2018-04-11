@@ -21,16 +21,17 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
+        # This is another way to upload images (or video), in case its needed later.
+        # Though it won't save to the database.
+        # Cloudinary::Uploader.upload(params[:user][:image])
 
         # Setting cookie to recognize logged in user
         session[:user_id] = @user.id
         session[:user_address] = @user.address
-
-        # Changed 'redirect_to' to point to 'root_path' instead of @user.
-        # format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.html { redirect_to root_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
