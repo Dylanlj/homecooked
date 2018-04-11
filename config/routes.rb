@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
     # CREATED FOR MEAL POSTING CATEGORIES
     put '/meal_postings/categories/:id' => 'meal_postings#category', :as => :meals_category
+    put '/users/reservations/create' => 'reservations#create', :as => :create_reservation
 end
 
 

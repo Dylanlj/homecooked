@@ -48,9 +48,63 @@
           <div class="col-sm-3 meal-posting-bottom-info">
             <p>Servings Available: <%= meal_posting.servings %></p>
           </div>
+
+          <!-- Trigger the modal with a button -->
           <div class="reserve-button">
-            <%= button_to 'Reserve', new_meal_posting_reservation_path(meal_posting), :class => "btn btn-warning btn-md reserve" %>
+            <button type="button" class="btn btn-warning btn-md reserve" data-toggle="modal" data-target="#myModal">Reserve</button>
           </div>
+
+          <!-- Modal -->
+          <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Select Meal Options</h4>
+                </div>
+                <div class="modal-body">
+
+                <!-- Submission Form (local true means no ajax request) -->
+                <%= form_with(model: @reservation, local: true, url: create_reservation_path(@meal_posting), method: :post) do |form| %>
+                  <% if @reservation.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this meal_posting from being saved:</h2>
+                      <ul>
+                      <% @reservation.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                      <% end %>
+                      </ul>
+                    </div>
+
+                    <%= form.hidden_field :user_id, value: current_user.id =>
+                  <% end %>
+
+                  <!-- http://api.rubyonrails.org/ search "text_field" for format -->
+                  <!-- ActionView::Helpers::FormBuilder (search "form") -->
+                  <!-- text_field: object_name, attribute_name (key) -->
+                  <% if meal_posting.end_time %>
+                  <% end %>
+
+                  <div class="field">
+                    <%= form.label :number_of_people %>
+                    <%= form.number_field :number_of_people, id: :number_of_people %>
+                  </div>
+
+                  <div class="actions btn btn-warning btn-md modal-reserve">
+                    <%= form.submit class: 'actions btn btn-warning btn-md modal-reserve'%>
+                  </div>
+                  <div class="modal-footer">
+                  <button type="button" class="btn btn-default modal-close" data-dismiss="modal">Close</button>
+                  <% end %>
+                </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
