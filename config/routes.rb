@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   root to: "meal_postings#index"
 
   resources :users, except: [:index] do
@@ -28,7 +27,6 @@ Rails.application.routes.draw do
 
     # CREATED FOR MEAL POSTING CATEGORIES
     put '/meal_postings/categories/:id' => 'meal_postings#category', :as => :meals_category
-
 end
 
 

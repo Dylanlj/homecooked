@@ -11,14 +11,12 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li>
-
-  <%= form_tag user_location_path, :method => :put, :class => "navbar-form" do %>
-    <div class="form-group">
-    <%= text_field_tag :address, nil, placeholder: "Location", class: "form-control" %>
-    </div>
-    <%= submit_tag 'Go', class: "btn btn-default btn-location" %>
-  <% end %>
-
+        <%= form_tag user_location_path, :method => :put, :class => "navbar-form" do %>
+        <div class="form-group">
+        <%= text_field_tag :address, nil, placeholder: "Location", class: "form-control" %>
+        </div>
+        <%= submit_tag 'Go', class: "btn btn-default btn-location" %>
+        <% end %>
       </li>
     </ul>
   </div>
