@@ -4,7 +4,10 @@ class ReservationsController < ApplicationController
   # GET /reservations
   # GET /reservations.json
   def index
-    @reservations = Reservation.all
+    # @reservations = Reservation.all
+    @reservations = Reservation.where(user: current_user)
+    @user = User.find(current_user.id)
+    # @user = User.where(id: current_user.id)
   end
 
   # GET /reservations/1
@@ -59,6 +62,22 @@ class ReservationsController < ApplicationController
       format.html { redirect_to reservations_url, notice: 'Reservation was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # FUNCTION TO CHANGE STATUS TO ACCEPTED ON BUTTON CLICK --- Want to make it an AJAX CALL
+  def accept
+    @reservation = Reservation.find(params[:id])
+    @reservation.status = "Accepted"
+    @reservation.save
+    redirect_to reservations_url
+  end
+
+  # FUNCTION TO CHANGE STATUS TO REJECTED ON BUTTON CLICK --- Want to make it an AJAX CALL
+  def reject
+    @reservation = Reservation.find(params[:id])
+    @reservation.status = "Rejected"
+    @reservation.save
+    redirect_to reservations_url
   end
 
   private
