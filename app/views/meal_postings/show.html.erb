@@ -78,8 +78,9 @@
                       </ul>
                     </div>
 
-                    <%= form.hidden_field :user_id, value: current_user.id =>
                   <% end %>
+
+                  <%= form.hidden_field :user_id, value: current_user.id %>
 
                   <!-- http://api.rubyonrails.org/ search "text_field" for format -->
                   <!-- ActionView::Helpers::FormBuilder (search "form") -->
@@ -91,14 +92,11 @@
                     <%= form.label :number_of_people %>
                     <%= form.number_field :number_of_people, id: :number_of_people %>
                   </div>
-
-                  <div class="actions btn btn-warning btn-md modal-reserve">
-                    <%= form.submit class: 'actions btn btn-warning btn-md modal-reserve'%>
-                  </div>
                   <div class="modal-footer">
-                  <button type="button" class="btn btn-default modal-close" data-dismiss="modal">Close</button>
+                    <%= form.submit "Submit", class: 'btn btn-warning btn-md modal-reserve' %>
+                    <button type="button" class="action btn btn-default modal-close" data-dismiss="modal">Close</button>
+                  </div>
                   <% end %>
-                </div>
                 </div>
               </div>
 
