@@ -29,7 +29,7 @@
 
 <div class="container">
 
-  <% if current_user %>
+  <% if current_user and current_user.id != @user.id %>
     <h2>Add a review:</h2>
     <%= form_for [@user, @review] do |f| %>
       <%= f.hidden_field :ratee_id,  value: @user.id %>
@@ -40,23 +40,28 @@
     <% end %>
   <% end %>
 
-  <h2>Reviews: </h2>
-  <table class = "table table-bordered review-table">
-    <thead>
-      <tr>
-        <th class="review-rating">Rating</th>
-        <th class="review-comment">Comment</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @user.received_ratings.reverse.each do |review| %>
+  <% if @user.received_ratings.any? %>
+
+    <h2>Reviews: </h2>
+    <table class = "table table-bordered review-table">
+      <thead>
         <tr>
-          <td class="review-rating"><%= review.rating %> / 10</td>
-          <td class="review-comment"><%= review.comment %></td>
+          <th class="review-rating">Rating</th>
+          <th class="review-comment">Comment</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @user.received_ratings.reverse.each do |review| %>
+          <tr>
+            <td class="review-rating"><%= review.rating %> / 10</td>
+            <td class="review-comment"><%= review.comment %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <h2>No Reviews For This User</h2>
+  <% end %>
 </div>
 
 </body>

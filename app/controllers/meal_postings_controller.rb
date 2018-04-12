@@ -18,6 +18,13 @@ class MealPostingsController < ApplicationController
     @reservation = Reservation.new
   end
 
+#GET /meal_posting/1/reviews
+  def meal_posting_reviews
+    @meal_posting = MealPosting.find(params[:id])
+    @review = MealRating.new
+  end
+
+
   def category
     redirect_to meal_postings_path(id: params[:id], category: true)
   end

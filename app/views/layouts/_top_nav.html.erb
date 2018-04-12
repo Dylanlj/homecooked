@@ -7,10 +7,13 @@
       <% if current_user && !current_page?(user_path(current_user)) %>
         <li><%= link_to user_path(current_user) do %><span class="glyphicon glyphicon-home"></span> Home <% end %></li></li>
       <% end %>
-      <li><%= link_to new_user_path do %><span class="glyphicon glyphicon-user"></span> Sign Up <% end %></li>
+      <% if current_user %>
+        <li><%= link_to reservations_path do %><span class="glyphicon glyphicon-list-alt"></span> Reservations <% end %></li>
+      <% end %>
       <% if current_user %>
         <li><%= link_to logout_path do %><span class="glyphicon glyphicon-log-out"></span> Logout <% end %></li>
       <% else %>
+        <li><%= link_to new_user_path do %><span class="glyphicon glyphicon-user"></span> Sign Up <% end %></li>
         <li><%= link_to login_path do %><span class="glyphicon glyphicon-log-in"></span> Login <% end %></li>
       <% end %>
     </ul>
@@ -25,7 +28,7 @@
           <% end %>
         </li>
       </ul>
-      <% end %>
+    <% end %>
   </div>
 </nav>
 
