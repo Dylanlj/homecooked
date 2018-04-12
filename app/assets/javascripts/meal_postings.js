@@ -7,9 +7,10 @@ $(document).ready(function(){
     $("."+form.className).on("ajax:success", function(event, xhr){
       if(event.detail[0].status === "failed" && event.detail[0].id === form.className){
         $(".messages-"+form.className).empty();
-        for (let errorMessage of event.detail[0].message){
-          $(".messages-"+form.className).append("<p>" + errorMessage + "</p>");
-        }
+        console.log(event.detail[0])
+        // for (let errorMessage of event.detail[0]["message"]){
+        //   $(".messages-"+form.className).append("<p>" + errorMessage + "</p>");
+        // }
 
       }
       else if(event.detail[0].status === "ok" && event.detail[0].id === form.className){

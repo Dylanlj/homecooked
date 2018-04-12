@@ -92,24 +92,24 @@
                   <!-- http://api.rubyonrails.org/ search "text_field" for format -->
                   <!-- ActionView::Helpers::FormBuilder (search "form") -->
                   <!-- text_field: object_name, attribute_name (key) -->
-                  <% if meal_posting.end_time %>
-                  <% end %>
-
-                  <div class="field">
-                    <%= form.label :number_of_people %>
-                    <%= form.number_field :number_of_people, id: :number_of_people %>
-                  </div>
-
-                  <div class="field">
-                    <%= form.label :allergies %>
-                    <%= form.text_field :allergies, id: :allergies %>
-                  </div>
-
-                  <div class="field">
-                    <%= form.label :time %>
-                    <%= form.number_field :time, id: :time %>
-                  </div>
-
+                  <table>
+                    <tr class="modal-form-group">
+                      <td><%= form.label :number_of_people %></td>
+                      <td><%= form.number_field :number_of_people, id: :number_of_people %></td>
+                    </tr>
+                    <tr class="modal-form-group">
+                      <td><%= form.label :allergies %></td>
+                      <td><%= form.text_field :allergies, id: :allergies %></td>
+                    </tr>
+                    <% if meal_posting.end_time %>
+                    <tr class="modal-form-group">
+                      <td><%= form.label :reservation_time %></td>
+                      <td><%= form.number_field :time, id: :time %></td>
+                    </tr>
+                    <% else %>
+                      <%= form.hidden_field :time, value: meal_posting.base_time %>
+                    <% end %>
+                  </table>
                   <div class="modal-footer">
                     <%= form.submit "Submit", class: "btn btn-warning btn-md modal-reserve submit-"+formID.to_s %>
                     <button type="button" class="action btn btn-default modal-close" data-dismiss="modal">Close</button>
