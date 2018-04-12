@@ -17,12 +17,12 @@ end
 
 # File.open(File.join(Rails.root, 'test.jpg'))
 
-# NOT WORKING PROPERLY
+# NOT WORKING PROPERLY (use db:reset instead)
+User.delete_all
 Category.delete_all
 MealRating.delete_all
 MealPosting.delete_all
 UserRating.delete_all
-User.delete_all
 
 puts "Seeding Users ..."
 
@@ -332,6 +332,7 @@ puts "Seeding Reservations ..."
 mealposting1.reservations.create!({
   user_id: 3,
   number_of_people: 2,
+  time: 130,
   allergies: "I am allergic to peanuts and almonds.",
   status: "Pending Approval",
   paid: "yes"
@@ -348,14 +349,15 @@ mealposting6.reservations.create!({
 mealposting2.reservations.create!({
   user_id: 4,
   number_of_people: 3,
-  allergies: "Allergic to gluten so I hope this is okay.  Also allergic to Dairy..",
   time: 530,
+  allergies: "Allergic to gluten so I hope this is okay.  Also allergic to Dairy..",
   status: "Pending Approval"
 })
 
 mealposting3.reservations.create!({
   user_id: 3,
   number_of_people: 4,
+  time: 200,
   allergies: "Allergies include fresh air, water, sun, grass, outdoors in general.",
   status: "Pending Approval"
 })
@@ -363,18 +365,21 @@ mealposting3.reservations.create!({
 mealposting3.reservations.create!({
   user_id: 4,
   number_of_people: 1,
+  time: 100,
   status: "Pending Approval"
 })
 
 mealposting7.reservations.create!({
   user_id: 3,
   number_of_people: 2,
+  time: 1200,
   status: "Pending Approval"
 })
 
 mealposting8.reservations.create!({
   user_id: 3,
   number_of_people: 5,
+  time: 330,
   status: "Rejected"
 })
 

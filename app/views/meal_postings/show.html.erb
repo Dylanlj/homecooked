@@ -68,7 +68,7 @@
               <!-- Modal content-->
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <button type="button" class="close-<%=formID%> close" data-dismiss="modal">&times;</button>
                   <h4 class="modal-title">Select Meal Options</h4>
                 </div>
                 <div class="modal-body">
@@ -112,7 +112,7 @@
                   </table>
                   <div class="modal-footer">
                     <%= form.submit "Submit", class: "btn btn-warning btn-md modal-reserve submit-"+formID.to_s %>
-                    <button type="button" class="action btn btn-default modal-close" data-dismiss="modal">Close</button>
+                    <button type="button" class="action btn btn-default modal-close close-<%=formID%>" data-dismiss="modal">Close</button>
                   </div>
                   <div class="messages-<%=formID%>"></div>
                   <% end %>
