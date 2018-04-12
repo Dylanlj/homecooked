@@ -55,17 +55,20 @@
       </tbody>
     </table>
   <% end %>
-
-  <% if current_user %>
-    <h2>Add a review:</h2>
-    <%= form_for [@meal_posting, @review] do |f| %>
-      <%= f.hidden_field :user_id,  value: current_user.id %>
-      <dt>Comment: </dt>
-      <dd><%= f.text_area :comment, class: "user-review-text" %></dd>
-      <dt>Rating: <%= f.select :rating, [10, 9, 8, 7, 6, 5, 4, 3, 2, 1] %></dt>
-      <dd class="submit"><%= f.submit "Submit", class: "btn btn-warning submit-user-review" %></dd>
+    <% if current_user %>
+      <% @meal_posting.reservations.each do |reservation| %>
+        <% if reservation.user_id === current_user.id && reservation.paid %>
+            <h2>Add a review:</h2>
+          <%= form_for [@meal_posting, @review] do |f| %>
+            <%= f.hidden_field :user_id,  value: current_user.id %>
+            <dt>Comment: </dt>
+            <dd><%= f.text_area :comment, class: "user-review-text" %></dd>
+            <dt>Rating: <%= f.select :rating, [10, 9, 8, 7, 6, 5, 4, 3, 2, 1] %></dt>
+            <dd class="submit"><%= f.submit "Submit", class: "btn btn-warning submit-user-review" %></dd>
+          <% end %>
+        <% end %>
+      <% end %>
     <% end %>
-  <% end %>
   <br>
     <%= button_to 'Back', meal_posting_path(@meal_posting), method: "get", class: "btn btn-warning"  %>
 </div>
