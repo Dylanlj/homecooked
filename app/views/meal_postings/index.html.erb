@@ -13,10 +13,8 @@
   <script type="text/javascript">
 
     if(window.google && document.getElementById('googleMap').dataset.userLocation){
-      console.log("the window google thing is happening")
       initialize(document.getElementById('googleMap').dataset.userLocation)
     } else {
-      console.log("original initialize is happening")
       $.ajax("https://maps.googleapis.com/maps/api/js?key=AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA&callback=initialize", {
           crossDomain: true,
           dataType: 'script'

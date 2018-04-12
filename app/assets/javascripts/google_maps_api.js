@@ -38,7 +38,6 @@ labelIndex = 0
       map: map,
       position: latlng
     });
-    console.log(yourMarker)
     mealPostingMarkers()
   }
   codeAddress(document.getElementById('googleMap').dataset.userLocation, setUpMap)
