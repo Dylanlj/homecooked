@@ -36,6 +36,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'pry-rails'
 
 gem 'font-awesome-rails'
+gem 'stripe'
 
 gem 'carrierwave'
 gem 'cloudinary'
