@@ -71,6 +71,13 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
     @reservation.status = "Accepted"
     @reservation.save
+
+    # SUBTRACTS NUMBER OF SERVINGS ON RESERVATION FROM THE MEAL POSTING'S SERVINGS
+    @meal_posting = MealPosting.find(params[:id])
+    puts "-------------------- #{@meal_posting.inspect} -----------------------"
+    @meal_posting.servings = @meal_posting.servings - @reservation.number_of_people
+    puts "-------------------- #{@meal_posting.inspect} -----------------------"
+    @meal_posting.save
     redirect_to reservations_url
   end
 
@@ -80,6 +87,15 @@ class ReservationsController < ApplicationController
     @reservation.status = "Rejected"
     @reservation.save
     redirect_to reservations_url
+  end
+
+  # ADDED FOR SHOWING HOSTS RESERVATIONS FOR THEIR MEALS
+  def outgoingreservations
+    if current_user.user_status === "Host"
+      @user = User.find(current_user.id)
+    else
+      redirect_to root_path
+    end
   end
 
   private

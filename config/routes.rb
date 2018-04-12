@@ -30,10 +30,13 @@ Rails.application.routes.draw do
 
     # CREATED TO SHOW HOSTS / USERS THEIR CURRENT RESERVATIONS / REQUESTS
     get '/reservations' => 'reservations#index'#, :as => :user_reservations
-
-    # TO CHANGE TO ACCEPTED / REJECTED
+    #CREATED TO SHOW HOSTS THEIR RESERVATIONS TO OTHER HOSTS
+    get '/reservations/outgoing' => 'reservations#outgoingreservations'
+    #TO CHANGE TO ACCEPTED / REJECTED
     put '/reservations/:id/accept' => 'reservations#accept'
     put '/reservations/:id/reject' => 'reservations#reject'
+    delete 'reservations/:id/destroy' => 'reservations#destroy'
+
 
 
     # CREATED FOR A MEALPOSTING REVIEWS

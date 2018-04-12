@@ -29,7 +29,7 @@
 
 <div class="container">
 
-  <% if current_user %>
+  <% if current_user and current_user.id != @user.id %>
     <h2>Add a review:</h2>
     <%= form_for [@user, @review] do |f| %>
       <%= f.hidden_field :ratee_id,  value: @user.id %>
@@ -39,7 +39,9 @@
       <dd class="submit"><%= f.submit "Submit", class: "btn btn-warning submit-user-review" %></dd>
     <% end %>
   <% end %>
+
   <% if @user.received_ratings.any? %>
+
     <h2>Reviews: </h2>
     <table class = "table table-bordered review-table">
       <thead>
@@ -57,6 +59,8 @@
         <% end %>
       </tbody>
     </table>
+  <% else %>
+    <h2>No Reviews For This User</h2>
   <% end %>
 </div>
 

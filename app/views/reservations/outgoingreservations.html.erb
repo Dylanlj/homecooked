@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <% if @user.reservations.length <= 0 %>
+      <h4 class="outgoing-reservations-link"><%= link_to "To Your Incoming Reservations", reservations_path %></h4>
+      <h1>No Current Reservations</h1>
+    <% else %>
+      <h4 class="outgoing-reservations-link"><%= link_to "To Your Incoming Reservations", reservations_path %></h4>
+      <h1>Your Current Reservations: </h1>
+    <% end %>
+    <% @user.reservations.each do |reservation| %>
+      <div class="row">
+        <div class="col-xs-4 col-sm-3 col-md-3">
+          <%= cl_image_tag(reservation.meal_posting.media[0].url, class: 'circle img-thumbnail img-box reservation-pic') %>
+        </div>
+        <div class="col-xs-4 col-sm-9 col-md-9">
+          <h4><%= reservation.meal_posting.title %></h4>
+          <div class="list-group-item meal-post-desc">
+            <p><strong>Host Name: </strong><%= link_to "#{reservation.meal_posting.user.name}", user_path(reservation.meal_posting.user.id) %></p>
+            <p><strong>Servings: </strong><%= reservation.number_of_people %></p>
+            <% if reservation.time %>
+              <p><strong>Time: </strong><%= reservation.time %></p>
+            <% else %>
+              <p><strong>Time: </strong><%= reservation.meal_posting.base_time %></p>
+            <% end %>
+            <% if reservation.meal_posting.allergy_notice %>
+              <p><strong>Allergy Notice: </strong><%= reservation.meal_posting.allergy_notice %></p>
+            <% end %>
+            <h3 class="user-reservation-status"><strong>Status: </strong><%= reservation.status %></h3>
+          </div>
+
+          <!-- NEED TO IMPLEMENT STRIPE POPUP WHEN THIS BUTTON IS CLICKED -->
+          <% if reservation.status === "Accepted" %>
+          <div class="row">
+            <div class="pay-button">
+              <%= button_to 'Pay Now', new_meal_posting_reservation_path(reservation.meal_posting), :class => "btn btn-warning btn-md pay" %>
+            </div>
+          </div>
+          <% end %>
+          <!-- USER CAN DELETE RESERVATION FROM PAGE TO CLEAR SPACE IF IT WAS REJECTED  -->
+          <% if reservation.status === "Rejected" %>
+            <div class="row">
+              <div class="delete-button">
+                <%= button_to 'Delete', new_meal_posting_reservation_path(reservation.meal_posting), :class => "btn btn-primary btn-md delete" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <hr>
+    <% end %>
+  </div>
+</div>

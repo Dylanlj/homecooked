@@ -3,7 +3,7 @@
   <div class="container">
 
     <!-- NEED TO FIGURE OUT THIS BUTTON FUNCTIONALITY -->
-    <h4 class="outgoing-reservations-link"><%= link_to "Your Outgoing Reservations", user_path(@user) %></h4>
+    <h4 class="outgoing-reservations-link"><%= link_to "To Your Outgoing Reservations", reservations_outgoing_path %></h4>
 
     <div class="row">
       <h1 class="reservation-notification-header">Reservation Notifications: </h1>
@@ -32,9 +32,10 @@
                 <!-- ALLOW HOST TO DELETE POSTING TO CLEAR SPACE ONCE ACCEPTED OR REJECTED -->
                 <% if reservation.status === "Accepted" || reservation.status === "Rejected" %>
                   <div class="delete-button">
-                    <%= button_to 'Delete', new_meal_posting_reservation_path(reservation.meal_posting), :class => "btn btn-primary btn-md delete" %>
+                    <%= button_to 'Delete', {:controller => "reservations", :action => "destroy", id: reservation.id}, :method => :delete, :class => "btn btn-primary btn-md delete" %>
                   </div>
                 <% else %>
+                <!-- TODO - MAKE AJAX CALLS ON THESE BUTTONS INSTEAD OF RELOADING PAGE -->
                   <div class="reject-button">
                     <%= button_to 'Reject', {:controller => "reservations", :action => "reject", id: reservation.id}, :method => :put, :remote => true, :class => "btn btn-warning btn-md reject" %>
                   </div>
@@ -106,5 +107,5 @@
   </div>
 
 <% else %>
-  <h2> Please refer back to Hom Page </h2>
+  <h2> Please refer back to Home Page </h2>
 <% end %>

@@ -49,12 +49,12 @@
             <p>Servings Available: <%= meal_posting.servings %></p>
           </div>
 
+
           <div class="reserve-button">
             <%= button_to 'Reviews', meal_posting_reviews_path(meal_posting), :method => :get, :class => "btn btn-warning btn-md meal-posting-reviews-btn" %>
           </div>
 
-
-          <% if current_user %>
+          <% if current_user and current_user.id != @user.id %>
           <!-- Reserving a meal opens a modal with a form -->
           <div class="reserve-button">
             <button type="button" class="btn btn-warning btn-md reserve" data-toggle="modal" data-target="#myModal">Reserve</button>
