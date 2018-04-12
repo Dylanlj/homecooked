@@ -10,6 +10,7 @@ let labelIndex = 0
 let userAddresses = []
 
 function codeAddress(address, callback) {
+  console.log("count")
   geocoder.geocode( { 'address': address}, function(results, status) {
     if (status == 'OK') {
       callback(results)
@@ -47,7 +48,7 @@ labelIndex = 0
 
 // this is making an unecessary amout of geocode calls, fix later if your have time
 function orderMarkerByProximity(geoObject) {
-// console.log(postingMarkers)
+
   labelIndex = 0
 
   postingMarkers.sort(function(a, b){
@@ -73,7 +74,6 @@ function orderMarkerByProximity(geoObject) {
 function addLabelsToDOM (marker, allMarkers) {
   $( document ).ready(function() {
     let check = $('.meal-div[data-address="' + marker.originalAddress + '"]').find(".marker-circle").text(marker.label)
-
   });
 
 }
@@ -87,6 +87,7 @@ function mealMarkerCallback (geoObject) {
     label: labels[labelIndex++ % labels.length],
     formattedAddress: geoObject[0].formatted_address
   })
+
   postingMarkers.push(marker)
 
   codeAddress(document.getElementById('googleMap').dataset.userLocation, orderMarkerByProximity)
@@ -98,27 +99,21 @@ function mealPostingMarkers() {
     marker.setMap(null)
   }
   postingMarkers.length = 0
-
-
+  userAddresses.length = 0
   for (let element of document.getElementsByClassName("meal-div")) {
+
     let address = element.dataset.address
     if (!userAddresses.includes(address)){
       userAddresses.push(address)
-
-      if (userAddresses.length === 10) {
+      if (userAddresses.length === 5) {
         setTimeout(function() {codeAddress(address, mealMarkerCallback)}, 1300);
       } else {
+
         codeAddress(address, mealMarkerCallback)
 
       }
     }
   }
-  // console.log(postingMarkers)
-  //   for (let marker of postingMarkers) {
-  //   console.log(marker.formattedAddress)
-  // }
-  // console.log(postingMarkers[0])
-  // addLabelsToDOM()
 
 }
 

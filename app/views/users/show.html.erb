@@ -39,24 +39,25 @@
       <dd class="submit"><%= f.submit "Submit", class: "btn btn-warning submit-user-review" %></dd>
     <% end %>
   <% end %>
-
-  <h2>Reviews: </h2>
-  <table class = "table table-bordered review-table">
-    <thead>
-      <tr>
-        <th class="review-rating">Rating</th>
-        <th class="review-comment">Comment</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @user.received_ratings.reverse.each do |review| %>
+  <% if @user.received_ratings.any? %>
+    <h2>Reviews: </h2>
+    <table class = "table table-bordered review-table">
+      <thead>
         <tr>
-          <td class="review-rating"><%= review.rating %> / 10</td>
-          <td class="review-comment"><%= review.comment %></td>
+          <th class="review-rating">Rating</th>
+          <th class="review-comment">Comment</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @user.received_ratings.reverse.each do |review| %>
+          <tr>
+            <td class="review-rating"><%= review.rating %> / 10</td>
+            <td class="review-comment"><%= review.comment %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 </div>
 
 </body>

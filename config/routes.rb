@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :meal_postings do
     resources :categories, only: [:show]
     resources :reservations
-    resources :meal_ratings, except: [:show, :edit]
+    resources :meal_ratings, except: [:index]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -30,9 +30,12 @@ Rails.application.routes.draw do
     # CREATED TO SHOW HOSTS / USERS THEIR CURRENT RESERVATIONS / REQUESTS
     get '/reservations' => 'reservations#index'#, :as => :user_reservations
 
-    #TO CHANGE TO ACCEPTED / REJECTED
+    # TO CHANGE TO ACCEPTED / REJECTED
     put '/reservations/:id/accept' => 'reservations#accept'
     put '/reservations/:id/reject' => 'reservations#reject'
+
+    # CREATED FOR A MEALPOSTING REVIEWS
+    get '/meal_posting/:id/reviews' => 'meal_postings#meal_posting_reviews', :as => :meal_posting_reviews
 
 end
 
