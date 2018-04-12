@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
     # CREATED FOR MEAL POSTING CATEGORIES
     put '/meal_postings/categories/:id' => 'meal_postings#category', :as => :meals_category
+
     # CREATED TO SHOW HOSTS / USERS THEIR CURRENT RESERVATIONS / REQUESTS
     get '/reservations' => 'reservations#index'#, :as => :user_reservations
 
@@ -34,8 +35,12 @@ Rails.application.routes.draw do
     put '/reservations/:id/accept' => 'reservations#accept'
     put '/reservations/:id/reject' => 'reservations#reject'
 
+
     # CREATED FOR A MEALPOSTING REVIEWS
     get '/meal_posting/:id/reviews' => 'meal_postings#meal_posting_reviews', :as => :meal_posting_reviews
 
-end
+    #TO CREATE A NEW RESERVATION
+    post '/reservations/create/:id' => 'reservations#create', :as => :create_reservation
 
+
+end

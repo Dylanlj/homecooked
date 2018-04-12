@@ -10,6 +10,10 @@
 // SCSS for sessions/new.html.erb (login form), and users/new.html.erb (new user form) and its partial
 // _form.html.erb.
 
+//////////////////////////////
+// New User and Login Views //
+//////////////////////////////
+
 th.register-field {
   width: 150px;
   padding: 7px;
@@ -36,7 +40,6 @@ th.login-field {
   // justify-content: center;
   text-align: center;
 }
-
 
 .login-submit {
   margin-top: 20px;
@@ -76,9 +79,9 @@ h2.login-header {
   text-align: center;
 }
 
-/////////////////
-// New section //
-/////////////////
+/////////////////////////////////////
+// User reviews, meals ? (clarify) //
+/////////////////////////////////////
 
 .user-show {
   padding-top: 15px;

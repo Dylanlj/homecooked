@@ -15,6 +15,7 @@ class MealPostingsController < ApplicationController
   # GET /meal_postings/1.json
   def show
     @user = User.find(@meal_posting.user_id)
+    @reservation = Reservation.new
   end
 
 #GET /meal_posting/1/reviews

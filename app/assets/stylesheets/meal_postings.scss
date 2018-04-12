@@ -19,6 +19,10 @@
 // src: local('../fonts/Cambay/Cambay-Bold.ttf') format('truetype')
 // }
 
+//////////////////////////////////////////////////////
+// Section Meal Postings Index Page (home page)     //
+//////////////////////////////////////////////////////
+
 
 ////////////////////////////
 // Section for navigation //
@@ -202,3 +206,23 @@ hr.user-meal-posting-separate {
   // height: 300px;
 }
 
+
+////////////////////////////
+// Reserve Button Modal   //
+////////////////////////////
+
+.modal-close{
+  display: inline-block;
+  float: right;
+  width: 80px;
+  height: 30px;
+  margin: 10px;
+}
+
+.modal-reserve{
+  display: inline-block;
+  float: right;
+  width: 120px;
+  height: 30px;
+  margin: 10px;
+}
