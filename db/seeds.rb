@@ -15,6 +15,7 @@ unless Rails.env.development?
  exit 0
 end
 
+# File.open(File.join(Rails.root, 'test.jpg'))
 
 # NOT WORKING PROPERLY
 Category.delete_all
@@ -33,7 +34,7 @@ user1 = User.create!({
  phone_number: 1234567890,
  password: "hashedpass",
  password_confirmation: "hashedpass",
- image: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523314174/MV5BNjBjZjA5YzAtM2ZmNS00MTI5LThlOWEtNmJlOTA5MjgwZDkxXkEyXkFqcGdeQXVyNTk1NTMyNzM_._V1_.jpg"
+ remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523314174/MV5BNjBjZjA5YzAtM2ZmNS00MTI5LThlOWEtNmJlOTA5MjgwZDkxXkEyXkFqcGdeQXVyNTk1NTMyNzM_._V1_.jpg"
 })
 
 user2 = User.create!({
@@ -44,7 +45,7 @@ user2 = User.create!({
  phone_number: 1098765432,
  password: "passhashed",
  password_confirmation: "passhashed",
- image: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523314330/dz2_thumb.jpg"
+ remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523314330/dz2_thumb.jpg"
 })
 
 user3 = User.create!({
@@ -55,7 +56,7 @@ user3 = User.create!({
  phone_number: 1231049384,
  password: "littlerock",
  password_confirmation: "littlerock",
- image: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523314303/dwayne-fanny-pack.jpg"
+ remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523314303/dwayne-fanny-pack.jpg"
 })
 
 user4 = User.create!({
@@ -66,7 +67,7 @@ user4 = User.create!({
  phone_number: 1234567890,
  password: "tommyboy",
  password_confirmation: "tommyboy",
- image: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523313753/1341605986_tomcruise-350.jpg"
+ remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523313753/1341605986_tomcruise-350.jpg"
 })
 
 puts "Seeding Categories ..."

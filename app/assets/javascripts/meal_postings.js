@@ -3,21 +3,19 @@
 // You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready(function(){
+  for (let form of $('form')){
+    $("."+form.className).on("ajax:success", function(event, xhr){
+      if(event.detail[0].status === "failed" && event.detail[0].id === form.className){
+        $(".messages-"+form.className).empty();
+        for (let errorMessage of event.detail[0].message){
+          $(".messages-"+form.className).append("<p>" + errorMessage + "</p>");
+        }
 
-  $("#resForm").on("ajax:success", function(e, data, status, xhr){
-
-    console.log("status", status);
-    console.log("data", data);
-    console.log("xhr", xhr);
-    // if (status === "ok")
-    //   $(".reserve_errors").text(@reservation_errors)
-
-  })
-
-  // submit(function(event){
-  //   event.preventDefault();
-  //   console.log('blah');
-  //   $.post("/reservations/create/")
-  // })
-  // window.location.href('...');
+      }
+      else if(event.detail[0].status === "ok" && event.detail[0].id === form.className){
+        $(".messages-"+form.className).empty();
+        $(".messages-"+form.className).css("text-align", "right").append("<div>" + event.detail[0].message + "</div>");
+      }
+    })
+  }
 })
