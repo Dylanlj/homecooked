@@ -52,11 +52,12 @@
           <% if current_user %>
           <!-- Reserving a meal opens a modal with a form -->
           <div class="reserve-button">
-            <button type="button" class="btn btn-warning btn-md reserve" data-toggle="modal" data-target="#myModal">Reserve</button>
+            <button type="button" class="btn btn-warning btn-md reserve" data-toggle="modal" data-target=".modal-<%=meal_posting.id%>">Reserve</button>
           </div>
 
+          <% formID = meal_posting.id %>
           <!-- Modal -->
-          <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal fade modal-<%=formID%>" role="dialog">
             <div class="modal-dialog">
 
               <!-- Modal content-->
@@ -66,9 +67,8 @@
                   <h4 class="modal-title">Select Meal Options</h4>
                 </div>
                 <div class="modal-body">
-
                 <!-- Submission Form (local true means no ajax request) -->
-                <%= form_with(model: @reservation, remote: true, url: create_reservation_path, id: 'resForm') do |form| %>
+                <%= form_with(model: @reservation, remote: true, url: create_reservation_path, class: formID) do |form| %>
                   <% if @reservation.errors.any? %>
                     <div id="error_explanation">
                       <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this meal_posting from being saved:</h2>
@@ -106,10 +106,10 @@
                   </div>
 
                   <div class="modal-footer">
-                    <%= form.submit "Submit", class: 'btn btn-warning btn-md modal-reserve' %>
+                    <%= form.submit "Submit", class: "btn btn-warning btn-md modal-reserve submit-"+formID.to_s %>
                     <button type="button" class="action btn btn-default modal-close" data-dismiss="modal">Close</button>
-                    <p class="reserve_errors"></p>
                   </div>
+                  <div class="messages-<%=formID%>"></div>
                   <% end %>
                 </div>
               </div>

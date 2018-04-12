@@ -31,13 +31,11 @@ class ReservationsController < ApplicationController
     @reservation.status = "Pending Approval"
     respond_to do |format|
       if @reservation.save
-        format.js
-        # format.html { redirect_to reservations_url, notice: 'Reservation was successfully created.' }
-        # format.json { render :show, status: :created, location: @reservation }
+        msg = { :status => "ok", :message => "Reservation request sent", :id => reservation_params[:meal_posting_id] }
+        format.json { render :json => msg }
       else
-        format.js
-        # format.html { render :new }
-        # format.json { render json: @reservation.errors, status: :unprocessable_entity }
+        msg = { :status => "failed", :message => @reservation.errors, :id => reservation_params[:meal_posting_id] }
+        format.json { render :json => msg }
       end
     end
   end
