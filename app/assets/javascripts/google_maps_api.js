@@ -10,7 +10,6 @@ let labelIndex = 0
 let userAddresses = []
 
 function codeAddress(address, callback) {
-  console.log(address)
 
   geocoder.geocode( { 'address': address}, function(results, status) {
     if (status == 'OK') {
@@ -28,7 +27,6 @@ labelIndex = 0
 
   function setUpMap (geoObject) {
     let userLocation = geoObject[0].geometry.location
-console.log(geoObject)
     let latlng = new google.maps.LatLng(userLocation.lat(), userLocation.lng());
     let mapOptions = {
       zoom: 15,
@@ -40,14 +38,13 @@ console.log(geoObject)
       map: map,
       position: latlng
     });
-
+    console.log(yourMarker)
+    mealPostingMarkers()
   }
   codeAddress(document.getElementById('googleMap').dataset.userLocation, setUpMap)
-  mealPostingMarkers()
 }
 
-// this is making an unecessary amout of geocode calls, fix later if your have time
-function orderMarkerByProximity(geoObject) {
+function orderMarkerByProximity(myLocationMarker) {
 
   labelIndex = 0
 
@@ -56,8 +53,8 @@ function orderMarkerByProximity(geoObject) {
     let aLng = a.position.lng()
     let bLat = b.position.lat()
     let bLng = b.position.lng()
-    let mLat = geoObject[0].geometry.location.lat()
-    let mLng = geoObject[0].geometry.location.lng()
+    let mLat = myLocationMarker.position.lat()
+    let mLng = myLocationMarker.position.lng()
 
     let aDistance = Math.sqrt(Math.pow((aLat - mLat), 2) + Math.pow((aLng - mLng), 2))
     let bDistance = Math.sqrt(Math.pow((bLat - mLat), 2) + Math.pow((bLng - mLng), 2))
@@ -70,7 +67,6 @@ function orderMarkerByProximity(geoObject) {
   }
 }
 
-// unecessary amount of requests, fix later if time
 function addLabelsToDOM (marker, allMarkers) {
   $( document ).ready(function() {
     let check = $('.meal-div[data-address="' + marker.originalAddress + '"]').find(".marker-circle").text(marker.label)
@@ -89,9 +85,8 @@ function mealMarkerCallback (geoObject) {
   })
 
   postingMarkers.push(marker)
-  //this is making unnecessry calls to the geo object, just pass your maker to it
-  console.log(yourMarker)
-  codeAddress(document.getElementById('googleMap').dataset.userLocation, orderMarkerByProximity)
+
+  orderMarkerByProximity(yourMarker)
 }
 
 function mealPostingMarkers() {
