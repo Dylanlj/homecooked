@@ -10,7 +10,8 @@ let labelIndex = 0
 let userAddresses = []
 
 function codeAddress(address, callback) {
-  console.log("count")
+  console.log(address)
+
   geocoder.geocode( { 'address': address}, function(results, status) {
     if (status == 'OK') {
       callback(results)
@@ -21,14 +22,13 @@ function codeAddress(address, callback) {
 }
 
 function initialize() {
-
 labelIndex = 0
 
   geocoder = new google.maps.Geocoder();
 
   function setUpMap (geoObject) {
     let userLocation = geoObject[0].geometry.location
-
+console.log(geoObject)
     let latlng = new google.maps.LatLng(userLocation.lat(), userLocation.lng());
     let mapOptions = {
       zoom: 15,
@@ -89,7 +89,8 @@ function mealMarkerCallback (geoObject) {
   })
 
   postingMarkers.push(marker)
-
+  //this is making unnecessry calls to the geo object, just pass your maker to it
+  console.log(yourMarker)
   codeAddress(document.getElementById('googleMap').dataset.userLocation, orderMarkerByProximity)
 }
 
