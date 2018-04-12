@@ -101,6 +101,36 @@ class ReservationsController < ApplicationController
     end
   end
 
+
+  def order
+
+    @reservation = Reservation.find(params[:id])
+    @reservation.paid = "yes"
+    @reservation.stripe_charge_id = params[:stripeToken]
+
+    @amount = @reservation.number_of_people * @reservation.meal_posting.cost * 100
+
+    charge = Stripe::Charge.create(
+      :source      => params[:stripeToken],
+      :amount      => @amount,
+      :description => 'HomeCooked Charge',
+      :currency    => 'cad'
+    )
+
+    if @reservation.save!
+      redirect_to reservations_path(@reservation.user), notice: 'Your Order has been placed.'
+    else
+      redirect_to reservations_path(@reservation.user), flash: { error: order.errors.full_messages.first }
+    end
+
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to new_charge_path
+  end
+
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reservation
@@ -111,4 +141,5 @@ class ReservationsController < ApplicationController
     def reservation_params
       params.require(:reservation).permit(:meal_posting_id, :user_id, :number_of_people, :allergies, :time)
     end
+
 end

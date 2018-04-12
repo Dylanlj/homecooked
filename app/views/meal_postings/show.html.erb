@@ -50,8 +50,8 @@
           </div>
 
 
-          <div class="reserve-button">
-            <%= button_to 'Reviews', meal_posting_reviews_path(meal_posting), :method => :get, :class => "btn btn-warning btn-md meal-posting-reviews-btn" %>
+          <div class="review-button">
+            <%= button_to 'Reviews', meal_posting_reviews_path(meal_posting), :method => :get, :class => "btn btn-warning btn-md" %>
           </div>
 
           <% if current_user and current_user.id != @user.id %>
