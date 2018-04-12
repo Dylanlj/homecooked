@@ -16,19 +16,18 @@ class MealRatingsController < ApplicationController
   # POST /meal_ratings
   # POST /meal_ratings.json
   def create
-    @meal_rating = MealRating.new(meal_rating_params)
 
-    respond_to do |format|
-      if @meal_rating.save
-        format.html { redirect_to @meal_rating, notice: 'Meal rating was successfully created.' }
-        format.json { render :show, status: :created, location: @meal_rating }
-      else
-        format.html { render :new }
-        format.json { render json: @meal_rating.errors, status: :unprocessable_entity }
-      end
+    @meal_rating = MealRating.new(meal_rating_params)
+    @meal_posting = MealPosting.find(params[:meal_posting_id])
+    @meal_rating.meal_posting_id = params[:meal_posting_id]
+    if @meal_rating.save
+      redirect_to meal_posting_reviews_path(@meal_posting)
+
+    else
+
+      redirect_to meal_posting_reviews_path(@meal_posting)
     end
   end
-
 
   # DELETE /meal_ratings/1
   # DELETE /meal_ratings/1.json

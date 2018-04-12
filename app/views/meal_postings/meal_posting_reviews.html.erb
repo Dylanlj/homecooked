@@ -1,0 +1,80 @@
+
+<div class="container">
+  <div class="row">
+<h2><%= @meal_posting.title %> by <%=@meal_posting.user.name%></h2>
+    <div class="row">
+      <div class="col-xs-4 col-sm-3 col-md-3">
+        <%= cl_image_tag(@meal_posting.media[0].url, class: 'circle img-thumbnail img-box') %>
+      </div>
+      <div class="col-xs-4 col-sm-9 col-md-9">
+        <h4></h4>
+        <div class="list-group-item meal-post-desc">
+          <p>Description: <%= @meal_posting.description %><br/><br/>Allergy Notice: <%= @meal_posting.allergy_notice %></p>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 meal-posting-bottom-info">
+            <p>
+              <% if @meal_posting.end_time %>
+                Serving from: <%= @meal_posting.base_time %> - <%= @meal_posting.end_time%>
+              <% else %>
+                Serving at: <%= @meal_posting.base_time%>
+              <% end %>
+            </p>
+          </div>
+          <div class="col-sm-2 meal-posting-bottom-info">
+            <p>Price: $<%= @meal_posting.cost %></p>
+          </div>
+          <div class="col-sm-3 meal-posting-bottom-info">
+            <p>Servings Available: <%= @meal_posting.servings %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="user-meal-posting-separate">
+
+<div class="container">
+  <% if @meal_posting.meal_ratings.any? %>
+    <h2>Reviews: </h2>
+    <table class = "table table-bordered review-table">
+      <thead>
+        <tr>
+          <th class="review-rating">Rating</th>
+          <th class="review-comment">Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @meal_posting.meal_ratings.reverse.each do |review| %>
+          <tr>
+            <td class="review-rating"><%= review.rating %> / 10</td>
+            <td class="review-comment"><%= review.comment %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+  <% if current_user %>
+    <h2>Add a review:</h2>
+    <%= form_for [@meal_posting, @review] do |f| %>
+      <%= f.hidden_field :user_id,  value: current_user.id %>
+      <dt>Comment: </dt>
+      <dd><%= f.text_area :comment, class: "user-review-text" %></dd>
+      <dt>Rating: <%= f.select :rating, [10, 9, 8, 7, 6, 5, 4, 3, 2, 1] %></dt>
+      <dd class="submit"><%= f.submit "Submit", class: "btn btn-warning submit-user-review" %></dd>
+    <% end %>
+  <% end %>
+
+</div>
+
+
+
+
+
+
+
+
+
+

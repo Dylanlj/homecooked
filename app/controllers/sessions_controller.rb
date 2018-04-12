@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    session[:user_address] = nil
+    session[:user_address] = "46 spadina avenue toronto"
     redirect_to root_path
   end
 

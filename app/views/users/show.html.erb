@@ -40,9 +40,8 @@
     <% end %>
   <% end %>
 
-  <% if @user.received_ratings.length <= 0 %>
-    <h2>No Reviews For This User</h2>
-  <% else %>
+  <% if @user.received_ratings.any? %>
+
     <h2>Reviews: </h2>
     <table class = "table table-bordered review-table">
       <thead>
@@ -60,6 +59,8 @@
         <% end %>
       </tbody>
     </table>
+  <% else %>
+    <h2>No Reviews For This User</h2>
   <% end %>
 </div>
 
