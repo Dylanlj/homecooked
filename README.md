@@ -61,3 +61,7 @@ git reset --hard origin/master (or origin/branch)
 ## Google maps keys
 
 Piotr: AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA
+
+## Dependencies
+
+

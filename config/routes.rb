@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
     resources :postings, only: [:index, :new, :create]
 
+
     # CREATED FOR SESSIONS
     get '/login' => 'sessions#new'
     post '/login' => 'sessions#create'
@@ -36,14 +37,12 @@ Rails.application.routes.draw do
     put '/reservations/:id/accept' => 'reservations#accept'
     put '/reservations/:id/reject' => 'reservations#reject'
     delete 'reservations/:id/destroy' => 'reservations#destroy'
+    put '/reservations/:id/order' => 'reservations#order', :as => :reservation_order
 
-
+    # TO CREATE A NEW RESERVATION
+    post '/reservations/create/:id' => 'reservations#create', :as => :create_reservation
 
     # CREATED FOR A MEALPOSTING REVIEWS
     get '/meal_posting/:id/reviews' => 'meal_postings#meal_posting_reviews', :as => :meal_posting_reviews
-
-    #TO CREATE A NEW RESERVATION
-    post '/reservations/create/:id' => 'reservations#create', :as => :create_reservation
-
 
 end

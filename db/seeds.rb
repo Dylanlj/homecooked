@@ -331,14 +331,16 @@ mealposting1.reservations.create!({
   user_id: 3,
   number_of_people: 2,
   allergies: "I am allergic to peanuts and almonds.",
-  status: "Pending Approval"
+  status: "Pending Approval",
+  paid: "yes"
 })
 
 mealposting6.reservations.create!({
   user_id: 4,
   number_of_people: 1,
   time: 630,
-  status: "Pending Approval"
+  status: "Pending Approval",
+  paid: "yes"
 })
 
 mealposting2.reservations.create!({
