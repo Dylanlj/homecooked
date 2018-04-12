@@ -40,7 +40,8 @@ user1 = User.create!({
 user2 = User.create!({
  user_status: "User",
  name: "Denzel Washington",
- email: "denzel@moviestar.com",
+ # email: "denzel@moviestar.com",
+ email: "bartnic1@gmail.com",
  address: "126 Bloor Street West Toronto",
  phone_number: 1098765432,
  password: "passhashed",

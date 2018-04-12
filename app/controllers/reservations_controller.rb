@@ -33,6 +33,11 @@ class ReservationsController < ApplicationController
       if @reservation.save
         msg = { :status => "ok", :message => "Reservation request sent", :id => reservation_params[:meal_posting_id] }
         format.json { render :json => msg }
+
+        @meal_posting_reserved = MealPosting.find(reservation_params[:meal_posting_id])
+        @meal_creator = User.find(@meal_posting_reserved[:user_id])
+        @meal_reserver = User.find(reservation_params[:user_id])
+        UserMailer.new_order_email(@meal_reserver, @meal_creator, @meal_posting_reserved, @reservation)
       else
         msg = { :status => "failed", :message => @reservation.errors, :id => reservation_params[:meal_posting_id] }
         format.json { render :json => msg }
