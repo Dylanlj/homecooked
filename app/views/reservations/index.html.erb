@@ -34,13 +34,21 @@
               </div>
               <div class="row">
                 <!-- ALLOW HOST TO DELETE POSTING TO CLEAR SPACE ONCE ACCEPTED OR REJECTED -->
+                <div class="meal-reviews-button">
+                  <%= button_to 'Meal Reviews', meal_posting_reviews_path(reservation.meal_posting), :method => :get, :class => "btn btn-warning btn-md basic" %>
+                </div>
+
+                <div class="user-reviews-button">
+                  <%= button_to 'User Reviews', user_path(reservation.user), :method => :get, :class => "btn btn-warning btn-md basic" %>
+                </div>
+
                 <% if reservation.status === "Accepted" || reservation.status === "Rejected" %>
                   <div class="delete-button">
                     <%= button_to 'Delete', new_meal_posting_reservation_path(reservation.meal_posting), :class => "btn btn-primary btn-md delete" %>
                   </div>
                 <% else %>
                   <div class="reject-button">
-                    <%= button_to 'Reject', {:controller => "reservations", :action => "reject", id: reservation.id}, :method => :put, :remote => true, :class => "btn btn-warning btn-md reject" %>
+                    <%= button_to 'Reject', {:controller => "reservations", :action => "reject", id: reservation.id}, :method => :put, :remote => true, :class => "btn btn-warning btn-md basic" %>
                   </div>
                   <div class="accept-button">
                     <%= button_to 'Accept', {:controller => "reservations", :action => "accept", id: reservation.id}, :method => :put, :remote => true, :class => "btn btn-warning btn-md accept" %>

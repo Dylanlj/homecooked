@@ -51,7 +51,7 @@
 
 
           <div class="review-button">
-            <%= button_to 'Reviews', meal_posting_reviews_path(meal_posting), :method => :get, :class => "btn btn-warning btn-md" %>
+            <%= button_to 'Reviews', meal_posting_reviews_path(meal_posting), :method => :get, :class => "btn btn-warning btn-md meal-reviews-btn" %>
           </div>
 
           <% if current_user and current_user.id != @user.id %>
