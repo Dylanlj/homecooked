@@ -57,60 +57,64 @@
 <div class="postings-list">
 
 <% @meal_postings.each do |meal_posting| %>
-
-  <div class="meal-div" data-address='<%=meal_posting.user.address%>'>
-  <!-- Image -->
-    <div class="media">
-      <div class="media-left media-middle">
-        <%= cl_image_tag(meal_posting.media[0].url, class: 'media-object') %>
-      </div>
-
-      <div class="media-body">
-        <div class="container-fluid media-container">
-
-          <!-- Title, meal time(s), cost -->
-          <div class="row row-heading">
-            <div class="col-xs-8">
-              <b><%= meal_posting.title %></b>
-            </div>
-
-            <div class="col-xs-4">
-              Cost: $<%= meal_posting.cost %>
-            </div>
-          </div>
-
-          <!-- Description -->
-          <div class="row row-body">
-            <div class="col-xs-8">
-              <% if meal_posting.end_time %>
-                Serving from: <%= meal_posting.base_time %> - <%= meal_posting.end_time%>
-              <% else %>
-                Serving at: <%= meal_posting.base_time%>
-              <% end %>
-            </div>
-            <div class="col-xs-4">
-              Servings Left: <%= meal_posting.servings %>
-            </div>
-            <br>
-
-          </div>
-          <!-- Servings left, allergy notices -->
-          <div class="row row-footer">
-            <div class="col-xs-8">
-              <div class="marker-circle">A</div>
-
-            </div>
-            <div class="col-xs-4">
-              <!-- <button type="button" class="btn btn-primary">Order Info</button> -->
-              <%= button_to "Order Info", meal_posting_path(meal_posting), class: "btn btn-warning order-info", method: "get" %>
-            </div>
-          </div>
-
+  <!-- IF MEAL POSTING SERVINGS HITS 0, STOPS DISPLAYING IT ON HOME PAGE -->
+  <% if meal_posting.servings >= 1 %>
+    <div class="meal-div" data-address='<%=meal_posting.user.address%>'>
+    <!-- Image -->
+      <div class="media">
+        <div class="media-left media-middle">
+          <%= cl_image_tag(meal_posting.media[0].url, class: 'media-object') %>
         </div>
-      </div>
 
+        <div class="media-body">
+          <div class="container-fluid media-container">
+
+            <!-- Title, meal time(s), cost -->
+            <div class="row row-heading">
+              <div class="col-xs-8">
+                <b><%= meal_posting.title %></b>
+              </div>
+
+              <div class="col-xs-4">
+                Cost: $<%= meal_posting.cost %>
+              </div>
+            </div>
+
+            <!-- Description -->
+            <div class="row row-body">
+              <div class="col-xs-8">
+                <% if meal_posting.end_time %>
+                  Serving from: <%= meal_posting.base_time %> - <%= meal_posting.end_time%>
+                <% else %>
+                  Serving at: <%= meal_posting.base_time%>
+                <% end %>
+              </div>
+              <div class="col-xs-4">
+                Servings Left: <%= meal_posting.servings %>
+              </div>
+              <br>
+
+            </div>
+            <!-- Servings left, allergy notices -->
+            <div class="row row-footer">
+              <div class="col-xs-8">
+                <div class="marker-circle">A</div>
+
+              </div>
+              <div class="col-xs-4">
+                <!-- <button type="button" class="btn btn-primary">Order Info</button> -->
+                <%= button_to "Order Info", meal_posting_path(meal_posting), class: "btn btn-warning order-info", method: "get" %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
     </div>
-  </div>
+
+  <% end %>
+
 <% end %>
 
 </div>

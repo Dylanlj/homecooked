@@ -29,20 +29,29 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     @reservation.status = "Pending Approval"
+
+
+
+
     respond_to do |format|
-      if @reservation.save
-        msg = { :status => "ok", :message => "Reservation request sent", :id => reservation_params[:meal_posting_id] }
+      if @reservation.number_of_people && @reservation.meal_posting.servings < @reservation.number_of_people
+        msg = { :status => "failed_rel", :message => { errmsg: "Not enough servings remaining in #{@reservation.meal_posting.title}" }, :id => reservation_params[:meal_posting_id]}
         format.json { render :json => msg }
-
-        @meal_posting_reserved = MealPosting.find(reservation_params[:meal_posting_id])
-        @meal_creator = User.find(@meal_posting_reserved[:user_id])
-        @meal_reserver = User.find(reservation_params[:user_id])
-
-        # Deliver now to send e-mail faster! Alternative: deliver_later (asynchronous?)
-        UserMailer.new_order_email(@meal_reserver, @meal_creator, @meal_posting_reserved, @reservation).deliver_now
       else
-        msg = { :status => "failed", :message => @reservation.errors, :id => reservation_params[:meal_posting_id] }
-        format.json { render :json => msg }
+       if @reservation.save
+          msg = { :status => "ok", :message => "Reservation request sent", :id => reservation_params[:meal_posting_id] }
+          format.json { render :json => msg }
+
+          @meal_posting_reserved = MealPosting.find(reservation_params[:meal_posting_id])
+          @meal_creator = User.find(@meal_posting_reserved[:user_id])
+          @meal_reserver = User.find(reservation_params[:user_id])
+
+          # Deliver now to send e-mail faster! Alternative: deliver_later (asynchronous?)
+          UserMailer.new_order_email(@meal_reserver, @meal_creator, @meal_posting_reserved, @reservation).deliver_now
+        else
+          msg = { :status => "failed_model", :message => @reservation.errors, :id => reservation_params[:meal_posting_id] }
+          format.json { render :json => msg }
+        end
       end
     end
   end
@@ -75,20 +84,23 @@ class ReservationsController < ApplicationController
   def accept
     @reservation = Reservation.find(params[:id])
     @reservation.status = "Accepted"
-    @reservation.save
-
     # SUBTRACTS NUMBER OF SERVINGS ON RESERVATION FROM THE MEAL POSTING'S SERVINGS
-    @meal_posting = MealPosting.find(params[:id])
-    puts "-------------------- #{@meal_posting.inspect} -----------------------"
-    @meal_posting.servings = @meal_posting.servings - @reservation.number_of_people
-    puts "-------------------- #{@meal_posting.inspect} -----------------------"
-    @meal_posting.save
-    redirect_to reservations_url
+    puts "-------------------- #{@reservation.meal_posting.inspect} -----------------------"
+    @reservation.meal_posting.servings = @reservation.meal_posting.servings - @reservation.number_of_people
+    puts "-------------------- #{@reservation.meal_posting.inspect} -----------------------"
+    if @reservation.meal_posting.servings < 0
+      flash[:alert] = "Not enough servings left of #{@reservation.meal_posting.title}"
+      redirect_to reservations_url
+    else
+      @reservation.save
+      @reservation.meal_posting.save
+      redirect_to reservations_url
+    end
   end
 
   # FUNCTION TO CHANGE STATUS TO REJECTED ON BUTTON CLICK --- Want to make it an AJAX CALL
   def reject
-    @reservation = Reservation.find(params[:id])
+    @reservation = Reservation.find(params[reservation.id])
     @reservation.status = "Rejected"
     @reservation.save
     redirect_to reservations_url
@@ -105,7 +117,7 @@ class ReservationsController < ApplicationController
 
 
   def order
-
+    @user = User.find(current_user.id)
     @reservation = Reservation.find(params[:id])
     @reservation.paid = "yes"
     @reservation.stripe_charge_id = params[:stripeToken]
@@ -118,9 +130,11 @@ class ReservationsController < ApplicationController
       :description => 'HomeCooked Charge',
       :currency    => 'cad'
     )
-
-    if @reservation.save!
-      redirect_to reservations_path(@reservation.user), notice: 'Your Order has been placed.'
+    # If saved, figures out if 'host' or 'user' and redirects to appropriate reservation page
+    if @reservation.save! and @user.user_status === "Host"
+      redirect_to reservations_outgoing_path(@user)
+    elsif @reservation.save! and @user.user_status === "User"
+      redirect_to reservations_path(@reservation.user)#, notice: 'Your Order has been placed.'
     else
       redirect_to reservations_path(@reservation.user), flash: { error: order.errors.full_messages.first }
     end

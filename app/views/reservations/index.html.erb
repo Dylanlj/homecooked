@@ -1,12 +1,21 @@
+
+
 <!-- IF USER IS A HOST, THEIR RESERVATION PAGE LOOKS LIKE THIS -->
 <% if @user.user_status === "Host" %>
   <div class="container">
 
-    <!-- NEED TO FIGURE OUT THIS BUTTON FUNCTIONALITY -->
-    <h4 class="outgoing-reservations-link"><%= link_to "Your Outgoing Reservations", user_path(@user) %></h4>
+
+    <h4 class="outgoing-reservations-link"><%= link_to "Your Outgoing Reservations", reservations_outgoing_path(@user) %></h4>
 
     <div class="row">
       <h1 class="reservation-notification-header">Reservation Notifications: </h1>
+
+      <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %> flash-msg">
+          <h2>~ERROR: <%= value %>~</h2>
+        </div>
+      <% end %>
+
       <% @user.meal_postings.each do |meal_posting| %>
         <% meal_posting.reservations.each do |reservation| %>
           <div class="row">
@@ -124,7 +133,7 @@
             <!-- IF USER HAS PAID WITH STRIPE -->
             <% if reservation.paid %>
               <div class="row">
-                <h3>Your payment has been accepted!</h3>
+                <h3 class="accepted-payment">Your payment has been accepted!</h3>
               </div>
             <% end %>
 
