@@ -43,6 +43,11 @@ gem 'stripe'
 gem 'carrierwave'
 gem 'cloudinary'
 
+# Heroku uses sendgrid to send e-mails. 12,000 per month for free (note: can also configure to use gmail)
+# Note: Configuration requires setup of Heroku API key, sengrid username, and sengrid password on heroku's website
+# Go to your dashboard, settings, reveal config vars to set.
+gem 'sendgrid-ruby'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

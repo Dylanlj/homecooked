@@ -37,7 +37,9 @@ class ReservationsController < ApplicationController
         @meal_posting_reserved = MealPosting.find(reservation_params[:meal_posting_id])
         @meal_creator = User.find(@meal_posting_reserved[:user_id])
         @meal_reserver = User.find(reservation_params[:user_id])
-        UserMailer.new_order_email(@meal_reserver, @meal_creator, @meal_posting_reserved, @reservation)
+
+        # Deliver now to send e-mail faster! Alternative: deliver_later (asynchronous?)
+        UserMailer.new_order_email(@meal_reserver, @meal_creator, @meal_posting_reserved, @reservation).deliver_now
       else
         msg = { :status => "failed", :message => @reservation.errors, :id => reservation_params[:meal_posting_id] }
         format.json { render :json => msg }
