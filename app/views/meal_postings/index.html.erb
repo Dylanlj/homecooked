@@ -60,10 +60,15 @@
 
   <div class="meal-div" data-address='<%=meal_posting.user.address%>'>
   <!-- Image -->
-    <div class="media">
-      <div class="media-left media-middle">
-        <%= cl_image_tag(meal_posting.media[0].url, class: 'media-object') %>
-      </div>
+
+        <div class="media">
+        <div class="media-left media-middle">
+          <% if meal_posting.media[0] %>
+            <%= cl_image_tag(meal_posting.media[0].url, class: 'media-object') %>
+          <% else %>
+
+          <% end %>
+        </div>
 
       <div class="media-body">
         <div class="container-fluid media-container">

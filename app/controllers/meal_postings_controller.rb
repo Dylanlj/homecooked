@@ -32,6 +32,7 @@ class MealPostingsController < ApplicationController
   # GET /meal_postings/new
   def new
     @meal_posting = MealPosting.new
+
   end
 
   # GET /meal_postings/1/edit
@@ -42,9 +43,13 @@ class MealPostingsController < ApplicationController
   # POST /meal_postings.json
   def create
     @meal_posting = MealPosting.new(meal_posting_params)
-    puts "================="
     @meal_posting.user = current_user
-    puts @meal_posting.user
+    puts "=============="
+puts params[:category_id]
+puts "============"
+
+
+
     respond_to do |format|
       if @meal_posting.save
         format.html { redirect_to @meal_posting, notice: 'Meal posting was successfully created.' }
@@ -95,7 +100,9 @@ class MealPostingsController < ApplicationController
         :description,
         :allergy_notice,
         :servings,
-        :cost
+        :cost,
+        :category_id,
+        :image
       )
     end
 end

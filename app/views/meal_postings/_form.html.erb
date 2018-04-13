@@ -20,10 +20,17 @@
         <td><%= form.text_field :title, id: :meal_posting_title %></td>
       </div>
     </tr>
-      <tr>
+    <tr>
       <div class="form-group">
         <th class="new-meal-field"><%= form.label :description %></th>
         <td><%= form.text_area :description, id: :meal_posting_description %></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="form-group">
+        <th class="new-meal-field"><%= form.label :category %></th>
+        <td><%= form.select :category_id, options_from_collection_for_select(Category.all, :id, :name), { include_blank: true } %></td>
       </div>
     </tr>
     <tr>
@@ -31,8 +38,8 @@
         <th class="new-meal-field"><%= form.label :allergy_notice %></th>
         <td><%= form.text_field :allergy_notice, id: :meal_posting_allergy_notice %>  </td>
       </div>
-      </tr>
-      <tr>
+    </tr>
+    <tr>
       <div class="form-group">
         <th class="new-meal-field"><%= form.label :servings %></th>
         <td><%= form.number_field :servings, id: :meal_posting_servings %></td>
@@ -42,6 +49,12 @@
       <div class="form-group">
         <th class="new-meal-field"><%= form.label :cost %></th>
         <td><%= form.number_field :cost, id: :meal_posting_cost %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="form-group">
+        <th class="register-field"><%= form.label "Image: " %></th>
+        <td><%= form.file_field :image, id: :meal_image %></td>
       </div>
     </tr>
     <tr>
