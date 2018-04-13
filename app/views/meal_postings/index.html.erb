@@ -63,8 +63,8 @@
 
         <div class="media">
         <div class="media-left media-middle">
-          <% if meal_posting.media[0] %>
-            <%= cl_image_tag(meal_posting.media[0].url, class: 'media-object') %>
+          <% if meal_posting.image %>
+            <%= cl_image_tag(meal_posting.image, class: 'media-object') %>
           <% else %>
 
           <% end %>

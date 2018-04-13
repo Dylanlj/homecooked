@@ -31,7 +31,15 @@ class MealPostingsController < ApplicationController
 
   # GET /meal_postings/new
   def new
+# or params[:user_id].to_i
     @meal_posting = MealPosting.new
+    if current_user  != User.find(params[:user_id])
+      if current_user
+        redirect_to user_path(current_user.id)
+      else
+        redirect_to root_path
+      end
+    end
 
   end
 
@@ -97,7 +105,7 @@ class MealPostingsController < ApplicationController
         :allergy_notice,
         :servings,
         :cost,
-        # :image,
+        :image,
         :category_id
       )
     end
