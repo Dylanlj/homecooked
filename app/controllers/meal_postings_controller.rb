@@ -44,10 +44,6 @@ class MealPostingsController < ApplicationController
   def create
     @meal_posting = MealPosting.new(meal_posting_params)
     @meal_posting.user = current_user
-    puts "=============="
-puts params[:category_id]
-puts "============"
-
 
 
     respond_to do |format|
@@ -101,8 +97,10 @@ puts "============"
         :allergy_notice,
         :servings,
         :cost,
-        :category_id,
-        :image
+        # :image,
+        :category_id
       )
     end
+
+
 end
