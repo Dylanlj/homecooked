@@ -4,9 +4,9 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>An order has been placed from <%= meal_buyer.name %></h1>
+    <h1>An order has been placed from <%= @meal_buyer.name %></h1>
     <p>
-      You have <%= reservation_details.number_of_people %> request(s) for <%= meal.title %> at <%= reservation_details.time %>.
+      You have <%= @reservation_details.number_of_people %> request(s) for <%= @meal.title %> at <%= @reservation_details.time %>.
     </p>
 
     <h2>Thank you for using HomeCooked!</h2>
