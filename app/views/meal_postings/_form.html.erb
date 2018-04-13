@@ -1,52 +1,65 @@
-<%= form_with(model: meal_posting, local: true) do |form| %>
-  <% if meal_posting.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(meal_posting.errors.count, "error") %> prohibited this meal_posting from being saved:</h2>
+<div class="create-meal-posting">
+  <%= form_with(model: meal_posting, local: true) do |form| %>
+    <% if meal_posting.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(meal_posting.errors.count, "error") %> prohibited this meal_posting from being saved:</h2>
 
-      <ul>
-      <% meal_posting.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% meal_posting.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
+  <table clas="new-meal-table">
+      <tr>
+      <div class="form-group">
+        <th class="new-meal-field"><%= form.label :title %></th>
+        <td><%= form.text_field :title, id: :meal_posting_title %></td>
+      </div>
+    </tr>
+      <tr>
+      <div class="form-group">
+        <th class="new-meal-field"><%= form.label :description %></th>
+        <td><%= form.text_area :description, id: :meal_posting_description %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="form-group">
+        <th class="new-meal-field"><%= form.label :allergy_notice %></th>
+        <td><%= form.text_field :allergy_notice, id: :meal_posting_allergy_notice %>  </td>
+      </div>
+      </tr>
+      <tr>
+      <div class="form-group">
+        <th class="new-meal-field"><%= form.label :servings %></th>
+        <td><%= form.number_field :servings, id: :meal_posting_servings %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="form-group">
+        <th class="new-meal-field"><%= form.label :cost %></th>
+        <td><%= form.number_field :cost, id: :meal_posting_cost %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="form-group">
+        <th class="new-meal-field"><%= form.label :base_time %></th>
+        <td><%= form.number_field :base_time, id: :meal_posting_base_time %></td>
+      </div>
+    </tr>
+      <tr>
+      <div class="form-group">
+        <th class="new-meal-field"><%= form.label :end_time %></th>
+        <td><%= form.number_field :end_time, id: :meal_posting_end_time %></td>
+      </div>
+    </tr>
+  </table>
+    <div class="actions">
+      <%= form.submit %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :base_time %>
-    <%= form.number_field :base_time, id: :meal_posting_base_time %>
-  </div>
-
-  <div class="field">
-    <%= form.label :end_time %>
-    <%= form.number_field :end_time, id: :meal_posting_end_time %>
-  </div>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :meal_posting_title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :meal_posting_description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :allergy_notice %>
-    <%= form.text_field :allergy_notice, id: :meal_posting_allergy_notice %>
-  </div>
-
-  <div class="field">
-    <%= form.label :servings %>
-    <%= form.number_field :servings, id: :meal_posting_servings %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cost %>
-    <%= form.number_field :cost, id: :meal_posting_cost %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

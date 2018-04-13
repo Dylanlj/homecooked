@@ -27,6 +27,10 @@
 
 <hr class="user-meal-posting-separate">
 
+  <div class="new-meal-button">
+    <%= button_to "Create a Meal", new_user_meal_posting_path(@user), :method => :get, :class => "btn btn-warning btn-md basic"%>
+  </div>
+
 <div class="container">
 
   <% if current_user and current_user.id != @user.id %>

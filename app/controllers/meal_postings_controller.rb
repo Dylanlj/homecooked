@@ -42,7 +42,9 @@ class MealPostingsController < ApplicationController
   # POST /meal_postings.json
   def create
     @meal_posting = MealPosting.new(meal_posting_params)
-
+    puts "================="
+    @meal_posting.user = current_user
+    puts @meal_posting.user
     respond_to do |format|
       if @meal_posting.save
         format.html { redirect_to @meal_posting, notice: 'Meal posting was successfully created.' }
@@ -85,15 +87,15 @@ class MealPostingsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    # def meal_posting_params
-    #   params.require(:meal_posting).permit(
-    #     :base_time,
-    #     :end_time,
-    #     :title,
-    #     :description,
-    #     :allergy_notice,
-    #     :servings,
-    #     :cost
-    #   )
-    # end
+    def meal_posting_params
+      params.require(:meal_posting).permit(
+        :base_time,
+        :end_time,
+        :title,
+        :description,
+        :allergy_notice,
+        :servings,
+        :cost
+      )
+    end
 end
