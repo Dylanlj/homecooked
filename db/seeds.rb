@@ -10,10 +10,12 @@ puts "Seeding Data ..."
 
 # Only run on development (local) instances not on production, etc.
 # IS THIS NEEDED? ################
-unless Rails.env.development?
- puts "Development seeds only (for now)!"
- exit 0
-end
+
+# PB: Getting rid of this...
+# unless Rails.env.development?
+#  puts "Development seeds only (for now)!"
+#  exit 0
+# end
 
 # File.open(File.join(Rails.root, 'test.jpg'))
 
