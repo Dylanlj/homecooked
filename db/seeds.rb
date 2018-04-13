@@ -281,53 +281,52 @@ mealposting12 = user4.meal_postings.create!({
 puts "Seeding Media ..."
 
 mealposting1.media.create!({
-  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123384/1467150710-lemon-butter-chicken-pasta-04.jpg"
+  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123384/1467150710-lemon-butter-chicken-pasta-04.jpg"
 })
 
 mealposting2.media.create!({
-  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123122/tz1riiqxm3qa9ixtucoc.jpg"
+  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123122/tz1riiqxm3qa9ixtucoc.jpg"
 })
 
 mealposting3.media.create!({
-  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123029/bigstock-Homemade-Macaroni-And-Cheese-59176988.jpg"
+  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123029/bigstock-Homemade-Macaroni-And-Cheese-59176988.jpg"
 })
 
 mealposting4.media.create!({
-  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123318/fisaobewqwfp9ey9grnd.jpg"
+  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123318/fisaobewqwfp9ey9grnd.jpg"
 })
 
 mealposting5.media.create!({
-  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123150/pjlbqbisxjphpypflk9u.jpg"
+  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123150/pjlbqbisxjphpypflk9u.jpg"
 })
 
 mealposting6.media.create!({
-  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123286/Flavorful-Chicken-Fajitas_exps12540_BOS3149327B02_08_5bC_RMS.jpg"
+  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123286/Flavorful-Chicken-Fajitas_exps12540_BOS3149327B02_08_5bC_RMS.jpg"
 })
 
 mealposting7.media.create!({
-  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123061/106595821.jpg"
+  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123061/106595821.jpg"
 })
 
 mealposting8.media.create!({
-  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123226/uceisaqtnhfey6gokmrj.jpg"
+  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123226/uceisaqtnhfey6gokmrj.jpg"
 })
 
 mealposting9.media.create!({
-  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123171/fwcwyzfovysbrb4u7bue.jpg"
+  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123171/fwcwyzfovysbrb4u7bue.jpg"
 })
 
 mealposting10.media.create!({
-  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123194/ank1h1rgms3zbgcot9so.jpg"
+  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123194/ank1h1rgms3zbgcot9so.jpg"
 })
 
 mealposting11.media.create!({
-  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123089/jqhlzqmsugoxuggmpzkl.jpg"
+  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123089/jqhlzqmsugoxuggmpzkl.jpg"
 })
 
 mealposting12.media.create!({
-  url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123273/1.jpg"
+  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123273/1.jpg"
 })
-
 
 puts "Seeding Reservations ..."
 
