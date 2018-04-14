@@ -60,7 +60,7 @@
                     <%= button_to 'Reject', {:controller => "reservations", :action => "reject", id: reservation.id}, :method => :put, :remote => true, :class => "btn btn-warning btn-md basic" %>
                   </div>
                   <div class="accept-button">
-                    <%= button_to 'Accept', {:controller => "reservations", :action => "accept", id: reservation.id}, :method => :put, :remote => true, :class => "btn btn-warning btn-md accept" %>
+                    <%= button_to 'Accept', {:controller => "reservations", :action => "accept", id: reservation.id}, :method => :put, :remote => true, :class => "btn btn-success btn-md accept" %>
                   </div>
                 <% end %>
               </div>

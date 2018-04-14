@@ -2,4 +2,6 @@
 
 <%= render 'form', meal_posting: @meal_posting %>
 
-<%= link_to 'Back', meal_postings_path %>
+<div class="container back-btn-container">
+  <%= link_to 'Back', meal_postings_path, class: "btn btn-primary back-btn" %>
+</div>

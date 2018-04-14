@@ -35,6 +35,13 @@
   <% end %>
   <% if current_user and current_user.id != @user.id %>
     <h2>Add a review:</h2>
+    <!-- Displays error messages if form submission is not correct -->
+    <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %> flash-msg">
+          <h3>~ERROR: <%= value %>~</h3>
+        </div>
+    <% end %>
+
     <%= form_for [@user, @review] do |f| %>
       <%= f.hidden_field :ratee_id,  value: @user.id %>
       <dt>Comment: </dt>
