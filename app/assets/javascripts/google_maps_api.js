@@ -9,14 +9,32 @@ let labelIndex = 0
 // unformatted addresses
 let userAddresses = []
 
-function myFunction(){
-  console.log("gdsgfdgfdsf")
-  console.log($(this))
-  console.log($( "#user_address" ).val())
+
+function giveProperAddress (geoObject) {
+  console.log(geoObject[0].formatted_address)
+  // console.log(geoObject[0].formattedAddress)
+  if (geoObject[0]){
+    $("#user_address").val(geoObject[0].formatted_address)
+    $("#latitude").val(geoObject[0].geometry.location.lat())
+    $("#longitude").val(geoObject[0].geometry.location.lng())
+    alert($("#user_address").val())
+    $("#register-form").trigger("submit")
+  } else {
+    // tell them their submitted address isn't valid
+  }
 }
 
+$(document).ready(function(){
+    $(".new-user-submit").click(function(event){
+      event.preventDefault()
+      let enteredAddress
+      enteredAddress = $("#user_address").val()
+      geocoder = new google.maps.Geocoder()
+      codeAddress(enteredAddress, giveProperAddress)
+    });
+});
 
-$( "#register-form" ).submit(myFunction())
+
 
 function codeAddress(address, callback) {
 
@@ -51,6 +69,7 @@ labelIndex = 0
   }
   codeAddress(document.getElementById('googleMap').dataset.userLocation, setUpMap)
 }
+
 
 function orderMarkerByProximity(myLocationMarker) {
 
