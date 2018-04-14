@@ -44,7 +44,7 @@ user2 = User.create!({
  name: "Denzel Washington",
  # email: "denzel@moviestar.com",
  email: "bartnic1@gmail.com",
- address: "126 Bloor Street West Toronto",
+ address: "214 College Street Toronto",
  phone_number: 1098765432,
  password: "passhashed",
  password_confirmation: "passhashed",
@@ -66,11 +66,55 @@ user4 = User.create!({
  user_status: "Host",
  name: "Tom Cruise",
  email: "mission@impossible.com",
- address: "300 King Street East Toronto",
+ address: "130 King Street West Toronto",
  phone_number: 1234567890,
  password: "tommyboy",
  password_confirmation: "tommyboy",
  remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523313753/1341605986_tomcruise-350.jpg"
+})
+
+user5 = User.create!({
+ user_status: "Host",
+ name: "Mike Babcock",
+ email: "goleafsgo@email.com",
+ address: "282 Bathurst Street Toronto",
+ phone_number: 1234567809,
+ password: "goleafsgo",
+ password_confirmation: "goleafsgo",
+ remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523730105/hwbqsdnk9cougvs25x8d.jpg"
+})
+
+user6 = User.create!({
+ user_status: "Host",
+ name: "Liam Neeson",
+ email: "taken@baddad.com",
+ address: "10 Fort York Blvd Toronto",
+ phone_number: 1234567980,
+ password: "taken",
+ password_confirmation: "taken",
+ remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523730046/p97usbc3rmduxm31thtt.jpg"
+})
+
+user7 = User.create!({
+ user_status: "Host",
+ name: "Melissa McCarthy",
+ email: "funnylady@email.com",
+ address: "280 Spadina Ave Toronto",
+ phone_number: 1234567890,
+ password: "funnylady",
+ password_confirmation: "funnylady",
+ remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523730013/Melissa-McCarthy1370206913.jpg"
+})
+
+user8 = User.create!({
+ user_status: "Host",
+ name: "Gordon Ramsay",
+ email: "cheframsay@masterchef.com",
+ address: "200 Bay Street Toronto",
+ phone_number: 1234667890,
+ password: "masterchef",
+ password_confirmation: "masterchef",
+ remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523729963/6132HiPT_AL._UX250_.jpg"
 })
 
 puts "Seeding Categories ..."
@@ -175,7 +219,7 @@ mealposting2 = user1.meal_postings.create!({
  remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123122/tz1riiqxm3qa9ixtucoc.jpg"
 })
 
-mealposting3 = user2.meal_postings.create!({
+mealposting3 = user4.meal_postings.create!({
  category_id: 6,
  base_time: 530,
  title: "Kraft Dinner",
@@ -186,7 +230,7 @@ mealposting3 = user2.meal_postings.create!({
  remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123029/bigstock-Homemade-Macaroni-And-Cheese-59176988.jpg"
 })
 
-mealposting4 = user2.meal_postings.create!({
+mealposting4 = user4.meal_postings.create!({
  category_id: 3,
  base_time: 730,
  title: "Peanut butter and jelly sandwiches",
@@ -197,7 +241,7 @@ mealposting4 = user2.meal_postings.create!({
  remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123318/fisaobewqwfp9ey9grnd.jpg"
 })
 
-mealposting5 = user3.meal_postings.create!({
+mealposting5 = user5.meal_postings.create!({
  category_id: 3,
  base_time: 530,
  end_time: 800,
@@ -209,7 +253,7 @@ mealposting5 = user3.meal_postings.create!({
  remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123150/pjlbqbisxjphpypflk9u.jpg"
 })
 
-mealposting6 = user1.meal_postings.create!({
+mealposting6 = user5.meal_postings.create!({
  category_id: 2,
  base_time: 500,
  end_time: 700,
@@ -221,7 +265,7 @@ mealposting6 = user1.meal_postings.create!({
  remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123286/Flavorful-Chicken-Fajitas_exps12540_BOS3149327B02_08_5bC_RMS.jpg"
 })
 
-mealposting7 = user3.meal_postings.create!({
+mealposting7 = user6.meal_postings.create!({
  category_id: 17,
  base_time: 600,
  title: "Ice Cubes",
@@ -232,7 +276,7 @@ mealposting7 = user3.meal_postings.create!({
  remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123061/106595821.jpg"
 })
 
-mealposting8 = user4.meal_postings.create!({
+mealposting8 = user6.meal_postings.create!({
  category_id: 3,
  base_time: 600,
  title: "Steak Frites",
@@ -243,7 +287,7 @@ mealposting8 = user4.meal_postings.create!({
  remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123226/uceisaqtnhfey6gokmrj.jpg"
 })
 
-mealposting9 = user4.meal_postings.create!({
+mealposting9 = user7.meal_postings.create!({
  category_id: 17,
  base_time: 500,
  end_time: 730,
@@ -255,7 +299,7 @@ mealposting9 = user4.meal_postings.create!({
  remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123171/fwcwyzfovysbrb4u7bue.jpg"
 })
 
-mealposting10 = user4.meal_postings.create!({
+mealposting10 = user7.meal_postings.create!({
  category_id: 17,
  base_time: 500,
  end_time: 730,
@@ -267,7 +311,7 @@ mealposting10 = user4.meal_postings.create!({
  remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123194/ank1h1rgms3zbgcot9so.jpg"
 })
 
-mealposting11 = user4.meal_postings.create!({
+mealposting11 = user8.meal_postings.create!({
  category_id: 1,
  base_time: 500,
  title: "Spaghetti and Meatballs",
@@ -278,7 +322,7 @@ mealposting11 = user4.meal_postings.create!({
  remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123089/jqhlzqmsugoxuggmpzkl.jpg"
 })
 
-mealposting12 = user4.meal_postings.create!({
+mealposting12 = user8.meal_postings.create!({
  category_id: 17,
  base_time: 500,
  end_time: 730,
@@ -387,14 +431,76 @@ user1.user_ratings.create!({
  comment: "Dwayne insisted we call him ‘The Rock’ the entire time and wouldn’t stop eating.  He spent the whole meal talking about some furious and fast movie franchise.  Dwayne was annoying."
 })
 
+user2.user_ratings.create!({
+ ratee_id: 1,
+ rating: 6,
+ comment: "Gaga is a pretty good host.  The decorations were pretty out there but I'm not judging.  Food was pretty good but I'm pretty sure her personal chef made it and not her so I don't know what to say about that."
+})
+
+user2.user_ratings.create!({
+ ratee_id: 4,
+ rating: 3,
+ comment: "Tom is a pretty wierd guy.  He seems to be pretty into himself and he insists he is the biggest movie star to ever live.  I think he still believes he is a character out of mission impossible."
+})
+
+user3.user_ratings.create!({
+ ratee_id: 1,
+ rating: 9,
+ comment: "Lady Gaga is a class act.  She is all about her fans and just wants people to be happy and accepting. Great host."
+})
+
 user4.user_ratings.create!({
  ratee_id: 2,
  rating: 7,
- comment: "Denzel was a good time!  We talked about how we were both super big movie stars and stuff.  Scientology WOOOO!"
+ comment: "Denzel was a good time!  We talked about how we were both super big movie stars and stuff.  Scientology WOOOO! -Special Agent Tom Cruise"
 })
 
 user4.user_ratings.create!({
  ratee_id: 3,
  rating: 4,
- comment: "Dwayne isn't even that big.  I could probably bench more than him.  I think I am in better shape than Dwayne."
+ comment: "Dwayne isn't even that big.  I could probably bench more than him.  I think I am in better shape than Dwayne. -Special Agent Tom Cruise"
 })
+
+user5.user_ratings.create!({
+ ratee_id: 6,
+ rating: 8,
+ comment: "Liam is a badass.  I heard he once had his daughter taken 3 times in 3 movies and managed to get her back every time.  I feel like he should be more careful from now on so there isn't a 'Taken 4'."
+})
+
+user6.user_ratings.create!({
+ ratee_id: 5,
+ rating: 10,
+ comment: "Mike seems like a hard-working, no-nonsense type of guy which I like.  He also has a great palate in the kitchen.  Great spices!"
+})
+
+user7.user_ratings.create!({
+ ratee_id: 8,
+ rating: 1,
+ comment: "Gordon is a jerk.  He just yelled at me the whole time for making mistakes."
+})
+
+user8.user_ratings.create!({
+ ratee_id: 1,
+ rating: 2,
+ comment: "HORRIBLE, BAD, WOULDN'T FEED IT TO MY DOG! -Gordon Ramsay"
+})
+
+user8.user_ratings.create!({
+ ratee_id: 4,
+ rating: 2,
+ comment: "HORRIBLE, BAD, WOULDN'T FEED IT TO MY DOG! -Gordon Ramsay"
+})
+
+user8.user_ratings.create!({
+ ratee_id: 5,
+ rating: 2,
+ comment: "HORRIBLE, BAD, WOULDN'T FEED IT TO MY DOG! -Gordon Ramsay"
+})
+
+user8.user_ratings.create!({
+ ratee_id: 6,
+ rating: 2,
+ comment: "HORRIBLE, BAD, WOULDN'T FEED IT TO MY DOG! -Gordon Ramsay"
+})
+
+
