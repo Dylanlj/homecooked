@@ -24,7 +24,7 @@ class MealRatingsController < ApplicationController
       redirect_to meal_posting_reviews_path(@meal_posting)
 
     else
-
+      flash[:alert] = "Must include a comment"
       redirect_to meal_posting_reviews_path(@meal_posting)
     end
   end

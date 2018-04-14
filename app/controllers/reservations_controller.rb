@@ -82,9 +82,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
     @reservation.status = "Accepted"
     # SUBTRACTS NUMBER OF SERVINGS ON RESERVATION FROM THE MEAL POSTING'S SERVINGS
-    puts "-------------------- #{@reservation.meal_posting.inspect} -----------------------"
     @reservation.meal_posting.servings = @reservation.meal_posting.servings - @reservation.number_of_people
-    puts "-------------------- #{@reservation.meal_posting.inspect} -----------------------"
     if @reservation.meal_posting.servings < 0
       flash[:alert] = "Not enough servings left of #{@reservation.meal_posting.title}"
       redirect_to reservations_url

@@ -28,13 +28,20 @@
 <hr class="user-meal-posting-separate">
 
 <div class="container">
-  <% if current_user === @user %>
+  <% if current_user === @user && current_user.user_status == "Host" %>
     <div class="new-meal-button">
       <%= button_to "Create a Meal", new_user_meal_posting_path(@user), :method => :get, :class => "btn btn-warning btn-md basic"%>
     </div>
   <% end %>
   <% if current_user and current_user.id != @user.id %>
     <h2>Add a review:</h2>
+    <!-- Displays error messages if form submission is not correct -->
+    <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %> flash-msg">
+          <h3>~ERROR: <%= value %>~</h3>
+        </div>
+    <% end %>
+
     <%= form_for [@user, @review] do |f| %>
       <%= f.hidden_field :ratee_id,  value: @user.id %>
       <dt>Comment: </dt>
@@ -59,6 +66,13 @@
           <tr>
             <td class="review-rating"><%= review.rating %> / 10</td>
             <td class="review-comment"><%= review.comment %></td>
+
+
+            <% if review.user.id == current_user.id %>
+            <td> Sup </td>
+            <% end %>
+
+
           </tr>
         <% end %>
       </tbody>

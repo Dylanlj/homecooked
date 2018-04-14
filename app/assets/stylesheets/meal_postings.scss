@@ -181,6 +181,12 @@ table.new-meal-table {
   align-self: center;
   text-align: center;
 }
+
+.back-btn-container {
+  margin-top: 5px;
+  text-align: center;
+}
+
 ////////////////////////////
 // Meal Posting Show Page //
 ////////////////////////////
@@ -274,4 +280,13 @@ hr.user-meal-posting-separate {
     padding: 10px;
   }
 }
+
+////////////////////////////
+// Meal Posting Reviews   //
+////////////////////////////
+
+.meal-rating-container {
+  margin-bottom: 20px;
+}
+
 

@@ -31,16 +31,23 @@ class MealPostingsController < ApplicationController
 
   # GET /meal_postings/new
   def new
-# or params[:user_id].to_i
-    @meal_posting = MealPosting.new
-    if current_user  != User.find(params[:user_id])
-      if current_user
-        redirect_to user_path(current_user.id)
-      else
-        redirect_to root_path
-      end
-    end
+  # or params[:user_id].to_i
 
+    # Stops users with status "User" from accessing meal creation form by typing in URL
+    if current_user.user_status == "User"
+      redirect_to root_path
+    else
+
+      @meal_posting = MealPosting.new
+      if current_user  != User.find(params[:user_id])
+        if current_user
+          redirect_to user_path(current_user.id)
+        else
+          redirect_to root_path
+        end
+      end
+
+    end
   end
 
   # GET /meal_postings/1/edit
@@ -56,7 +63,7 @@ class MealPostingsController < ApplicationController
 
     respond_to do |format|
       if @meal_posting.save
-        format.html { redirect_to @meal_posting, notice: 'Meal posting was successfully created.' }
+        format.html { redirect_to @meal_posting }#, notice: 'Meal posting was successfully created.' }
         format.json { render :show, status: :created, location: @meal_posting }
       else
         format.html { render :new }

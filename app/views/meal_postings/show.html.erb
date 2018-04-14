@@ -65,65 +65,65 @@
 
           <% formID = meal_posting.id %>
           <!-- Modal -->
-          <div class="modal fade modal-<%=formID%>" role="dialog">
-            <div class="modal-dialog">
+            <div class="modal fade modal-<%=formID%>" role="dialog">
+              <div class="modal-dialog">
 
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close-<%=formID%> close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Select Meal Options</h4>
-                </div>
-                <div class="modal-body">
-                <!-- Submission Form (local true means no ajax request) -->
-                <%= form_with(model: @reservation, remote: true, url: create_reservation_path, class: formID) do |form| %>
-                  <% if @reservation.errors.any? %>
-                    <div id="error_explanation">
-                      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this meal_posting from being saved:</h2>
-                      <ul>
-                      <% @reservation.errors.full_messages.each do |message| %>
-                        <li><%= message %></li>
-                      <% end %>
-                      </ul>
-                    </div>
-
-                  <% end %>
-
-                  <%= form.hidden_field :user_id, value: current_user.id %>
-                  <%= form.hidden_field :meal_posting_id, value: meal_posting.id %>
-
-                  <!-- http://api.rubyonrails.org/ search "text_field" for format -->
-                  <!-- ActionView::Helpers::FormBuilder (search "form") -->
-                  <!-- text_field: object_name, attribute_name (key) -->
-                  <table>
-                    <tr class="modal-form-group">
-                      <td><%= form.label :number_of_people %></td>
-                      <td><%= form.number_field :number_of_people, id: :number_of_people %></td>
-                    </tr>
-                    <tr class="modal-form-group">
-                      <td><%= form.label :allergies %></td>
-                      <td><%= form.text_field :allergies, id: :allergies %></td>
-                    </tr>
-                    <% if meal_posting.end_time %>
-                    <tr class="modal-form-group">
-                      <td><%= form.label :reservation_time %></td>
-                      <td><%= form.number_field :time, id: :time %></td>
-                    </tr>
-                    <% else %>
-                      <%= form.hidden_field :time, value: meal_posting.base_time %>
-                    <% end %>
-                  </table>
-                  <div class="modal-footer">
-                    <%= form.submit "Submit", class: "btn btn-warning btn-md modal-reserve submit-"+formID.to_s %>
-                    <button type="button" class="action btn btn-default modal-close close-<%=formID%>" data-dismiss="modal">Close</button>
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close-<%=formID%> close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Select Meal Options</h4>
                   </div>
-                  <div class="messages-<%=formID%>"></div>
-                  <% end %>
-                </div>
-              </div>
+                  <div class="modal-body">
+                  <!-- Submission Form (local true means no ajax request) -->
+                    <%= form_with(model: @reservation, remote: true, url: create_reservation_path, class: formID) do |form| %>
+                      <% if @reservation.errors.any? %>
+                        <div id="error_explanation">
+                          <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this meal_posting from being saved:</h2>
+                          <ul>
+                          <% @reservation.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                          <% end %>
+                          </ul>
+                        </div>
 
+                      <% end %>
+
+                      <%= form.hidden_field :user_id, value: current_user.id %>
+                      <%= form.hidden_field :meal_posting_id, value: meal_posting.id %>
+
+                      <!-- http://api.rubyonrails.org/ search "text_field" for format -->
+                      <!-- ActionView::Helpers::FormBuilder (search "form") -->
+                      <!-- text_field: object_name, attribute_name (key) -->
+                      <table>
+                        <tr class="modal-form-group">
+                          <td><%= form.label :number_of_people %></td>
+                          <td><%= form.number_field :number_of_people, id: :number_of_people %></td>
+                        </tr>
+                        <tr class="modal-form-group">
+                          <td><%= form.label :allergies %></td>
+                          <td><%= form.text_field :allergies, id: :allergies %></td>
+                        </tr>
+                        <% if meal_posting.end_time %>
+                        <tr class="modal-form-group">
+                          <td><%= form.label :reservation_time %></td>
+                          <td><%= form.number_field :time, id: :time %></td>
+                        </tr>
+                        <% else %>
+                          <%= form.hidden_field :time, value: meal_posting.base_time %>
+                        <% end %>
+                      </table>
+                      <div class="modal-footer">
+                        <%= form.submit "Submit", class: "btn btn-warning btn-md modal-reserve submit-"+formID.to_s %>
+                        <button type="button" class="action btn btn-default modal-close close-<%=formID%>" data-dismiss="modal">Close</button>
+                      </div>
+                      <div class="messages-<%=formID%>"></div>
+                    <% end %>
+                  </div>
+                </div>
+
+              </div>
             </div>
-          </div>
           <% end %>
 
         </div>
