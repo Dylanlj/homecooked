@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# As recommended by heroku:
+ruby '2.3.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
@@ -42,6 +44,11 @@ gem 'stripe'
 
 gem 'carrierwave'
 gem 'cloudinary'
+
+# Heroku uses sendgrid to send e-mails. 12,000 per month for free (note: can also configure to use gmail)
+# Note: Configuration requires setup of Heroku API key, sengrid username, and sengrid password on heroku's website
+# Go to your dashboard, settings, reveal config vars to set.
+gem 'sendgrid-ruby'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

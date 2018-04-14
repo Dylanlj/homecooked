@@ -7,5 +7,13 @@
 //App
 @import "meal_postings";
 @import "users";
+@import "reservations";
 
 //Global
+
+
+// Padding so the top of page content is not covered by fixed navbar
+body {
+    padding-top: 55px;
+}
+

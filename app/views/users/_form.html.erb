@@ -1,5 +1,5 @@
 <div class="user-register">
-  <%= form_with(model: user, local: true, :html => { :multipart => true }) do |form| %>
+  <%= form_with(model: user, local: true, :html => { :multipart => true, :id => "register-form" }) do |form| %>
     <% if user.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>

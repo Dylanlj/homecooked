@@ -29,13 +29,37 @@
           </div>
 
           <!-- NEED TO IMPLEMENT STRIPE POPUP WHEN THIS BUTTON IS CLICKED -->
-          <% if reservation.status === "Accepted" %>
-          <div class="row">
-            <div class="pay-button">
-              <%= button_to 'Pay Now', new_meal_posting_reservation_path(reservation.meal_posting), :class => "btn btn-warning btn-md pay" %>
+          <% if reservation.status === "Accepted" && !reservation.paid %>
+            <div class="row">
+
+              <div class="col-xs-12 pay-button">
+                <%= form_tag reservation_order_path(reservation), :method => "put" do %>
+                  <% if flash[:error].present? %>
+                    <div id="error_explanation">
+                      <p><%= flash[:error] %></p>
+                    </div>
+                  <% end %>
+                  <script
+                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                    data-amount="<%= reservation.meal_posting.cost * reservation.number_of_people * 100 %>"
+                    data-name="Jungle"
+                    data-description="HomeCooked Order"
+                    data-locale="auto"
+                    data-currency="cad">
+                  </script>
+                <% end %>
+              </div>
             </div>
-          </div>
+            </div>
           <% end %>
+
+            <!-- IF USER HAS PAID WITH STRIPE -->
+            <% if reservation.paid %>
+              <div class="row">
+                <h3 class="accepted-payment">Your payment has been accepted!</h3>
+              </div>
+            <% end %>
           <!-- USER CAN DELETE RESERVATION FROM PAGE TO CLEAR SPACE IF IT WAS REJECTED  -->
           <% if reservation.status === "Rejected" %>
             <div class="row">
