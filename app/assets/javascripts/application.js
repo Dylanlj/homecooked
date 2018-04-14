@@ -14,4 +14,5 @@
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require turbolinks
-//= require_tree .
+//= require cable
+//= require google_maps_api
