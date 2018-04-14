@@ -7,6 +7,9 @@ let postingMarkers = []
 let labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 let labelIndex = 0
 let userAddresses = []
+let infoWindow
+
+
 
 
 
@@ -60,13 +63,14 @@ $(document).ready(function(){
 });
 
 
-
 ///////////////////
 //INDEX HOME PAGE//
 ///////////////////
 
 function initialize() {
-labelIndex = 0
+  infoWindow = new google.maps.InfoWindow()
+
+  labelIndex = 0
 
   geocoder = new google.maps.Geocoder();
 
@@ -78,7 +82,6 @@ labelIndex = 0
       center: latlng
     }
     map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
-
     yourMarker = new google.maps.Marker({
       map: map,
       position: latlng
@@ -129,8 +132,12 @@ function mealMarkerCallback (addressData) {
     formattedAddress: addressData.address
   })
 
-  postingMarkers.push(marker)
+  google.maps.event.addListener(marker,  'click', function(){
+    infoWindow.setContent(`<span>${marker.formattedAddress}</span>`)
+    infoWindow.open(map, marker)
+  })
 
+  postingMarkers.push(marker)
   orderMarkerByProximity(yourMarker)
 }
 
@@ -146,8 +153,6 @@ function mealPostingMarkers() {
     let addressData = element.dataset
     if (!userAddresses.includes(addressData.address)){
       userAddresses.push(addressData.address)
-// console.log(addressData.latitude)
-
       mealMarkerCallback(addressData)
 
     }
