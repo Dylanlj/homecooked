@@ -91,8 +91,8 @@ ActiveRecord::Schema.define(version: 20180413202738) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "latitude"
-    t.string "longitude"
+    t.decimal "latitude", precision: 15, scale: 13
+    t.decimal "longitude", precision: 15, scale: 13
   end
 
 end

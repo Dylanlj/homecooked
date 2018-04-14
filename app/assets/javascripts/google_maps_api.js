@@ -6,26 +6,51 @@ let yourMarker
 let postingMarkers = []
 let labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 let labelIndex = 0
-// unformatted addresses
 let userAddresses = []
 
 
+
+////////////////
+//GEOCODE CALL//
+////////////////
+
+function codeAddress(address, callback) {
+
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == 'OK') {
+      callback(results)
+    } else {
+      console.log('Geocode was not successful for the following reason: ' + status);
+      invalidAddress()
+    }
+  });
+}
+
+
+//////////////////////////
+//USER REGISTRATION CALL//
+//////////////////////////
+function invalidAddress(){
+  $("#geocode-address-error").text("Could not find address, please try again")
+
+}
+
 function giveProperAddress (geoObject) {
-  console.log(geoObject[0].formatted_address)
+  alert(geoObject)
+  console.log(geoObject[0])
   // console.log(geoObject[0].formattedAddress)
   if (geoObject[0]){
     $("#user_address").val(geoObject[0].formatted_address)
     $("#latitude").val(geoObject[0].geometry.location.lat())
     $("#longitude").val(geoObject[0].geometry.location.lng())
     alert($("#user_address").val())
-    $("#register-form").trigger("submit")
-  } else {
-    // tell them their submitted address isn't valid
+    $(".new-user-submit").trigger("click")
   }
 }
 
 $(document).ready(function(){
-    $(".new-user-submit").click(function(event){
+    $("#register-form").submit(function(event){
+      // alert(event)
       event.preventDefault()
       let enteredAddress
       enteredAddress = $("#user_address").val()
@@ -36,16 +61,9 @@ $(document).ready(function(){
 
 
 
-function codeAddress(address, callback) {
-
-  geocoder.geocode( { 'address': address}, function(results, status) {
-    if (status == 'OK') {
-      callback(results)
-    } else {
-      console.log('Geocode was not successful for the following reason: ' + status);
-    }
-  });
-}
+///////////////////
+//INDEX HOME PAGE//
+///////////////////
 
 function initialize() {
 labelIndex = 0
@@ -96,19 +114,19 @@ function orderMarkerByProximity(myLocationMarker) {
 
 function addLabelsToDOM (marker, allMarkers) {
   $( document ).ready(function() {
-    let check = $('.meal-div[data-address="' + marker.originalAddress + '"]').find(".marker-circle").text(marker.label)
+    let check = $('.meal-div[data-address="' + marker.formattedAddress + '"]').find(".marker-circle").text(marker.label)
   });
 
 }
 
-function mealMarkerCallback (geoObject) {
-
+function mealMarkerCallback (addressData) {
+  let latitude = parseFloat(addressData.latitude)
+  let longitude = parseFloat(addressData.longitude)
   let marker = new google.maps.Marker({
     map: map,
-    position: geoObject[0].geometry.location,
-    originalAddress: userAddresses[labelIndex],
+    position: {lat: latitude , lng: longitude},
     label: labels[labelIndex++ % labels.length],
-    formattedAddress: geoObject[0].formatted_address
+    formattedAddress: addressData.address
   })
 
   postingMarkers.push(marker)
@@ -125,16 +143,13 @@ function mealPostingMarkers() {
   userAddresses.length = 0
   for (let element of document.getElementsByClassName("meal-div")) {
 
-    let address = element.dataset.address
-    if (!userAddresses.includes(address)){
-      userAddresses.push(address)
-      if (userAddresses.length === 5) {
-        setTimeout(function() {codeAddress(address, mealMarkerCallback)}, 1300);
-      } else {
+    let addressData = element.dataset
+    if (!userAddresses.includes(addressData.address)){
+      userAddresses.push(addressData.address)
+// console.log(addressData.latitude)
 
-        codeAddress(address, mealMarkerCallback)
+      mealMarkerCallback(addressData)
 
-      }
     }
   }
 
