@@ -158,7 +158,8 @@ mealposting1 = user1.meal_postings.create!({
  description: "Chicken strips, red peppers, onions, cooked in white wine sauce and served over a bed of penne pasta.",
  allergy_notice: "Peanut oil is used in this dish.",
  servings: 5,
- cost: 9.50
+ cost: 9.50,
+ remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123384/1467150710-lemon-butter-chicken-pasta-04.jpg"
 })
 
 
@@ -170,7 +171,8 @@ mealposting2 = user1.meal_postings.create!({
  description: "Salmon cooked in lemon-garlic oil served with sauteed broccoli and a side of brown rice.",
  allergy_notice: "Let me know if you have any allergies.",
  servings: 7,
- cost: 12.00
+ cost: 12.00,
+ remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123122/tz1riiqxm3qa9ixtucoc.jpg"
 })
 
 mealposting3 = user2.meal_postings.create!({
@@ -180,7 +182,8 @@ mealposting3 = user2.meal_postings.create!({
  description: "Noodles with cheese powder and a bit of butter and milk.",
  allergy_notice: "Gotta Be KD.",
  servings: 3,
- cost: 18.50
+ cost: 18.50,
+ remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123029/bigstock-Homemade-Macaroni-And-Cheese-59176988.jpg"
 })
 
 mealposting4 = user2.meal_postings.create!({
@@ -190,7 +193,8 @@ mealposting4 = user2.meal_postings.create!({
  description: "Two buttered whole wheat pieces of bread, covered in peanut butter and jelly and slapped together.",
  allergy_notice: "Peanut Butter",
  servings: 10,
- cost: 4.25
+ cost: 4.25,
+ remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123318/fisaobewqwfp9ey9grnd.jpg"
 })
 
 mealposting5 = user3.meal_postings.create!({
@@ -201,7 +205,8 @@ mealposting5 = user3.meal_postings.create!({
  description: "Not sure what kind of meat is in there but it tastes okay.  Includes a bun.",
  allergy_notice: "Dunno what's in it anyways.",
  servings: 15,
- cost: 3.00
+ cost: 3.00,
+ remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123150/pjlbqbisxjphpypflk9u.jpg"
 })
 
 mealposting6 = user1.meal_postings.create!({
@@ -212,7 +217,8 @@ mealposting6 = user1.meal_postings.create!({
  description: "Chicken thighs cut into strips and cooked with peppers, onions and various spices.  Served on a tortilla wrap.",
  allergy_notice: "Let me know if youre allergic to something.",
  servings: 7,
- cost: 7.50
+ cost: 7.50,
+ remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123286/Flavorful-Chicken-Fajitas_exps12540_BOS3149327B02_08_5bC_RMS.jpg"
 })
 
 mealposting7 = user3.meal_postings.create!({
@@ -222,7 +228,8 @@ mealposting7 = user3.meal_postings.create!({
  description: "Fresh mount spring water collected by our aqua gathering engineers and frozen to the perfect temperature into uniform cubes.",
  allergy_notice: "It's frozen water..",
  servings: 25,
- cost: 2.50
+ cost: 2.50,
+ remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123061/106595821.jpg"
 })
 
 mealposting8 = user4.meal_postings.create!({
@@ -232,7 +239,8 @@ mealposting8 = user4.meal_postings.create!({
  description: "Classic Alberta beef BBQ'd to a nice medium rare, unless otherwise specified.  Served with fries.",
  allergy_notice: "Let me know.",
  servings: 6,
- cost: 15.00
+ cost: 15.00,
+ remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123226/uceisaqtnhfey6gokmrj.jpg"
 })
 
 mealposting9 = user4.meal_postings.create!({
@@ -243,7 +251,8 @@ mealposting9 = user4.meal_postings.create!({
  description: "They're like burgers but less good!  These are a great vegetarian option.",
  allergy_notice: "Let me know about your allergies.",
  servings: 8,
- cost: 8.00
+ cost: 8.00,
+ remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123171/fwcwyzfovysbrb4u7bue.jpg"
 })
 
 mealposting10 = user4.meal_postings.create!({
@@ -254,7 +263,8 @@ mealposting10 = user4.meal_postings.create!({
  description: "Whatever that is.  Served with other healthy stuff as well.",
  allergy_notice: "Let me know about your allergies.",
  servings: 12,
- cost: 7.50
+ cost: 7.50,
+ remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123194/ank1h1rgms3zbgcot9so.jpg"
 })
 
 mealposting11 = user4.meal_postings.create!({
@@ -264,7 +274,8 @@ mealposting11 = user4.meal_postings.create!({
  description: "Big ol' plate of spaghetti served with meatballs and covered in marinara sauce.",
  allergy_notice: "Let me know about your allergies.",
  servings: 10,
- cost: 8.25
+ cost: 8.25,
+ remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123089/jqhlzqmsugoxuggmpzkl.jpg"
 })
 
 mealposting12 = user4.meal_postings.create!({
@@ -275,57 +286,8 @@ mealposting12 = user4.meal_postings.create!({
  description: "Filtered, triple-distilled, fresh air.",
  allergy_notice: "If you are allergic then you have a big problem.",
  servings: 200,
- cost: 2.00
-})
-
-puts "Seeding Media ..."
-
-mealposting1.media.create!({
-  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123384/1467150710-lemon-butter-chicken-pasta-04.jpg"
-})
-
-mealposting2.media.create!({
-  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123122/tz1riiqxm3qa9ixtucoc.jpg"
-})
-
-mealposting3.media.create!({
-  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123029/bigstock-Homemade-Macaroni-And-Cheese-59176988.jpg"
-})
-
-mealposting4.media.create!({
-  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123318/fisaobewqwfp9ey9grnd.jpg"
-})
-
-mealposting5.media.create!({
-  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123150/pjlbqbisxjphpypflk9u.jpg"
-})
-
-mealposting6.media.create!({
-  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123286/Flavorful-Chicken-Fajitas_exps12540_BOS3149327B02_08_5bC_RMS.jpg"
-})
-
-mealposting7.media.create!({
-  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123061/106595821.jpg"
-})
-
-mealposting8.media.create!({
-  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123226/uceisaqtnhfey6gokmrj.jpg"
-})
-
-mealposting9.media.create!({
-  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123171/fwcwyzfovysbrb4u7bue.jpg"
-})
-
-mealposting10.media.create!({
-  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123194/ank1h1rgms3zbgcot9so.jpg"
-})
-
-mealposting11.media.create!({
-  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123089/jqhlzqmsugoxuggmpzkl.jpg"
-})
-
-mealposting12.media.create!({
-  remote_url_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123273/1.jpg"
+ cost: 2.00,
+ remote_image_url: "http://res.cloudinary.com/drdumqp4e/image/upload/v1523123273/1.jpg"
 })
 
 puts "Seeding Reservations ..."

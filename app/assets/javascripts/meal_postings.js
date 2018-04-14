@@ -7,7 +7,7 @@
 $(document).ready(function(){
   for (let form of $('form')){
     $("."+form.className).on("ajax:success", function(event, xhr){
-      if(event.detail[0].status === "failed" && event.detail[0].id === form.className){
+      if(event.detail[0].status === "failed_model" && event.detail[0].id === form.className){
         $(".messages-"+form.className).empty();
         let errorMessages = event.detail[0].message;
         for (let errorkey in errorMessages){
@@ -17,6 +17,13 @@ $(document).ready(function(){
       else if(event.detail[0].status === "ok" && event.detail[0].id === form.className){
         $(".messages-"+form.className).empty();
         $(".messages-"+form.className).css("text-align", "right").append("<div>" + event.detail[0].message + "</div>");
+      }
+      else if(event.detail[0].status === "failed_rel" && event.detail[0].id === form.className){
+        $(".messages-"+form.className).empty();
+        let errorMessages = event.detail[0].message;
+        for (let errorkey in errorMessages){
+          $(".messages-"+form.className).append("<p> Error: " + errorMessages[errorkey] + "</p>");
+        }
       }
     })
     $(".close-"+form.className).on('click', function(event){

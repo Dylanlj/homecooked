@@ -25,7 +25,9 @@
     <% @user.meal_postings.each do |meal_posting| %>
     <div class="row">
       <div class="col-xs-4 col-sm-3 col-md-3">
-        <%= cl_image_tag(meal_posting.media[0].url, class: 'circle img-thumbnail img-box') %>
+        <% if meal_posting.image %>
+          <%= cl_image_tag(meal_posting.image, class: 'circle img-thumbnail img-box') %>
+        <% end %>
       </div>
       <div class="col-xs-4 col-sm-9 col-md-9">
         <h4><%= meal_posting.title %></h4>
@@ -51,10 +53,10 @@
 
 
           <div class="review-button">
-            <%= button_to 'Reviews', meal_posting_reviews_path(meal_posting), :method => :get, :class => "btn btn-warning btn-md" %>
+            <%= button_to 'Reviews', meal_posting_reviews_path(meal_posting), :method => :get, :class => "btn btn-warning btn-md meal-reviews-btn" %>
           </div>
-
-          <% if current_user and current_user.id != @user.id %>
+          <!-- Won't display reserve button if current user is the meal poster, or if there are no more servings -->
+          <% if current_user and current_user.id != @user.id and meal_posting.servings >= 1 %>
           <!-- Reserving a meal opens a modal with a form -->
           <div class="reserve-button">
             <button type="button" class="btn btn-warning btn-md reserve" data-toggle="modal" data-target=".modal-<%=meal_posting.id%>">Reserve</button>
