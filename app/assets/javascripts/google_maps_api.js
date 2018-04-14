@@ -12,7 +12,7 @@ let userAddresses = []
 function myFunction(){
   console.log("gdsgfdgfdsf")
   console.log($(this))
-  console.log($( "#register-form" ))
+  console.log($( "#user_address" ).val())
 }
 
 
