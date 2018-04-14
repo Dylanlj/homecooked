@@ -9,6 +9,15 @@ let labelIndex = 0
 // unformatted addresses
 let userAddresses = []
 
+function myFunction(){
+  console.log("gdsgfdgfdsf")
+  console.log($(this))
+  console.log($( "#register-form" ))
+}
+
+
+$( "#register-form" ).submit(myFunction())
+
 function codeAddress(address, callback) {
 
   geocoder.geocode( { 'address': address}, function(results, status) {

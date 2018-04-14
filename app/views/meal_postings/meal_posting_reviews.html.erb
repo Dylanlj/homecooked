@@ -4,7 +4,7 @@
 <h2><%= @meal_posting.title %> by <%=@meal_posting.user.name%></h2>
     <div class="row">
       <div class="col-xs-4 col-sm-3 col-md-3">
-        <%= cl_image_tag(@meal_posting.media[0].url, class: 'circle img-thumbnail img-box') %>
+        <%= cl_image_tag(@meal_posting.image, class: 'circle img-thumbnail img-box') %>
       </div>
       <div class="col-xs-4 col-sm-9 col-md-9">
         <h4></h4>
@@ -55,17 +55,20 @@
       </tbody>
     </table>
   <% end %>
-
-  <% if current_user %>
-    <h2>Add a review:</h2>
-    <%= form_for [@meal_posting, @review] do |f| %>
-      <%= f.hidden_field :user_id,  value: current_user.id %>
-      <dt>Comment: </dt>
-      <dd><%= f.text_area :comment, class: "user-review-text" %></dd>
-      <dt>Rating: <%= f.select :rating, [10, 9, 8, 7, 6, 5, 4, 3, 2, 1] %></dt>
-      <dd class="submit"><%= f.submit "Submit", class: "btn btn-warning submit-user-review" %></dd>
+    <% if current_user %>
+      <% @meal_posting.reservations.each do |reservation| %>
+        <% if reservation.user_id === current_user.id && reservation.paid %>
+            <h2>Add a review:</h2>
+          <%= form_for [@meal_posting, @review] do |f| %>
+            <%= f.hidden_field :user_id,  value: current_user.id %>
+            <dt>Comment: </dt>
+            <dd><%= f.text_area :comment, class: "user-review-text" %></dd>
+            <dt>Rating: <%= f.select :rating, [10, 9, 8, 7, 6, 5, 4, 3, 2, 1] %></dt>
+            <dd class="submit"><%= f.submit "Submit", class: "btn btn-warning submit-user-review" %></dd>
+          <% end %>
+        <% end %>
+      <% end %>
     <% end %>
-  <% end %>
   <br>
     <%= button_to 'Back', meal_posting_path(@meal_posting), method: "get", class: "btn btn-warning"  %>
 </div>

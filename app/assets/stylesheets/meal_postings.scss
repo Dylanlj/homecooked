@@ -77,6 +77,7 @@
 .categories-area{
   height: 7vh;
   width: 50%;
+  margin-bottom: 7px;
   background: repeating-radial-gradient(
     circle,
     #f4511e,
@@ -84,7 +85,6 @@
     #ffffff 20px,
     #ffffff 100px
   );
-  margin-bottom: 7px
 }
 
 .marker-circle {
@@ -127,6 +127,8 @@
 }
 
 .media-body {
+  position: relative;
+  z-index: -1;
   height: 15vh;
   font-family: Cambay;
   .media-container {
@@ -152,6 +154,30 @@
   padding: 3px;
 }
 
+////////////////////////////
+// New Meal Posting Page //
+////////////////////////////
+
+h2.new-meal-header {
+  text-align: center;
+}
+
+div.create-meal-posting {
+  display: flex;
+  justify-content: center;
+}
+
+th.new-meal-field {
+  width: 150px;
+  padding: 7px;
+  text-align: center;
+}
+
+
+table.new-meal-table {
+  align-self: center;
+  text-align: center;
+}
 ////////////////////////////
 // Meal Posting Show Page //
 ////////////////////////////

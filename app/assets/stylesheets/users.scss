@@ -13,6 +13,7 @@
 //////////////////////////////
 // New User and Login Views //
 //////////////////////////////
+$primary-color: #f4511e;
 
 th.register-field {
   width: 150px;
@@ -123,7 +124,7 @@ h1.user-info-title {
 
 .submit-user-review {
   margin-top: 10px;
-  background-color: #f4511e;
+  background-color: $primary-color;
 }
 
 .user-review-text {
@@ -140,12 +141,20 @@ h1.user-info-title {
   margin-top: 10px;
 }
 
+.user-reviews-button,
+// .new-meal-button,
+.meal-reviews-button {
+  float: left;
+  margin-left: 15px;
+  margin-top: 10px;
+}
+
 .accept {
   background-color: green;
 }
 
-.reject {
-  background-color: #f4511e;
+.basic {
+  background-color: $primary-color;
 }
 
 .reservation-pic {

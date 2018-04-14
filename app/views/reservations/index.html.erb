@@ -20,7 +20,7 @@
         <% meal_posting.reservations.each do |reservation| %>
           <div class="row">
             <div class="col-xs-4 col-sm-3 col-md-3">
-              <%= cl_image_tag(reservation.meal_posting.media[0].url, class: 'circle img-thumbnail img-box reservation-pic') %>
+              <%= cl_image_tag(reservation.meal_posting.image, class: 'circle img-thumbnail img-box reservation-pic') %>
             </div>
             <div class="col-xs-4 col-sm-9 col-md-9">
               <h4><%= reservation.meal_posting.title %></h4>
@@ -43,13 +43,21 @@
               </div>
               <div class="row">
                 <!-- ALLOW HOST TO DELETE POSTING TO CLEAR SPACE ONCE ACCEPTED OR REJECTED -->
+                <div class="meal-reviews-button">
+                  <%= button_to 'Meal Reviews', meal_posting_reviews_path(reservation.meal_posting), :method => :get, :class => "btn btn-warning btn-md basic" %>
+                </div>
+
+                <div class="user-reviews-button">
+                  <%= button_to 'User Reviews', user_path(reservation.user), :method => :get, :class => "btn btn-warning btn-md basic" %>
+                </div>
+
                 <% if reservation.status === "Accepted" || reservation.status === "Rejected" %>
                   <div class="delete-button">
                     <%= button_to 'Delete', new_meal_posting_reservation_path(reservation.meal_posting), :class => "btn btn-primary btn-md delete" %>
                   </div>
                 <% else %>
                   <div class="reject-button">
-                    <%= button_to 'Reject', {:controller => "reservations", :action => "reject", id: reservation.id}, :method => :put, :remote => true, :class => "btn btn-warning btn-md reject" %>
+                    <%= button_to 'Reject', {:controller => "reservations", :action => "reject", id: reservation.id}, :method => :put, :remote => true, :class => "btn btn-warning btn-md basic" %>
                   </div>
                   <div class="accept-button">
                     <%= button_to 'Accept', {:controller => "reservations", :action => "accept", id: reservation.id}, :method => :put, :remote => true, :class => "btn btn-warning btn-md accept" %>
@@ -76,7 +84,7 @@
       <% @user.reservations.each do |reservation| %>
         <div class="row">
           <div class="col-xs-4 col-sm-3 col-md-3">
-            <%= cl_image_tag(reservation.meal_posting.media[0].url, class: 'circle img-thumbnail img-box reservation-pic') %>
+            <%= cl_image_tag(reservation.meal_posting.image, class: 'circle img-thumbnail img-box reservation-pic') %>
           </div>
           <div class="col-xs-4 col-sm-9 col-md-9">
             <h4><%= reservation.meal_posting.title %></h4>

@@ -31,7 +31,16 @@ class MealPostingsController < ApplicationController
 
   # GET /meal_postings/new
   def new
+# or params[:user_id].to_i
     @meal_posting = MealPosting.new
+    if current_user  != User.find(params[:user_id])
+      if current_user
+        redirect_to user_path(current_user.id)
+      else
+        redirect_to root_path
+      end
+    end
+
   end
 
   # GET /meal_postings/1/edit
@@ -42,6 +51,8 @@ class MealPostingsController < ApplicationController
   # POST /meal_postings.json
   def create
     @meal_posting = MealPosting.new(meal_posting_params)
+    @meal_posting.user = current_user
+
 
     respond_to do |format|
       if @meal_posting.save
@@ -85,15 +96,19 @@ class MealPostingsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    # def meal_posting_params
-    #   params.require(:meal_posting).permit(
-    #     :base_time,
-    #     :end_time,
-    #     :title,
-    #     :description,
-    #     :allergy_notice,
-    #     :servings,
-    #     :cost
-    #   )
-    # end
+    def meal_posting_params
+      params.require(:meal_posting).permit(
+        :base_time,
+        :end_time,
+        :title,
+        :description,
+        :allergy_notice,
+        :servings,
+        :cost,
+        :image,
+        :category_id
+      )
+    end
+
+
 end

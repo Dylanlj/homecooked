@@ -30,9 +30,6 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @reservation.status = "Pending Approval"
 
-
-
-
     respond_to do |format|
       if @reservation.number_of_people && @reservation.meal_posting.servings < @reservation.number_of_people
         msg = { :status => "failed_rel", :message => { errmsg: "Not enough servings remaining in #{@reservation.meal_posting.title}" }, :id => reservation_params[:meal_posting_id]}
