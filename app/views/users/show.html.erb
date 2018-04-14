@@ -28,7 +28,7 @@
 <hr class="user-meal-posting-separate">
 
 <div class="container">
-  <% if current_user === @user %>
+  <% if current_user === @user && current_user.user_status == "Host" %>
     <div class="new-meal-button">
       <%= button_to "Create a Meal", new_user_meal_posting_path(@user), :method => :get, :class => "btn btn-warning btn-md basic"%>
     </div>
@@ -66,6 +66,13 @@
           <tr>
             <td class="review-rating"><%= review.rating %> / 10</td>
             <td class="review-comment"><%= review.comment %></td>
+
+
+            <% if review.user.id == current_user.id %>
+            <td> Sup </td>
+            <% end %>
+
+
           </tr>
         <% end %>
       </tbody>

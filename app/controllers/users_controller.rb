@@ -34,7 +34,7 @@ class UsersController < ApplicationController
         # Setting cookie to recognize logged in user
         session[:user_id] = @user.id
         session[:user_address] = @user.address
-        format.html { redirect_to root_path, notice: 'User was successfully created.' }
+        format.html { redirect_to root_path }#, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
