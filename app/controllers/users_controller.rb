@@ -23,6 +23,8 @@ class UsersController < ApplicationController
   def create
 
     @user = User.new(user_params)
+    puts @user.address
+    puts "------------------"
     respond_to do |format|
       if @user.save
         # This is another way to upload images (or video), in case its needed later.
@@ -75,6 +77,17 @@ class UsersController < ApplicationController
     def user_params
 
       # REMOVED :password_digest and added :password and :password_confirmation
-      params.require(:user).permit(:user_status, :address, :name, :email, :phone_number, :image, :password, :password_confirmation)
+      params.require(:user).permit(
+        :user_status,
+        :address,
+        :name,
+        :email,
+        :phone_number,
+        :image,
+        :password,
+        :password_confirmation,
+        :longitude,
+        :latitude
+        )
     end
 end

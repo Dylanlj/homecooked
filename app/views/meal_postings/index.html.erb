@@ -59,7 +59,7 @@
 <% @meal_postings.each do |meal_posting| %>
   <!-- IF MEAL POSTING SERVINGS HITS 0, STOPS DISPLAYING IT ON HOME PAGE -->
   <% if meal_posting.servings >= 1 %>
-    <div class="meal-div" data-address='<%=meal_posting.user.address%>'>
+    <div class="meal-div" data-address='<%=meal_posting.user.address%>' data-longitude=<%=meal_posting.user.longitude%> data-latitude=<%=meal_posting.user.latitude%>>
     <!-- Image -->
       <div class="media">
         <div class="media-left media-middle">

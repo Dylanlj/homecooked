@@ -6,17 +6,13 @@ let yourMarker
 let postingMarkers = []
 let labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 let labelIndex = 0
-// unformatted addresses
 let userAddresses = []
 
-function myFunction(){
-  console.log("gdsgfdgfdsf")
-  console.log($(this))
-  console.log($( "#register-form" ))
-}
 
 
-$( "#register-form" ).submit(myFunction())
+////////////////
+//GEOCODE CALL//
+////////////////
 
 function codeAddress(address, callback) {
 
@@ -25,9 +21,49 @@ function codeAddress(address, callback) {
       callback(results)
     } else {
       console.log('Geocode was not successful for the following reason: ' + status);
+      invalidAddress()
     }
   });
 }
+
+
+//////////////////////////
+//USER REGISTRATION CALL//
+//////////////////////////
+function invalidAddress(){
+  $("#geocode-address-error").text("Could not find address, please try again")
+
+}
+
+function giveProperAddress (geoObject) {
+  alert(geoObject)
+  console.log(geoObject[0])
+  // console.log(geoObject[0].formattedAddress)
+  if (geoObject[0]){
+    $("#user_address").val(geoObject[0].formatted_address)
+    $("#latitude").val(geoObject[0].geometry.location.lat())
+    $("#longitude").val(geoObject[0].geometry.location.lng())
+    alert($("#user_address").val())
+    $(".new-user-submit").trigger("click")
+  }
+}
+
+$(document).ready(function(){
+    $("#register-form").submit(function(event){
+      // alert(event)
+      event.preventDefault()
+      let enteredAddress
+      enteredAddress = $("#user_address").val()
+      geocoder = new google.maps.Geocoder()
+      codeAddress(enteredAddress, giveProperAddress)
+    });
+});
+
+
+
+///////////////////
+//INDEX HOME PAGE//
+///////////////////
 
 function initialize() {
 labelIndex = 0
@@ -51,6 +87,7 @@ labelIndex = 0
   }
   codeAddress(document.getElementById('googleMap').dataset.userLocation, setUpMap)
 }
+
 
 function orderMarkerByProximity(myLocationMarker) {
 
@@ -77,19 +114,19 @@ function orderMarkerByProximity(myLocationMarker) {
 
 function addLabelsToDOM (marker, allMarkers) {
   $( document ).ready(function() {
-    let check = $('.meal-div[data-address="' + marker.originalAddress + '"]').find(".marker-circle").text(marker.label)
+    let check = $('.meal-div[data-address="' + marker.formattedAddress + '"]').find(".marker-circle").text(marker.label)
   });
 
 }
 
-function mealMarkerCallback (geoObject) {
-
+function mealMarkerCallback (addressData) {
+  let latitude = parseFloat(addressData.latitude)
+  let longitude = parseFloat(addressData.longitude)
   let marker = new google.maps.Marker({
     map: map,
-    position: geoObject[0].geometry.location,
-    originalAddress: userAddresses[labelIndex],
+    position: {lat: latitude , lng: longitude},
     label: labels[labelIndex++ % labels.length],
-    formattedAddress: geoObject[0].formatted_address
+    formattedAddress: addressData.address
   })
 
   postingMarkers.push(marker)
@@ -106,16 +143,13 @@ function mealPostingMarkers() {
   userAddresses.length = 0
   for (let element of document.getElementsByClassName("meal-div")) {
 
-    let address = element.dataset.address
-    if (!userAddresses.includes(address)){
-      userAddresses.push(address)
-      if (userAddresses.length === 5) {
-        setTimeout(function() {codeAddress(address, mealMarkerCallback)}, 1300);
-      } else {
+    let addressData = element.dataset
+    if (!userAddresses.includes(addressData.address)){
+      userAddresses.push(addressData.address)
+// console.log(addressData.latitude)
 
-        codeAddress(address, mealMarkerCallback)
+      mealMarkerCallback(addressData)
 
-      }
     }
   }
 
