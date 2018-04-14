@@ -20,11 +20,11 @@ puts "Seeding Data ..."
 # File.open(File.join(Rails.root, 'test.jpg'))
 
 # NOT WORKING PROPERLY (use db:reset instead)
-User.delete_all
-Category.delete_all
-MealRating.delete_all
-MealPosting.delete_all
-UserRating.delete_all
+# User.delete_all
+# Category.delete_all
+# MealRating.delete_all
+# MealPosting.delete_all
+# UserRating.delete_all
 
 puts "Seeding Users ..."
 
