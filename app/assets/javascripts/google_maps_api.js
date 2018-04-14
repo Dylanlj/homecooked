@@ -36,20 +36,20 @@ function invalidAddress(){
 }
 
 function giveProperAddress (geoObject) {
-  alert(geoObject)
+
   console.log(geoObject[0])
   // console.log(geoObject[0].formattedAddress)
   if (geoObject[0]){
     $("#user_address").val(geoObject[0].formatted_address)
     $("#latitude").val(geoObject[0].geometry.location.lat())
     $("#longitude").val(geoObject[0].geometry.location.lng())
-    alert($("#user_address").val())
-    $(".new-user-submit").trigger("click")
+    console.log("trying to click button")
+    $("#register-form").trigger("submit")
   }
 }
 
 $(document).ready(function(){
-    $("#register-form").submit(function(event){
+    $(".new-user-submit").click(function(event){
       // alert(event)
       event.preventDefault()
       let enteredAddress
