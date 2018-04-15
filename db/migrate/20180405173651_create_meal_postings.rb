@@ -3,8 +3,8 @@ class CreateMealPostings < ActiveRecord::Migration[5.1]
     create_table :meal_postings do |t|
       t.integer :user_id
       t.integer :category_id
-      t.integer :base_time
-      t.integer :end_time
+      t.time :base_time
+      t.time :end_time
       t.string :title
       t.text :description
       t.string :allergy_notice

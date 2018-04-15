@@ -57,17 +57,29 @@
         <td><%= form.file_field :image, id: :meal_image %></td>
       </div>
     </tr>
+    <tr>
+      <div class="form-group">
+        <th class="new-meal-field"><%= form.label :date %></th>
+        <td><%= form.date_field :date, id: :meal_posting_date %></td>
+      </div>
+    </tr>
 
     <tr>
       <div class="form-group">
         <th class="new-meal-field"><%= form.label :base_time %></th>
-        <td><%= form.number_field :base_time, id: :meal_posting_base_time %></td>
+        <td><%= form.time_select :base_time, {
+          ampm: true,
+          ignore_date: true
+        } %></td>
       </div>
     </tr>
       <tr>
       <div class="form-group">
         <th class="new-meal-field"><%= form.label :end_time %></th>
-        <td><%= form.number_field :end_time, id: :meal_posting_end_time %></td>
+        <td><%= form.time_select :end_time, {
+          ampm: true,
+          ignore_date: true
+        } %></td>
       </div>
     </tr>
   </table>
