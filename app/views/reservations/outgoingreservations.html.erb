@@ -18,10 +18,11 @@
             <p><strong>Host Name: </strong><%= link_to "#{reservation.meal_posting.user.name}", user_path(reservation.meal_posting.user.id) %></p>
             <p><strong>Servings: </strong><%= reservation.number_of_people %></p>
             <% if reservation.time %>
-              <p><strong>Time: </strong><%= reservation.time %></p>
+              <p><strong>Time: </strong><%= reservation.time.strftime("%I:%M %p") %></p>
             <% else %>
-              <p><strong>Time: </strong><%= reservation.meal_posting.base_time %></p>
+              <p><strong>Time: </strong><%= reservation.meal_posting.base_time.strftime("%I:%M %p") %></p>
             <% end %>
+            <p><strong>Date: </strong><%= reservation.meal_posting.date.to_date() %></p>
             <% if reservation.meal_posting.allergy_notice %>
               <p><strong>Allergy Notice: </strong><%= reservation.meal_posting.allergy_notice %></p>
             <% end %>

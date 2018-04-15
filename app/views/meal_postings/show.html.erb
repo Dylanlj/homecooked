@@ -109,7 +109,10 @@
                         <% if meal_posting.end_time %>
                         <tr class="modal-form-group">
                           <td><%= form.label :reservation_time %></td>
-                          <td><%= form.number_field :time, id: :time %></td>
+                            <td><%= form.time_select :time, {
+                              ampm: true,
+                              ignore_date: true
+                            } %></td>
                         </tr>
                         <% else %>
                           <%= form.hidden_field :time, value: meal_posting.base_time %>
@@ -123,7 +126,6 @@
                     <% end %>
                   </div>
                 </div>
-
               </div>
             </div>
           <% end %>

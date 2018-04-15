@@ -5,7 +5,7 @@ class CreateReservations < ActiveRecord::Migration[5.1]
       t.integer :user_id
       t.integer :number_of_people
       t.string  :allergies
-      t.integer :time
+      t.time :time
       t.string  :status
 
       t.timestamps

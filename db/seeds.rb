@@ -212,7 +212,7 @@ puts "Seeding Meal Postings ..."
 
 mealposting1 = user1.meal_postings.create!({
  category_id: 1,
- base_time: "2018-04-01 16:30:00",
+ base_time: "2018-04-20 16:30:00",
  title: "Chicken Pasta",
  date: DateTime.new(2018, 4, 1, 1),
  description: "Chicken strips, red peppers, onions, cooked in white wine sauce and served over a bed of penne pasta.",
@@ -225,8 +225,8 @@ mealposting1 = user1.meal_postings.create!({
 
 mealposting2 = user1.meal_postings.create!({
  category_id: 3,
- base_time: "2018-04-01 14:30:00",
- end_time: "2018-04-02 17:30:00",
+ base_time: "2018-04-20 14:30:00",
+ end_time: "2018-04-20 17:30:00",
  date: DateTime.new(2018, 4, 1, 1),
  title: "Salmon with Broccoli and Rice",
  description: "Salmon cooked in lemon-garlic oil served with sauteed broccoli and a side of brown rice.",
@@ -238,7 +238,7 @@ mealposting2 = user1.meal_postings.create!({
 
 mealposting3 = user4.meal_postings.create!({
  category_id: 6,
- base_time: "2018-04-01 15:30:00",
+ base_time: "2018-04-20 15:30:00",
  title: "Kraft Dinner",
  date: DateTime.new(2018, 4, 1, 1),
  description: "Noodles with cheese powder and a bit of butter and milk.",
@@ -250,7 +250,7 @@ mealposting3 = user4.meal_postings.create!({
 
 mealposting4 = user4.meal_postings.create!({
  category_id: 3,
- base_time: "2018-04-01 17:30:00",
+ base_time: "2018-04-20 17:30:00",
  title: "Peanut butter and jelly sandwiches",
  date: DateTime.new(2018, 4, 1, 1),
  description: "Two buttered whole wheat pieces of bread, covered in peanut butter and jelly and slapped together.",
@@ -262,8 +262,8 @@ mealposting4 = user4.meal_postings.create!({
 
 mealposting5 = user5.meal_postings.create!({
  category_id: 3,
- base_time: "2018-04-01 15:30:00",
- end_time: "2018-04-02 18:00:00",
+ base_time: "2018-04-20 15:30:00",
+ end_time: "2018-04-20 18:00:00",
  date: DateTime.new(2018, 4, 1, 1),
  title: "Hotdogs",
  description: "Not sure what kind of meat is in there but it tastes okay.  Includes a bun.",
@@ -275,8 +275,8 @@ mealposting5 = user5.meal_postings.create!({
 
 mealposting6 = user5.meal_postings.create!({
  category_id: 2,
- base_time: "2018-04-01 15:00:00",
- end_time: "2018-04-02 17:00:00",
+ base_time: "2018-04-20 15:00:00",
+ end_time: "2018-04-20 17:00:00",
  date: DateTime.new(2018, 4, 1, 1),
  title: "Fajitas",
  description: "Chicken thighs cut into strips and cooked with peppers, onions and various spices.  Served on a tortilla wrap.",
@@ -288,7 +288,7 @@ mealposting6 = user5.meal_postings.create!({
 
 mealposting7 = user6.meal_postings.create!({
  category_id: 17,
- base_time: "2018-04-01 16:00:00",
+ base_time: "2018-04-20 16:00:00",
  title: "Ice Cubes",
  date: DateTime.new(2018, 4, 1, 1),
  description: "Fresh mount spring water collected by our aqua gathering engineers and frozen to the perfect temperature into uniform cubes.",
@@ -300,7 +300,7 @@ mealposting7 = user6.meal_postings.create!({
 
 mealposting8 = user6.meal_postings.create!({
  category_id: 3,
- base_time: "2018-04-01 16:00:00",
+ base_time: "2018-04-20 16:00:00",
  title: "Steak Frites",
  date: DateTime.new(2018, 4, 1, 1),
  description: "Classic Alberta beef BBQ'd to a nice medium rare, unless otherwise specified.  Served with fries.",
@@ -312,8 +312,8 @@ mealposting8 = user6.meal_postings.create!({
 
 mealposting9 = user7.meal_postings.create!({
  category_id: 17,
- base_time: "2018-04-01 15:00:00",
- end_time: "2018-04-02 17:30:00",
+ base_time: "2018-04-20 15:00:00",
+ end_time: "2018-04-20 17:30:00",
  date: DateTime.new(2018, 4, 1, 1),
  title: "Portobello Mushroom Burgers",
  description: "They're like burgers but less good!  These are a great vegetarian option.",
@@ -325,8 +325,8 @@ mealposting9 = user7.meal_postings.create!({
 
 mealposting10 = user7.meal_postings.create!({
  category_id: 17,
- base_time: "2018-04-01 15:00:00",
- end_time: "2018-04-02 17:30:00",
+ base_time: "2018-04-20 15:00:00",
+ end_time: "2018-04-20 17:30:00",
  date: DateTime.new(2018, 4, 1, 1),
  title: "Quinoa",
  description: "Whatever that is.  Served with other healthy stuff as well.",
@@ -338,7 +338,7 @@ mealposting10 = user7.meal_postings.create!({
 
 mealposting11 = user8.meal_postings.create!({
  category_id: 1,
- base_time: "2018-04-01 15:00:00",
+ base_time: "2018-04-20 15:00:00",
  title: "Spaghetti and Meatballs",
  date: DateTime.new(2018, 4, 1, 1),
  description: "Big ol' plate of spaghetti served with meatballs and covered in marinara sauce.",
@@ -350,8 +350,8 @@ mealposting11 = user8.meal_postings.create!({
 
 mealposting12 = user8.meal_postings.create!({
  category_id: 17,
- base_time: "2018-04-01 15:00:00",
- end_time: "2018-04-02 17:30:00",
+ base_time: "2018-04-20 15:00:00",
+ end_time: "2018-04-20 17:30:00",
  date: DateTime.new(2018, 4, 1, 1),
  title: "Fresh Air",
  description: "Filtered, triple-distilled, fresh air.",
@@ -366,7 +366,7 @@ puts "Seeding Reservations ..."
 mealposting1.reservations.create!({
   user_id: 3,
   number_of_people: 2,
-  time: 130,
+  time: "2018-04-20 11:30:00",
   allergies: "I am allergic to peanuts and almonds.",
   status: "Pending Approval",
   paid: "yes"
@@ -375,7 +375,7 @@ mealposting1.reservations.create!({
 mealposting6.reservations.create!({
   user_id: 4,
   number_of_people: 1,
-  time: 630,
+  time: "2018-04-20 16:30:00",
   status: "Pending Approval",
   paid: "yes"
 })
@@ -383,7 +383,7 @@ mealposting6.reservations.create!({
 mealposting2.reservations.create!({
   user_id: 4,
   number_of_people: 3,
-  time: 530,
+  time: "2018-04-20 15:30:00",
   allergies: "Allergic to gluten so I hope this is okay.  Also allergic to Dairy..",
   status: "Pending Approval"
 })
@@ -391,7 +391,7 @@ mealposting2.reservations.create!({
 mealposting3.reservations.create!({
   user_id: 3,
   number_of_people: 4,
-  time: 200,
+  time: "2018-04-20 12:00:00",
   allergies: "Allergies include fresh air, water, sun, grass, outdoors in general.",
   status: "Pending Approval"
 })
@@ -399,21 +399,21 @@ mealposting3.reservations.create!({
 mealposting3.reservations.create!({
   user_id: 4,
   number_of_people: 1,
-  time: 100,
+  time: "2018-04-20 11:00:00",
   status: "Pending Approval"
 })
 
 mealposting7.reservations.create!({
   user_id: 3,
   number_of_people: 2,
-  time: 1200,
+  time: "2018-04-20 12:00:00",
   status: "Pending Approval"
 })
 
 mealposting8.reservations.create!({
   user_id: 3,
   number_of_people: 5,
-  time: 330,
+  time: "2018-04-20 13:30:00",
   status: "Rejected"
 })
 

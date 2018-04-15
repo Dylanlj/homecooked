@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20180415184011) do
     t.integer "user_id"
     t.integer "number_of_people"
     t.string "allergies"
-    t.integer "time"
+    t.time "time"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
