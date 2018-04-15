@@ -132,8 +132,13 @@ function mealMarkerCallback (addressData) {
     formattedAddress: addressData.address
   })
 
+  let mealName = []
+  $(`.media-container:contains(${marker.formattedAddress})`).find('.title').each(function(){
+    mealName.push(`<br>${$(this).text()}`)
+  })
+
   google.maps.event.addListener(marker,  'click', function(){
-    infoWindow.setContent(`<span>${marker.formattedAddress}</span>`)
+    infoWindow.setContent(`<span>${marker.formattedAddress}</span>${mealName}`)
     infoWindow.open(map, marker)
   })
 
