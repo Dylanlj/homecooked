@@ -85,10 +85,13 @@
             <div class="row row-body">
               <div class="col-xs-8">
                 <% if meal_posting.end_time %>
-                  Serving from: <%= meal_posting.base_time %> - <%= meal_posting.end_time%>
+                  Serving from: <%= meal_posting.base_time.strftime("%I:%M %p") %> - <%= meal_posting.end_time.strftime("%I:%M %p") %>
                 <% else %>
-                  Serving at: <%= meal_posting.base_time%>
+                  Serving at: <%= meal_posting.base_time.strftime("%I:%M %p") %>
                 <% end %>
+              </div>
+              <div class="col-xs-8">
+                Date: <%= meal_posting.date.to_date() %>
               </div>
               <div class="col-xs-4">
                 Servings Left: <%= meal_posting.servings %>

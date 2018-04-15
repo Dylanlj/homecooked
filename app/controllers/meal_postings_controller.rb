@@ -53,7 +53,8 @@ class MealPostingsController < ApplicationController
     @meal_posting = MealPosting.new(meal_posting_params)
     @meal_posting.user = current_user
 
-
+puts @meal_posting
+puts @meal_posting.date
     respond_to do |format|
       if @meal_posting.save
         format.html { redirect_to @meal_posting, notice: 'Meal posting was successfully created.' }
@@ -106,7 +107,8 @@ class MealPostingsController < ApplicationController
         :servings,
         :cost,
         :image,
-        :category_id
+        :category_id,
+        :date
       )
     end
 

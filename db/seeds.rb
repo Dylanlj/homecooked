@@ -212,8 +212,9 @@ puts "Seeding Meal Postings ..."
 
 mealposting1 = user1.meal_postings.create!({
  category_id: 1,
- base_time: 630,
+ base_time: "2018-04-01 16:30:00",
  title: "Chicken Pasta",
+ date: DateTime.new(2018, 4, 1, 1),
  description: "Chicken strips, red peppers, onions, cooked in white wine sauce and served over a bed of penne pasta.",
  allergy_notice: "Peanut oil is used in this dish.",
  servings: 5,
@@ -224,8 +225,9 @@ mealposting1 = user1.meal_postings.create!({
 
 mealposting2 = user1.meal_postings.create!({
  category_id: 3,
- base_time: 430,
- end_time: 730,
+ base_time: "2018-04-01 14:30:00",
+ end_time: "2018-04-02 17:30:00",
+ date: DateTime.new(2018, 4, 1, 1),
  title: "Salmon with Broccoli and Rice",
  description: "Salmon cooked in lemon-garlic oil served with sauteed broccoli and a side of brown rice.",
  allergy_notice: "Let me know if you have any allergies.",
@@ -236,8 +238,9 @@ mealposting2 = user1.meal_postings.create!({
 
 mealposting3 = user4.meal_postings.create!({
  category_id: 6,
- base_time: 530,
+ base_time: "2018-04-01 15:30:00",
  title: "Kraft Dinner",
+ date: DateTime.new(2018, 4, 1, 1),
  description: "Noodles with cheese powder and a bit of butter and milk.",
  allergy_notice: "Gotta Be KD.",
  servings: 3,
@@ -247,8 +250,9 @@ mealposting3 = user4.meal_postings.create!({
 
 mealposting4 = user4.meal_postings.create!({
  category_id: 3,
- base_time: 730,
+ base_time: "2018-04-01 17:30:00",
  title: "Peanut butter and jelly sandwiches",
+ date: DateTime.new(2018, 4, 1, 1),
  description: "Two buttered whole wheat pieces of bread, covered in peanut butter and jelly and slapped together.",
  allergy_notice: "Peanut Butter",
  servings: 10,
@@ -258,8 +262,9 @@ mealposting4 = user4.meal_postings.create!({
 
 mealposting5 = user5.meal_postings.create!({
  category_id: 3,
- base_time: 530,
- end_time: 800,
+ base_time: "2018-04-01 15:30:00",
+ end_time: "2018-04-02 18:00:00",
+ date: DateTime.new(2018, 4, 1, 1),
  title: "Hotdogs",
  description: "Not sure what kind of meat is in there but it tastes okay.  Includes a bun.",
  allergy_notice: "Dunno what's in it anyways.",
@@ -270,8 +275,9 @@ mealposting5 = user5.meal_postings.create!({
 
 mealposting6 = user5.meal_postings.create!({
  category_id: 2,
- base_time: 500,
- end_time: 700,
+ base_time: "2018-04-01 15:00:00",
+ end_time: "2018-04-02 17:00:00",
+ date: DateTime.new(2018, 4, 1, 1),
  title: "Fajitas",
  description: "Chicken thighs cut into strips and cooked with peppers, onions and various spices.  Served on a tortilla wrap.",
  allergy_notice: "Let me know if youre allergic to something.",
@@ -282,8 +288,9 @@ mealposting6 = user5.meal_postings.create!({
 
 mealposting7 = user6.meal_postings.create!({
  category_id: 17,
- base_time: 600,
+ base_time: "2018-04-01 16:00:00",
  title: "Ice Cubes",
+ date: DateTime.new(2018, 4, 1, 1),
  description: "Fresh mount spring water collected by our aqua gathering engineers and frozen to the perfect temperature into uniform cubes.",
  allergy_notice: "It's frozen water..",
  servings: 25,
@@ -293,8 +300,9 @@ mealposting7 = user6.meal_postings.create!({
 
 mealposting8 = user6.meal_postings.create!({
  category_id: 3,
- base_time: 600,
+ base_time: "2018-04-01 16:00:00",
  title: "Steak Frites",
+ date: DateTime.new(2018, 4, 1, 1),
  description: "Classic Alberta beef BBQ'd to a nice medium rare, unless otherwise specified.  Served with fries.",
  allergy_notice: "Let me know.",
  servings: 6,
@@ -304,8 +312,9 @@ mealposting8 = user6.meal_postings.create!({
 
 mealposting9 = user7.meal_postings.create!({
  category_id: 17,
- base_time: 500,
- end_time: 730,
+ base_time: "2018-04-01 15:00:00",
+ end_time: "2018-04-02 17:30:00",
+ date: DateTime.new(2018, 4, 1, 1),
  title: "Portobello Mushroom Burgers",
  description: "They're like burgers but less good!  These are a great vegetarian option.",
  allergy_notice: "Let me know about your allergies.",
@@ -316,8 +325,9 @@ mealposting9 = user7.meal_postings.create!({
 
 mealposting10 = user7.meal_postings.create!({
  category_id: 17,
- base_time: 500,
- end_time: 730,
+ base_time: "2018-04-01 15:00:00",
+ end_time: "2018-04-02 17:30:00",
+ date: DateTime.new(2018, 4, 1, 1),
  title: "Quinoa",
  description: "Whatever that is.  Served with other healthy stuff as well.",
  allergy_notice: "Let me know about your allergies.",
@@ -328,8 +338,9 @@ mealposting10 = user7.meal_postings.create!({
 
 mealposting11 = user8.meal_postings.create!({
  category_id: 1,
- base_time: 500,
+ base_time: "2018-04-01 15:00:00",
  title: "Spaghetti and Meatballs",
+ date: DateTime.new(2018, 4, 1, 1),
  description: "Big ol' plate of spaghetti served with meatballs and covered in marinara sauce.",
  allergy_notice: "Let me know about your allergies.",
  servings: 10,
@@ -339,8 +350,9 @@ mealposting11 = user8.meal_postings.create!({
 
 mealposting12 = user8.meal_postings.create!({
  category_id: 17,
- base_time: 500,
- end_time: 730,
+ base_time: "2018-04-01 15:00:00",
+ end_time: "2018-04-02 17:30:00",
+ date: DateTime.new(2018, 4, 1, 1),
  title: "Fresh Air",
  description: "Filtered, triple-distilled, fresh air.",
  allergy_notice: "If you are allergic then you have a big problem.",
