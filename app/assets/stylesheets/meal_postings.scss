@@ -94,6 +94,11 @@
 }
 
 .marker-circle {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width:2vw;
   height:2vw;
   border-radius:250px;
@@ -104,7 +109,7 @@
   padding-right: 0px;
   // line-height:30px;
   font-family:Sans-serif;
-  text-align:center;
+  // text-align:center;
   background:#fb260b
 }
 
@@ -166,6 +171,10 @@
 .dropdown-toggle{
   height: 2.5vw;
   font-size: 1vw;
+}
+
+hr.index-divider {
+  width: 90%;
 }
 
 ////////////////////////////
