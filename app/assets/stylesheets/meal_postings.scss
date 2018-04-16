@@ -145,7 +145,10 @@
         // background-color: red;
     }
     .row-footer {
-        height: 30%;
+        height: 50px;
+        .address {
+          margin-top: 7px;
+        }
         // background-color: green;
     }
   }

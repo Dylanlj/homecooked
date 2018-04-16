@@ -125,6 +125,7 @@ function addLabelsToDOM (marker, allMarkers) {
 function mealMarkerCallback (addressData) {
   let latitude = parseFloat(addressData.latitude)
   let longitude = parseFloat(addressData.longitude)
+
   let marker = new google.maps.Marker({
     map: map,
     position: {lat: latitude , lng: longitude},
@@ -137,9 +138,12 @@ function mealMarkerCallback (addressData) {
     mealName.push(`<br>${$(this).text()}`)
   })
 
-  google.maps.event.addListener(marker,  'click', function(){
+  google.maps.event.addListener(marker,  'mouseover', function(){
     infoWindow.setContent(`<span>${marker.formattedAddress}</span>${mealName}`)
     infoWindow.open(map, marker)
+  })
+  google.maps.event.addListener(marker,  'click', function(){
+    $(".postings-list").prepend($(`.meal-div:contains(${marker.formattedAddress})`))
   })
 
   postingMarkers.push(marker)
