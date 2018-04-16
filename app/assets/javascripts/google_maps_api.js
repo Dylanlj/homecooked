@@ -176,6 +176,7 @@ function mealPostingMarkers() {
 
 
 function reOrderMeals () {
+
   for (let marker of postingMarkers){
     $(".postings-list").append($(`.meal-div:contains(${marker.formattedAddress})`))
   }
