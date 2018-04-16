@@ -3,11 +3,13 @@
 <!-- Google Maps; on right hand side -->
 
 <aside class="google-maps">
+
   <% if current_user_location %>
     <% theAddress = current_user_location %>
   <% else %>
     <% theAddress = "46 Spadina Avenue Toronto" %>
   <% end %>
+
     <div id="googleMap" data-user-location='<%=theAddress%>'></div>
 
   <script type="text/javascript">
@@ -21,6 +23,15 @@
       })
     }
   </script>
+    <div id="google-search">
+
+        <%= form_tag user_location_path, :method => :put do %>
+          <span class="form-group">
+            <%= text_field_tag :address, nil, placeholder: "Location", class: "form-control" %>
+            <%= submit_tag 'Go', class: "btn btn-default" %>
+          </span>
+        <% end %>
+    </div>
 </aside>
 
 <!-- Meals posted on left hand side -->
