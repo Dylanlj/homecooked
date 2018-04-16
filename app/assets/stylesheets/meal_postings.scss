@@ -74,8 +74,12 @@
 // Section for meals //
 ///////////////////////
 
+.postings{
+  margin-top: 2px;
+}
+
 .categories-area{
-  position: relative;
+  // position: relative;
   z-index: 1;
   height: 7vh;
   width: 50%;
@@ -90,17 +94,22 @@
 }
 
 .marker-circle {
-  width:30px;
-  height:30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width:2vw;
+  height:2vw;
   border-radius:250px;
-  font-size:15px;
+  font-size:1.2vw;
   color:#000;
   margin-right: 10px;
   padding-left: 0px;
   padding-right: 0px;
-  line-height:30px;
+  // line-height:30px;
   font-family:Sans-serif;
-  text-align:center;
+  // text-align:center;
   background:#fb260b
 }
 
@@ -136,6 +145,7 @@
   font-family: Cambay;
   .media-container {
     height: 100%;
+    font-size: 1.5vw;
     .row-heading {
         height: 20%;
         // background-color: blue;
@@ -155,9 +165,19 @@
 }
 
 .order-info {
-  height: 30px;
-  font-size: 14px;
+  height: 2vw;
+  width: 6vw;
+  font-size: 1vw;
   padding: 3px;
+}
+
+.dropdown-toggle{
+  height: 2.5vw;
+  font-size: 1vw;
+}
+
+hr.index-divider {
+  width: 90%;
 }
 
 ////////////////////////////

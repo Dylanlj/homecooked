@@ -38,7 +38,7 @@
             <ul class="dropdown-menu">
               <% @categories.each do |category| %>
                 <li>
-                  <%= link_to meals_category_path(id: category.id, ), method: :put do %>
+                  <%= link_to meals_category_path(id: category.id), method: :put do %>
                     <%= category.name %>
                   <% end %>
                 </li>
@@ -116,7 +116,7 @@
 
       </div>
     </div>
-
+    <hr class="index-divider">
   <% end %>
 
 <% end %>

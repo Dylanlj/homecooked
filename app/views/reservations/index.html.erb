@@ -52,9 +52,10 @@
                   <%= button_to 'User Reviews', user_path(reservation.user), :method => :get, :class => "btn btn-warning btn-md basic" %>
                 </div>
 
+                <!-- SHOULD THIS JUST BE "REJECTED"? DO WE WANT TO LET HOST DELETE POSTING THAT IS ACCEPTED BUT NOT PAID? -->
                 <% if reservation.status === "Accepted" || reservation.status === "Rejected" %>
                   <div class="delete-button">
-                    <%= button_to 'Delete', new_meal_posting_reservation_path(reservation.meal_posting), :class => "btn btn-primary btn-md delete" %>
+                    <%= button_to 'Delete', { :controller => "reservations", :action => "destroy", id: reservation.id }, :method => :delete, :class => "btn btn-primary btn-md delete" %>
                   </div>
                 <% else %>
                   <div class="reject-button">
@@ -151,7 +152,7 @@
             <% if reservation.status === "Rejected" %>
               <div class="row">
                 <div class="delete-button">
-                  <%= button_to 'Delete', new_meal_posting_reservation_path(reservation.meal_posting), :class => "btn btn-primary btn-md delete" %>
+                  <%= button_to 'Delete', { :controller => "reservations", :action => "destroy", id: reservation.id }, :method => :delete, :class => "btn btn-primary btn-md delete" %>
                 </div>
               </div>
             <% end %>

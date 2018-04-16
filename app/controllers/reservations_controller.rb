@@ -58,7 +58,7 @@ class ReservationsController < ApplicationController
   def update
     respond_to do |format|
       if @reservation.update(reservation_params)
-        format.html { redirect_to @reservation, notice: 'Reservation was successfully updated.' }
+        format.html { redirect_to @reservation }#, notice: 'Reservation was successfully updated.' }
         format.json { render :show, status: :ok, location: @reservation }
       else
         format.html { render :edit }
@@ -71,9 +71,17 @@ class ReservationsController < ApplicationController
   # DELETE /reservations/1.json
   def destroy
     @reservation.destroy
-    respond_to do |format|
-      format.html { redirect_to reservations_url, notice: 'Reservation was successfully destroyed.' }
-      format.json { head :no_content }
+
+    if current_user.user_status == "User"
+      respond_to do |format|
+        format.html { redirect_to reservations_url }#, notice: 'Reservation was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: root_path) }#, notice: 'Reservation was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -95,7 +103,7 @@ class ReservationsController < ApplicationController
 
   # FUNCTION TO CHANGE STATUS TO REJECTED ON BUTTON CLICK --- Want to make it an AJAX CALL
   def reject
-    @reservation = Reservation.find(params[reservation.id])
+    @reservation = Reservation.find(params[:id])
     @reservation.status = "Rejected"
     @reservation.save
     redirect_to reservations_url
