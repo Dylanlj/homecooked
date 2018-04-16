@@ -35,13 +35,17 @@
         <div class="list-group-item meal-post-desc">
           <p>Description: <%= meal_posting.description %><br/><br/>Allergy Notice: <%= meal_posting.allergy_notice %></p>
         </div>
+
         <div class="row">
           <div class="col-sm-3 meal-posting-bottom-info">
+            <p>Date: <%= meal_posting.date.to_date() %></p>
+          </div>
+          <div class="col-sm-4 meal-posting-bottom-info">
             <p>
               <% if meal_posting.end_time %>
-                Serving from: <%= meal_posting.base_time %> - <%= meal_posting.end_time%>
+                Serving from: <%= meal_posting.base_time.strftime("%I:%M %p") %> - <%= meal_posting.end_time.strftime("%I:%M %p") %>
               <% else %>
-                Serving at: <%= meal_posting.base_time%>
+                Serving at: <%= meal_posting.base_time.strftime("%I:%M %p")%>
               <% end %>
             </p>
           </div>
@@ -51,8 +55,6 @@
           <div class="col-sm-3 meal-posting-bottom-info">
             <p>Servings Available: <%= meal_posting.servings %></p>
           </div>
-
-
           <div class="review-button">
             <%= button_to 'Reviews', meal_posting_reviews_path(meal_posting), :method => :get, :class => "btn btn-warning btn-md meal-reviews-btn" %>
           </div>
@@ -107,7 +109,10 @@
                         <% if meal_posting.end_time %>
                         <tr class="modal-form-group">
                           <td><%= form.label :reservation_time %></td>
-                          <td><%= form.number_field :time, id: :time %></td>
+                            <td><%= form.time_select :time, {
+                              ampm: true,
+                              ignore_date: true
+                            } %></td>
                         </tr>
                         <% else %>
                           <%= form.hidden_field :time, value: meal_posting.base_time %>
@@ -121,7 +126,6 @@
                     <% end %>
                   </div>
                 </div>
-
               </div>
             </div>
           <% end %>
