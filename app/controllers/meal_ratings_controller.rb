@@ -34,7 +34,7 @@ class MealRatingsController < ApplicationController
   def destroy
     @meal_rating.destroy
     respond_to do |format|
-      format.html { redirect_to meal_ratings_url, notice: 'Meal rating was successfully destroyed.' }
+      format.html { redirect_to meal_ratings_url }#, notice: 'Meal rating was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

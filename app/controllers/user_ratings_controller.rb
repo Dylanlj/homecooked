@@ -40,7 +40,7 @@ class UserRatingsController < ApplicationController
   def destroy
     @user_rating.destroy
     respond_to do |format|
-      format.html { redirect_to user_ratings_url, notice: 'User rating was successfully destroyed.' }
+      format.html { redirect_to user_path(@user_rating.ratee_id) }#, notice: 'User rating was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

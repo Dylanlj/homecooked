@@ -77,7 +77,7 @@ class MealPostingsController < ApplicationController
   def update
     respond_to do |format|
       if @meal_posting.update(meal_posting_params)
-        format.html { redirect_to @meal_posting, notice: 'Meal posting was successfully updated.' }
+        format.html { redirect_to @meal_posting }#, notice: 'Meal posting was successfully updated.' }
         format.json { render :show, status: :ok, location: @meal_posting }
       else
         format.html { render :edit }
@@ -91,7 +91,7 @@ class MealPostingsController < ApplicationController
   def destroy
     @meal_posting.destroy
     respond_to do |format|
-      format.html { redirect_to meal_postings_url, notice: 'Meal posting was successfully destroyed.' }
+      format.html { redirect_to meal_postings_url }#, notice: 'Meal posting was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
