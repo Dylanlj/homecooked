@@ -22,7 +22,7 @@
 
 <!-- Shows as many meal postings as the user currently has -->
 <div class="container">
-  <div class="row">
+  <div class="row meal-div">
     <% @ordered_meal_ids.each do |meal_id| %>
     <% meal_posting = @usermeals.find(meal_id) %>
     <div class="row">
