@@ -16,8 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def update
-    # puts "==========="
-    # puts "this is happening"
+
     session[:user_address] = params[:address]
     # if :user_address
     redirect_to root_path

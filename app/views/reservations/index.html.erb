@@ -21,7 +21,7 @@
         <!-- Won't show up on page if host has deleted or if both have deleted, but will show up on user reservations page -->
           <% if reservation.delete_status != "hostdelete" && reservation.delete_status != "bothdelete" %>
 
-          <div class="row">
+          <div class="row meal-div">
             <div class="col-xs-4 col-sm-3 col-md-3">
               <%= cl_image_tag(reservation.meal_posting.image, class: 'circle img-thumbnail img-box reservation-pic') %>
             </div>
@@ -96,7 +96,9 @@
         <!-- Won't show up on page if user has deleted or if both have deleted, but will show up on host reservations page -->
         <% if reservation.delete_status != "userdelete" && reservation.delete_status != "bothdelete" %>
 
-          <div class="row">
+
+
+          <div class="row meal-div">
             <div class="col-xs-4 col-sm-3 col-md-3">
               <%= cl_image_tag(reservation.meal_posting.image, class: 'circle img-thumbnail img-box reservation-pic') %>
             </div>

@@ -1,18 +1,20 @@
 <%= javascript_include_tag 'meal_postings' %>
 
 <!-- User information at top of page -->
-<div class="container meal-posting-user-info">
+<div class=" meal-posting-user-info">
   <div class="row">
     <div class="row">
       <div class="col-xs-4 col-sm-3 col-md-3">
-        <%= cl_image_tag(@user.image, class: 'circle img-thumbnail img-box') %>
+        <%= cl_image_tag(@user.image, class: 'circle img-thumbnail img-box profile-pic') %>
+      </div >
+        <div class="profile-info" id="show-meals">
+        <h4>User Information: </h4>
+        <h5>Name: <%= @user.name %></h5>
+        <p>Address: <%= @user.address %></p>
+        <p>Phone: <%= @user.phone_number %></p>
+        <p>Email: <%= @user.email %></p>
+        <%= link_to 'Reviews', user_path(@user), :class => "btn btn-warning btn-md user-reviews-btn" %>
       </div>
-      <h4><strong>Host Information: </strong></h4>
-      <h5><strong>Name: <%= @user.name %></strong></h5>
-      <p><strong>Address: <%= @user.address %></strong></p>
-      <p><strong>Phone: <%= @user.phone_number %></strong></p>
-      <p><strong>Email: <%= @user.email %></strong></p>
-      <%= link_to 'Reviews', user_path(@user), :class => "btn btn-warning btn-md user-reviews-btn" %>
     </div>
   </div>
 </div>
@@ -25,7 +27,7 @@
   <div class="row">
     <% @ordered_meal_ids.each do |meal_id| %>
     <% meal_posting = @usermeals.find(meal_id) %>
-    <div class="row">
+    <div class="row meal-div">
       <div class="col-xs-4 col-sm-3 col-md-3">
         <% if meal_posting.image %>
           <%= cl_image_tag(meal_posting.image, class: 'circle img-thumbnail img-box') %>
@@ -140,7 +142,6 @@
         </div>
       </div>
     </div>
-    <hr>
     <% end %>
   </div>
 </div>
