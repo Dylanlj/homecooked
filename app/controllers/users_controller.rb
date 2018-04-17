@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @firstmeal = MealPosting.where("user_id = ?", @user.id).first
+    @firstmeal = MealPosting.where("user_id = ?", @user.id).first.id
     @review = UserRating.new
   end
 
@@ -24,8 +24,6 @@ class UsersController < ApplicationController
   def create
 
     @user = User.new(user_params)
-    puts "------------------"
-    puts user_params
     respond_to do |format|
       if @user.save
         # This is another way to upload images (or video), in case its needed later.
