@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
 <h2><%= @meal_posting.title %> by <%=@meal_posting.user.name%></h2>
-    <div class="row">
+    <div class="row meal-div">
       <div class="col-xs-4 col-sm-3 col-md-3">
         <%= cl_image_tag(@meal_posting.image, class: 'circle img-thumbnail img-box') %>
       </div>
@@ -15,9 +15,9 @@
           <div class="col-sm-3 meal-posting-bottom-info">
             <p>
               <% if @meal_posting.end_time %>
-                Serving from: <%= @meal_posting.base_time %> - <%= @meal_posting.end_time%>
+                Serving from: <%= @meal_posting.base_time.strftime("%I:%M %p") %> - <%= @meal_posting.end_time.strftime("%I:%M %p") %>
               <% else %>
-                Serving at: <%= @meal_posting.base_time%>
+                Serving at: <%= @meal_posting.base_time.strftime("%I:%M %p") %>
               <% end %>
             </p>
           </div>

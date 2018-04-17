@@ -71,8 +71,8 @@
   }
   #google-search {
     position: absolute;
-    top: 15%;
-    right: 1%;
+    top: 10.5%;
+    left: 68%;
     z-index: 20;
     width: 40%;
     margin: 0;
@@ -81,12 +81,12 @@
 
 
     #address {
-      width: 50%;
+      width: 45%;
       margin:0%;
     }
     #location-form {
       display: inline-block;
-      width:60%;
+      width:50%;
     }
   }
 }
@@ -152,13 +152,18 @@
 }
 
 .meal-div{
-  margin: 10px 5px 5px 10px;
-  width: 100%;
+  margin: 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+
+  background-color: white;
 }
 
 // The media-object (image) height should be the same as the media-body (text) height below
 .media-object {
   height: 15vh;
+  margin: 8%;
+  padding: 0%;
   width: 10vw;
 }
 
@@ -169,7 +174,7 @@
     height: 100%;
     font-size: 1.5vw;
     .row-heading {
-        height: 20%;
+
         // background-color: blue;
     }
     .row-body {
@@ -201,6 +206,7 @@
 
 hr.index-divider {
   width: 90%;
+
 }
 
 ////////////////////////////
@@ -237,6 +243,8 @@ table.new-meal-table {
 // Meal Posting Show Page //
 ////////////////////////////
 
+
+
 .meal-posting-bottom-info {
   margin-top: 18px;
 }
@@ -264,20 +272,36 @@ table.new-meal-table {
 }
 
 .meal-posting-user-info {
-  margin-top: 20px;
+  margin: 5%;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #ddd;
+    .show-page {
+
+    }
+    .profile-pic {
+      margin: 20px;
+    }
+    .show-pic {
+      height: 300px;
+      width: 400px;
+    }
+    .profile-info {
+      margin-left:400px;
+
+    }
+    #show-meals {
+      margin-left: 28%;
+    }
 }
 
-hr {
-  height: 1px;
-  border-color: gray;
+div.col-xs-4 {
+  margin-bottom: 15px;
 }
 
-hr.user-meal-posting-separate {
-    border: none;
-    height: 8px;
-    width: 95%;
-    color: #f4511e;
-    background-color: #f4511e;
+.img-thumbnail {
+  margin-top: 10%;
+  padding: 0%;
 }
 
 .host-info {
@@ -293,11 +317,21 @@ hr.user-meal-posting-separate {
   margin: auto;
 }
 
-.profile-pic {
-  float: right;
-  // width: 300px;
-  // height: 300px;
+hr {
+  height: 1px;
+  border-color: gray;
 }
+
+hr.user-meal-posting-separate {
+    border: none;
+    height: 8px;
+    width: 95%;
+    color: #f4511e;
+    background-color: #f4511e;
+}
+
+
+
 
 
 ////////////////////////////
