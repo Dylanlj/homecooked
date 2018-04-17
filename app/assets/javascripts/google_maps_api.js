@@ -23,6 +23,7 @@ function codeAddress(address, callback) {
     if (status == 'OK') {
       callback(results)
     } else {
+      callback(results)
       console.log('Geocode was not successful for the following reason: ' + status);
       invalidAddress()
     }
@@ -77,8 +78,12 @@ function initialize() {
   geocoder = new google.maps.Geocoder();
 
   function setUpMap (geoObject) {
-    let userLocation = geoObject[0].geometry.location
-    let latlng = new google.maps.LatLng(userLocation.lat(), userLocation.lng());
+    let latlng = {lat: 43.644866, lng: -79.395176}
+    if(geoObject[0]){
+      let userLocation = geoObject[0].geometry.location
+      latlng = new google.maps.LatLng(userLocation.lat(), userLocation.lng())
+    }
+
     let mapOptions = {
       zoom: 15,
       center: latlng
@@ -90,6 +95,7 @@ function initialize() {
     });
     mealPostingMarkers()
   }
+
   codeAddress(document.getElementById('googleMap').dataset.userLocation, setUpMap)
 }
 
