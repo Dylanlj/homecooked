@@ -1,29 +1,23 @@
 <body>
 
   <!-- User information at top of page -->
-  <div class="container meal-posting-user-info user-show">
+<div class=" meal-posting-user-info profile">
+  <div class="row">
     <div class="row">
-      <div class="row">
-        <div class="col-xs-5 col-sm-5 col-md-5">
-            <div class="profile-picture-div">
-              <span class="helper"></span>
-              <%= cl_image_tag(@user.image, class: 'circle img-thumbnail img-box profile-pic') %>
-            </div>
-          </div>
-        <div class="col-xs-7 col-sm-7 col-md-7 user-info">
-          <% if @user.user_status == 'host' %>
-            <h1 class="user-info-title">Host Information: </h1>
-          <% else %>
-            <h1 class="user-info-title">User Information: </h1>
-          <% end %>
-          <h3>Name: <%= @user.name %></h3>
-          <h3>Address: <%= @user.address %></h3>
-          <h3>Phone: <%= @user.phone_number %></h3>
-          <h3>Email: <%= @user.email %></h3>
-        </div>
+      <div class="col-xs-4 col-sm-3 col-md-3">
+        <%= cl_image_tag(@user.image, class: 'circle img-thumbnail img-box profile-pic') %>
+      </div >
+        <div class="profile-info">
+        <h4><strong>Host Information: </strong></h4>
+        <h5><strong>Name: <%= @user.name %></strong></h5>
+        <p><strong>Address: <%= @user.address %></strong></p>
+        <p><strong>Phone: <%= @user.phone_number %></strong></p>
+        <p><strong>Email: <%= @user.email %></strong></p>
+        <%= link_to 'Reviews', user_path(@user), :class => "btn btn-warning btn-md user-reviews-btn" %>
       </div>
     </div>
   </div>
+</div>
 
   <hr class="user-meal-posting-separate">
 

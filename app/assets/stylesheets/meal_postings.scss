@@ -272,20 +272,28 @@ table.new-meal-table {
 }
 
 .meal-posting-user-info {
-  margin-top: 20px;
+  margin: 5%;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #ddd;
+    .show-page {
+
+    }
+    .profile-pic {
+      margin: 20px;
+    }
+    .profile-info {
+      margin-left:30%;
+    }
 }
 
-hr {
-  height: 1px;
-  border-color: gray;
+div.col-xs-4 {
+  margin-bottom: 15px;
 }
 
-hr.user-meal-posting-separate {
-    border: none;
-    height: 8px;
-    width: 95%;
-    color: #f4511e;
-    background-color: #f4511e;
+.img-thumbnail {
+  margin-top: 10%;
+  padding: 0%;
 }
 
 .host-info {
@@ -301,11 +309,21 @@ hr.user-meal-posting-separate {
   margin: auto;
 }
 
-.profile-pic {
-  float: right;
-  // width: 300px;
-  // height: 300px;
+hr {
+  height: 1px;
+  border-color: gray;
 }
+
+hr.user-meal-posting-separate {
+    border: none;
+    height: 8px;
+    width: 95%;
+    color: #f4511e;
+    background-color: #f4511e;
+}
+
+
+
 
 
 ////////////////////////////
