@@ -71,7 +71,7 @@
   }
   #google-search {
     position: absolute;
-    top: 9%;
+    top: 10.5%;
     left: 68%;
     z-index: 20;
     width: 40%;
@@ -282,8 +282,16 @@ table.new-meal-table {
     .profile-pic {
       margin: 20px;
     }
+    .show-pic {
+      height: 300px;
+      width: 400px;
+    }
     .profile-info {
-      margin-left:30%;
+      margin-left:400px;
+
+    }
+    #show-meals {
+      margin-left: 28%;
     }
 }
 

@@ -2,9 +2,7 @@
 
   <!-- User information at top of page -->
 <div class=" meal-posting-user-info show-page">
-  <div class="row">
-    <div class="row">
-      <div class="col-xs-4 col-sm-3 col-md-3">
+      <div class="row col-xs-4 col-sm-3 col-md-3 show-pic">
         <%= cl_image_tag(@user.image, class: 'circle img-thumbnail img-box profile-pic') %>
       </div >
         <div class="profile-info">
@@ -13,9 +11,7 @@
         <h3><strong>Address: <%= @user.address %></strong></h3>
         <h3><strong>Phone: <%= @user.phone_number %></strong></h3>
         <h3><strong>Email: <%= @user.email %></strong></h3>
-        <%= link_to 'Reviews', user_path(@user), :class => "btn btn-warning btn-md user-reviews-btn" %>
-      </div>
-    </div>
+    <br>
   </div>
 </div>
 
