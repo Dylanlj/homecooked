@@ -42,19 +42,7 @@
     <div class="row row-heading cat-row">
       <div class="col-xs-4 cat-col">
         <div class="container">
-          <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Categories
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <% @categories.each do |category| %>
-                <li>
-                  <%= link_to meals_category_path(id: category.id), method: :put do %>
-                    <%= category.name %>
-                  <% end %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
+
         </div>
       </div>
       <div class="col-xs-8">

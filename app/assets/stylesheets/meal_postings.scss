@@ -276,9 +276,7 @@ table.new-meal-table {
   padding: 10px;
   background-color: white;
   border: 1px solid #ddd;
-    .show-page {
 
-    }
     .profile-pic {
       margin: 20px;
     }
@@ -294,6 +292,10 @@ table.new-meal-table {
       margin-left: 28%;
     }
 }
+
+  #show-page{
+    height:350px;
+  }
 
 div.col-xs-4 {
   margin-bottom: 15px;
