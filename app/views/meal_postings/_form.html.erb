@@ -2,7 +2,7 @@
   <%= form_with(model: meal_posting, local: true) do |form| %>
     <% if meal_posting.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(meal_posting.errors.count, "error") %> prohibited this meal_posting from being saved:</h2>
+        <h2><%= pluralize(meal_posting.errors.count, "error") %> prohibited this meal posting from being saved:</h2>
 
         <ul>
         <% meal_posting.errors.full_messages.each do |message| %>

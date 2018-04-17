@@ -5,6 +5,7 @@ class MealPostingsController < ApplicationController
   # GET /meal_postings.json
   def index
     @meal_postings = MealPosting.all
+    puts "=====Hello===== #{@meal_postings.class}"
     if params[:category]
       @meal_postings = MealPosting.where("category_id = #{params[:id].to_i}")
     end
@@ -15,10 +16,13 @@ class MealPostingsController < ApplicationController
   # GET /meal_postings/1.json
   def show
     @user = User.find(@meal_posting.user_id)
+    @usermeals = @user.meal_postings
     @reservation = Reservation.new
+    @other_meal_ids = MealPosting.where("user_id = ? AND id != ?", @meal_posting.user_id, @meal_posting.id).ids
+    @ordered_meal_ids = @other_meal_ids.unshift(@meal_posting.id)
   end
 
-#GET /meal_posting/1/reviews
+  #GET /meal_posting/1/reviews
   def meal_posting_reviews
     @meal_posting = MealPosting.find(params[:id])
     @review = MealRating.new

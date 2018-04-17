@@ -23,6 +23,7 @@ function codeAddress(address, callback) {
     if (status == 'OK') {
       callback(results)
     } else {
+      callback(results)
       console.log('Geocode was not successful for the following reason: ' + status);
       invalidAddress()
     }
@@ -40,28 +41,30 @@ function invalidAddress(){
 
 function giveProperAddress (geoObject) {
 
-  console.log(geoObject[0])
-  // console.log(geoObject[0].formattedAddress)
   if (geoObject[0]){
+
     $("#user_address").val(geoObject[0].formatted_address)
     $("#latitude").val(geoObject[0].geometry.location.lat())
-    $("#longitude").val(geoObject[0].geometry.location.lng())
-    console.log("trying to click button")
-    $("#register-form").trigger("submit")
+    let lng = $("#longitude").val(geoObject[0].geometry.location.lng())
+      lng.promise().done(function() {
+        $("#register-form").trigger("submit")
+      })
   }
 }
 
-$(document).ready(function(){
-    $(".new-user-submit").click(function(event){
-      // alert(event)
+
+function watchRegister () {
+  $("#register-form").submit("submit", function(event){
+   if ($("#longitude").val() === "false") {
       event.preventDefault()
       let enteredAddress
       enteredAddress = $("#user_address").val()
       geocoder = new google.maps.Geocoder()
       codeAddress(enteredAddress, giveProperAddress)
-    });
-});
+   }
 
+  });
+}
 
 ///////////////////
 //INDEX HOME PAGE//
@@ -75,8 +78,12 @@ function initialize() {
   geocoder = new google.maps.Geocoder();
 
   function setUpMap (geoObject) {
-    let userLocation = geoObject[0].geometry.location
-    let latlng = new google.maps.LatLng(userLocation.lat(), userLocation.lng());
+    let latlng = {lat: 43.644866, lng: -79.395176}
+    if(geoObject[0]){
+      let userLocation = geoObject[0].geometry.location
+      latlng = new google.maps.LatLng(userLocation.lat(), userLocation.lng())
+    }
+
     let mapOptions = {
       zoom: 15,
       center: latlng
@@ -88,6 +95,7 @@ function initialize() {
     });
     mealPostingMarkers()
   }
+
   codeAddress(document.getElementById('googleMap').dataset.userLocation, setUpMap)
 }
 
@@ -125,6 +133,7 @@ function addLabelsToDOM (marker, allMarkers) {
 function mealMarkerCallback (addressData) {
   let latitude = parseFloat(addressData.latitude)
   let longitude = parseFloat(addressData.longitude)
+
   let marker = new google.maps.Marker({
     map: map,
     position: {lat: latitude , lng: longitude},
@@ -136,15 +145,20 @@ function mealMarkerCallback (addressData) {
   $(`.media-container:contains(${marker.formattedAddress})`).find('.title').each(function(){
     mealName.push(`<br>${$(this).text()}`)
   })
-
-  google.maps.event.addListener(marker,  'click', function(){
+//adds info window for map markers
+  google.maps.event.addListener(marker,  'mouseover', function(){
     infoWindow.setContent(`<span>${marker.formattedAddress}</span>${mealName}`)
     infoWindow.open(map, marker)
+  })
+  google.maps.event.addListener(marker,  'click', function(){
+    $(".postings-list").prepend($(`.meal-div:contains(${marker.formattedAddress})`))
   })
 
   postingMarkers.push(marker)
   orderMarkerByProximity(yourMarker)
 }
+
+
 
 function mealPostingMarkers() {
 
@@ -163,6 +177,17 @@ function mealPostingMarkers() {
     }
   }
 
+  reOrderMeals()
 }
+
+
+function reOrderMeals () {
+
+  for (let marker of postingMarkers){
+    $(".postings-list").append($(`.meal-div:contains(${marker.formattedAddress})`))
+  }
+}
+
+
 
 
