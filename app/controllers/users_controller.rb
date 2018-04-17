@@ -6,7 +6,10 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @firstmeal = MealPosting.where("user_id = ?", @user.id).first.id
+    @firstmeal = MealPosting.where("user_id = ?", @user.id).first
+    if @firstmeal
+      @firstmeal = @firstmeal.id
+    end
     @review = UserRating.new
   end
 
