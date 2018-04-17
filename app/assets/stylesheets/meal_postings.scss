@@ -25,12 +25,7 @@
 ////////////////////////////
 
 
-.nav {
-  height: 7vh;
-}
-
 .navbar {
-    margin-bottom: 5px;
     background-color: #f4511e;
     z-index: 9999;
     border: 0;
@@ -38,24 +33,60 @@
     line-height: 1.42857143;
     letter-spacing: 4px;
     border-radius: 0;
-}
+    margin: 0;
+    padding: 0;
 
-.navbar-header {
-  float:right;
-}
+    .navbar-header {
+      float:right;
+    }
 
-.navbar li a, .navbar .navbar-brand {
-    color: #fff !important;
-}
+    li a, .navbar-brand {
+      color: #fff !important;
+    }
 
-.navbar-nav li a:hover, .navbar-nav li.active a {
-    color: #f4511e !important;
-    background-color: #fff !important;
-}
+    .navbar-nav{
+      height: 100%;
+      .cat-link a:hover, .cat-link.active a{
+        color: #f4511e !important;
+        background-color: #fff !important;
+      }
+      .cat-list:hover, .cat-list.active {
+        color: #f4511e !important;
+        background-color: #fff !important;
+      }
+      .cat-list{
+        color: #fff !important;
+        background-color: #f4511e !important;
+      }
+      .dropdown-menu{
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+    }
 
-.navbar-default .navbar-toggle {
-    border-color: transparent;
-    color: #fff !important;
+    // .navbar-nav li a:hover, .navbar-nav li.active a {
+    //   color: #f4511e !important;
+    //   background-color: #fff !important;
+    // }
+
+    .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+    }
+
+    .dropdown{
+      height: 100%;
+
+      .dropdown-toggle{
+        height: 100%;
+      }
+    }
+
+
+    .navbar-nav{
+      padding: 0;
+      margin: 0;
+    }
 }
 
 /////////////////////////////
@@ -107,13 +138,13 @@
   height: 7vh;
   width: 55%;
   margin-bottom: 7px;
-  background: repeating-radial-gradient(
-    circle,
-    #f4511e,
-    #f4511e 80px,
-    #ffffff 20px,
-    #ffffff 100px
-  );
+  // background: repeating-radial-gradient(
+  //   circle,
+  //   #f4511e,
+  //   #f4511e 80px,
+  //   #ffffff 20px,
+  //   #ffffff 100px
+  // );
 }
 
 .marker-circle {

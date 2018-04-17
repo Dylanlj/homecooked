@@ -5,19 +5,33 @@
       <a class="navbar-brand" href="/" >HomeCooked</a>
     </div>
     <ul class="nav navbar-nav navbar-left">
+      <% if @categories %>
+      <li class="dropdown">
+        <a class="dropdown-toggle cat-list" data-toggle="dropdown" href="#">Categories
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <% @categories.each do |category| %>
+            <li>
+              <%= link_to meals_category_path(id: category.id), method: :put, class: "cat-list" do %>
+                <%= category.name %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+      <% end %>
       <% if current_user && !current_page?(user_path(current_user)) %>
-        <li><%= link_to user_path(current_user) do %><span class="glyphicon glyphicon-home"></span> Home <% end %></li></li>
+        <li class="cat-link"><%= link_to user_path(current_user) do %><span class="glyphicon glyphicon-home"></span> Home <% end %></li>
       <% end %>
       <% if current_user %>
-        <li><%= link_to reservations_path do %><span class="glyphicon glyphicon-list-alt"></span> Reservations <% end %></li>
+        <li class="cat-link"><%= link_to reservations_path do %><span class="glyphicon glyphicon-list-alt"></span> Reservations <% end %></li>
       <% end %>
       <% if current_user %>
-        <li><%= link_to logout_path do %><span class="glyphicon glyphicon-log-out"></span> Logout <% end %></li>
+        <li class="cat-link"><%= link_to logout_path do %><span class="glyphicon glyphicon-log-out"></span> Logout <% end %></li>
       <% else %>
-        <li><%= link_to new_user_path do %><span class="glyphicon glyphicon-user"></span> Sign Up <% end %></li>
-        <li><%= link_to login_path do %><span class="glyphicon glyphicon-log-in"></span> Login <% end %></li>
+        <li class="cat-link"><%= link_to new_user_path do %><span class="glyphicon glyphicon-user"></span> Sign Up <% end %></li>
+        <li class="cat-link"><%= link_to login_path do %><span class="glyphicon glyphicon-log-in"></span> Login <% end %></li>
       <% end %>
     </ul>
   </div>
 </nav>
-
