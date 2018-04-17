@@ -59,6 +59,12 @@
           <div class="review-button">
             <%= button_to 'Reviews', meal_posting_reviews_path(meal_posting), :method => :get, :class => "btn btn-warning btn-md meal-reviews-btn" %>
           </div>
+
+          <% if current_user and current_user.id == meal_posting.user_id %>
+          <div class="delete-button">
+            <%= button_to 'Delete', meal_posting_path(meal_posting), :method => :delete, :class => "btn btn-warning btn-md meal-reviews-btn" %>
+          </div>
+          <% end %>
           <!-- Won't display reserve button if current user is the meal poster, or if there are no more servings -->
           <% if current_user and current_user.id != @user.id and meal_posting.servings >= 1 %>
           <!-- Reserving a meal opens a modal with a form -->

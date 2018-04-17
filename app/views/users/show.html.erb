@@ -34,7 +34,7 @@
     </div>
   <% end %>
   <div class="view-meals-button">
-    <%= button_to "View All Meals", meal_posting_path, :method => :get, :id => @firstmeal, :class => "btn btn-danger btn-md"%>
+    <%= button_to "View All Meals", meal_posting_path(@firstmeal), :method => :get, :id => @firstmeal, :class => "btn btn-danger btn-md"%>
   </div>
     <% if current_user and current_user.id != @user.id %>
       <h2>Add a review:</h2>
