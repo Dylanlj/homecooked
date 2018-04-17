@@ -37,12 +37,10 @@ Rails.application.routes.draw do
     put '/reservations/:id/accept' => 'reservations#accept'
     put '/reservations/:id/reject' => 'reservations#reject'
 
-    ################ FOR hostdelete and userdelete ###############
+    ############## FOR hostdelete and userdelete ###############
     put '/reservations/:id/hostdelete' => 'reservations#hostdelete'
     put '/reservations/:id/userdelete' => 'reservations#userdelete'
-                                                    # FIGURE OUT THIS PART BELOW #
     put '/reservations/outgoing/:id/userdelete' => 'reservations#userdelete'
-    ##################################################################################
 
     delete 'reservations/:id/destroy' => 'reservations#destroy'
     put '/reservations/:id/order' => 'reservations#order', :as => :reservation_order
