@@ -18,6 +18,9 @@
 
       <% @user.meal_postings.each do |meal_posting| %>
         <% meal_posting.reservations.each do |reservation| %>
+
+          <% if reservation.delete_status != "hostdelete" && reservation.delete_status != "bothdelete" %>
+
           <div class="row">
             <div class="col-xs-4 col-sm-3 col-md-3">
               <%= cl_image_tag(reservation.meal_posting.image, class: 'circle img-thumbnail img-box reservation-pic') %>
@@ -53,22 +56,28 @@
                 </div>
 
                 <!-- SHOULD THIS JUST BE "REJECTED"? DO WE WANT TO LET HOST DELETE POSTING THAT IS ACCEPTED BUT NOT PAID? -->
-                <% if reservation.status === "Accepted" || reservation.status === "Rejected" %>
+                <% if reservation.paid || reservation.status === "Rejected" %>
                   <div class="delete-button">
-                    <%= button_to 'Delete', { :controller => "reservations", :action => "destroy", id: reservation.id }, :method => :delete, :class => "btn btn-primary btn-md delete" %>
+                    <%= button_to 'Delete', { :controller => "reservations", :action => "hostdelete", id: reservation.id }, :method => :put, :class => "btn btn-primary btn-md delete" %>
                   </div>
-                <% else %>
+                <% elsif reservation.status === "Pending Approval" %>
                   <div class="reject-button">
                     <%= button_to 'Reject', {:controller => "reservations", :action => "reject", id: reservation.id}, :method => :put, :remote => true, :class => "btn btn-warning btn-md basic" %>
                   </div>
                   <div class="accept-button">
                     <%= button_to 'Accept', {:controller => "reservations", :action => "accept", id: reservation.id}, :method => :put, :remote => true, :class => "btn btn-success btn-md accept" %>
                   </div>
+
                 <% end %>
               </div>
             </div>
           </div>
           <hr>
+
+
+          <% end %>
+
+
         <% end %>
       <% end %>
     </div>
@@ -84,82 +93,89 @@
         <h1>Your Current Reservations: </h1>
       <% end %>
       <% @user.reservations.each do |reservation| %>
-        <div class="row">
-          <div class="col-xs-4 col-sm-3 col-md-3">
-            <%= cl_image_tag(reservation.meal_posting.image, class: 'circle img-thumbnail img-box reservation-pic') %>
-          </div>
-          <div class="col-xs-4 col-sm-9 col-md-9">
-            <h4><%= reservation.meal_posting.title %></h4>
-            <div class="list-group-item meal-post-desc">
-              <p><strong>Host Name: </strong><%= link_to "#{reservation.meal_posting.user.name}", user_path(reservation.meal_posting.user.id) %></p>
-              <p><strong>Servings: </strong><%= reservation.number_of_people %></p>
-              <% if reservation.time %>
-                <p><strong>Time: </strong><%= reservation.time %></p>
-              <% else %>
-                <p><strong>Time: </strong><%= reservation.meal_posting.base_time %></p>
-              <% end %>
-              <% if reservation.meal_posting.allergy_notice %>
-                <p><strong>Allergy Notice: </strong><%= reservation.meal_posting.allergy_notice %></p>
-              <% end %>
-              <p><strong>Total Cost: </strong><%= reservation.meal_posting.cost * reservation.number_of_people %> $</p>
-              <h3 class="user-reservation-status">
-                <% if reservation.paid %>
-                  <strong>Status: </strong>Paid
+
+        <% if reservation.delete_status != "userdelete" && reservation.delete_status != "bothdelete" %>
+
+
+          <div class="row">
+            <div class="col-xs-4 col-sm-3 col-md-3">
+              <%= cl_image_tag(reservation.meal_posting.image, class: 'circle img-thumbnail img-box reservation-pic') %>
+            </div>
+            <div class="col-xs-4 col-sm-9 col-md-9">
+              <h4><%= reservation.meal_posting.title %></h4>
+              <div class="list-group-item meal-post-desc">
+                <p><strong>Host Name: </strong><%= link_to "#{reservation.meal_posting.user.name}", user_path(reservation.meal_posting.user.id) %></p>
+                <p><strong>Servings: </strong><%= reservation.number_of_people %></p>
+                <% if reservation.time %>
+                  <p><strong>Time: </strong><%= reservation.time %></p>
                 <% else %>
-                  <strong>Status: </strong><%= reservation.status %>
+                  <p><strong>Time: </strong><%= reservation.meal_posting.base_time %></p>
                 <% end %>
-              </h3>
-            </div>
-
-
-
-
-            <!-- NEED TO IMPLEMENT STRIPE POPUP WHEN THIS BUTTON IS CLICKED -->
-            <% if reservation.status === "Accepted" && !reservation.paid %>
-            <div class="row">
-
-              <div class="col-xs-12 pay-button">
-                <%= form_tag reservation_order_path(reservation), :method => "put" do %>
-                  <% if flash[:error].present? %>
-                    <div id="error_explanation">
-                      <p><%= flash[:error] %></p>
-                    </div>
+                <% if reservation.meal_posting.allergy_notice %>
+                  <p><strong>Allergy Notice: </strong><%= reservation.meal_posting.allergy_notice %></p>
+                <% end %>
+                <p><strong>Total Cost: </strong><%= reservation.meal_posting.cost * reservation.number_of_people %> $</p>
+                <h3 class="user-reservation-status">
+                  <% if reservation.paid %>
+                    <strong>Status: </strong>Paid
+                  <% else %>
+                    <strong>Status: </strong><%= reservation.status %>
                   <% end %>
-                  <script
-                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                    data-amount="<%= reservation.meal_posting.cost * reservation.number_of_people * 100 %>"
-                    data-name="Jungle"
-                    data-description="HomeCooked Order"
-                    data-locale="auto"
-                    data-currency="cad">
-                  </script>
-                <% end %>
+                </h3>
               </div>
-            </div>
-            </div>
-            <% end %>
 
-            <!-- IF USER HAS PAID WITH STRIPE -->
-            <% if reservation.paid %>
+
+
+
+              <!-- NEED TO IMPLEMENT STRIPE POPUP WHEN THIS BUTTON IS CLICKED -->
+              <% if reservation.status === "Accepted" && !reservation.paid %>
               <div class="row">
-                <h3 class="accepted-payment">Your payment has been accepted!</h3>
-              </div>
-            <% end %>
 
-
-            <!-- USER CAN DELETE RESERVATION FROM PAGE TO CLEAR SPACE IF IT WAS REJECTED  -->
-            <% if reservation.status === "Rejected" %>
-              <div class="row">
-                <div class="delete-button">
-                  <%= button_to 'Delete', { :controller => "reservations", :action => "destroy", id: reservation.id }, :method => :delete, :class => "btn btn-primary btn-md delete" %>
+                <div class="col-xs-12 pay-button">
+                  <%= form_tag reservation_order_path(reservation), :method => "put" do %>
+                    <% if flash[:error].present? %>
+                      <div id="error_explanation">
+                        <p><%= flash[:error] %></p>
+                      </div>
+                    <% end %>
+                    <script
+                      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                      data-amount="<%= reservation.meal_posting.cost * reservation.number_of_people * 100 %>"
+                      data-name="HomeCooked"
+                      data-description="HomeCooked Order"
+                      data-locale="auto"
+                      data-currency="cad">
+                    </script>
+                  <% end %>
                 </div>
               </div>
-            <% end %>
+              </div>
+              <% end %>
 
+              <!-- IF USER HAS PAID WITH STRIPE -->
+              <% if reservation.paid %>
+                <div class="row">
+                  <h3 class="accepted-payment">Your payment has been accepted!</h3>
+                </div>
+              <% end %>
+
+
+              <!-- USER CAN DELETE RESERVATION FROM PAGE TO CLEAR SPACE IF IT WAS REJECTED  -->
+              <% if reservation.status === "Rejected" %>
+                <div class="row">
+                  <div class="delete-button">
+                    <%= button_to 'Delete', { :controller => "reservations", :action => "userdelete", id: reservation.id }, :method => :put, :class => "btn btn-primary btn-md delete" %>
+                  </div>
+                </div>
+              <% end %>
+
+            </div>
           </div>
-        </div>
-        <hr>
+          <hr>
+
+        <% end %>
+
       <% end %>
     </div>
   </div>

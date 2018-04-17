@@ -24,6 +24,7 @@
 // Section for navigation //
 ////////////////////////////
 
+
 .nav {
   height: 7vh;
 }
@@ -99,6 +100,7 @@
   margin-top: 2px;
 }
 
+// Google maps width: 45%
 .categories-area{
   position: relative;
   z-index: 1;
@@ -253,11 +255,18 @@ table.new-meal-table {
   margin-top: 10px;
 }
 
- .review-button {
+.review-button {
   float: right;
   margin-right: 15px;
   margin-top: 10px;
 }
+
+.delete-button{
+  float: right;
+  margin-right: 15px;
+  margin-top: 10px;
+}
+
 .reserve {
   background-color: #f4511e;
 }

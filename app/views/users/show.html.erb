@@ -27,16 +27,17 @@
 
   <hr class="user-meal-posting-separate">
 
-<<<<<<< HEAD
 <div class="container">
   <% if current_user === @user && current_user.user_status == "Host" %>
     <div class="new-meal-button">
       <%= button_to "Create a Meal", new_user_meal_posting_path(@user), :method => :get, :class => "btn btn-warning btn-md"%>
     </div>
+    <% if @firstmeal %>
+      <div class="view-meals-button">
+        <%= button_to "View All Meals", meal_posting_path(@firstmeal), :method => :get, :id => @firstmeal, :class => "btn btn-danger btn-md"%>
+      </div>
+    <% end %>
   <% end %>
-  <div class="view-meals-button">
-    <%= button_to "View All Meals", meal_posting_path, :method => :get, :id => @firstmeal, :class => "btn btn-danger btn-md"%>
-  </div>
     <% if current_user and current_user.id != @user.id %>
       <h2>Add a review:</h2>
       <!-- Displays error messages if form submission is not correct -->

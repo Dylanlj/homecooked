@@ -95,10 +95,11 @@ puts @meal_posting.date
   # DELETE /meal_postings/1.json
   def destroy
     @meal_posting.destroy
-    respond_to do |format|
-      format.html { redirect_to meal_postings_url }#, notice: 'Meal posting was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to user_path(current_user.id)
+    # respond_to do |format|
+      # format.html { redirect_to meal_postings_url } #, notice: 'Meal posting was successfully destroyed.' }
+      # format.json { head :no_content }
+    # end
   end
 
   private
