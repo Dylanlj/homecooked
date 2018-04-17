@@ -24,6 +24,7 @@
 // Section for navigation //
 ////////////////////////////
 
+
 .nav {
   height: 7vh;
 }
@@ -65,7 +66,7 @@
   // width: 0%;
   #googleMap {
     float: right;
-    width: 42%;
+    width: 45%;
     height: 91vh;
   }
   #google-search {
@@ -99,11 +100,12 @@
   margin-top: 2px;
 }
 
+// Google maps width: 45%
 .categories-area{
   position: relative;
   z-index: 1;
   height: 7vh;
-  width: 50%;
+  width: 55%;
   margin-bottom: 7px;
   background: repeating-radial-gradient(
     circle,

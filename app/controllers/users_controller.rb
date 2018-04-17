@@ -5,8 +5,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find params[:id]
-    @firstmeal = MealPosting.find(@user).first.id
+    @user = User.find(params[:id])
+    @firstmeal = MealPosting.where("user_id = ?", @user.id).first
     @review = UserRating.new
   end
 
