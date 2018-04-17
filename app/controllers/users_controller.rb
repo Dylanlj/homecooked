@@ -27,6 +27,12 @@ class UsersController < ApplicationController
   def create
 
     @user = User.new(user_params)
+    puts "================#{@user.inspect}=============="
+    # if !@user.image
+    #   @user.image = "http://slogreengoods.com/wp-content/uploads/profile-pic-generic.jpg"
+    # end
+    # puts "================#{@user.inspect}=============="
+
     respond_to do |format|
       if @user.save
         # This is another way to upload images (or video), in case its needed later.
