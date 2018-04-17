@@ -23,7 +23,8 @@
 <!-- Shows as many meal postings as the user currently has -->
 <div class="container">
   <div class="row">
-    <% @user.meal_postings.each do |meal_posting| %>
+    <% @ordered_meal_ids.each do |meal_id| %>
+    <% meal_posting = @usermeals.find(meal_id) %>
     <div class="row">
       <div class="col-xs-4 col-sm-3 col-md-3">
         <% if meal_posting.image %>
@@ -139,3 +140,5 @@
 </div>
 
 <div class="meal-postings"></div>
+
+

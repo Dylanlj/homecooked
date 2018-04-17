@@ -45,4 +45,6 @@ Rails.application.routes.draw do
     # CREATED FOR A MEALPOSTING REVIEWS
     get '/meal_posting/:id/reviews' => 'meal_postings#meal_posting_reviews', :as => :meal_posting_reviews
 
+    # USER MEAL POSTINGS
+    # get '/users/:user_id/meal_postings' => 'meal_postings#user_meals', :as => :user_meal_postings
 end

@@ -141,8 +141,16 @@ h1.user-info-title {
   margin-top: 10px;
 }
 
+.user-reviews{
+  clear: both;
+}
+
+.new-meal-button, .view-meals-button{
+  float: left;
+  margin: 10px 15px 20px 15px;
+}
+
 .user-reviews-button,
-// .new-meal-button,
 .meal-reviews-button {
   float: left;
   margin-left: 15px;

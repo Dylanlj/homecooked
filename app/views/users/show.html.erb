@@ -30,9 +30,12 @@
 <div class="container">
   <% if current_user === @user && current_user.user_status == "Host" %>
     <div class="new-meal-button">
-      <%= button_to "Create a Meal", new_user_meal_posting_path(@user), :method => :get, :class => "btn btn-warning btn-md basic"%>
+      <%= button_to "Create a Meal", new_user_meal_posting_path(@user), :method => :get, :class => "btn btn-warning btn-md"%>
     </div>
   <% end %>
+  <div class="view-meals-button">
+    <%= button_to "View All Meals", meal_posting_path, :method => :get, :id => @firstmeal, :class => "btn btn-danger btn-md"%>
+  </div>
   <% if current_user and current_user.id != @user.id %>
     <h2>Add a review:</h2>
     <!-- Displays error messages if form submission is not correct -->
@@ -53,6 +56,7 @@
 
   <% if @user.received_ratings.any? %>
 
+  <div class="user-reviews">
     <h2>Reviews: </h2>
     <table class = "table table-bordered review-table">
       <thead>
@@ -80,6 +84,7 @@
   <% else %>
     <h3>No Reviews For This User</h3>
   <% end %>
+  </div>
 </div>
 
 </body>
