@@ -109,6 +109,44 @@ class ReservationsController < ApplicationController
     redirect_to reservations_url
   end
 
+  def hostdelete
+    @reservation = Reservation.find(params[:id])
+    puts "================#{@reservation.inspect}===================="
+    if @reservation.delete_status === "userdelete"
+      @reservation.delete_status = "bothdelete"
+      @reservation.save
+      redirect_to reservations_url
+    else
+      @reservation.delete_status = "hostdelete"
+      @reservation.save
+      redirect_to reservations_url
+    end
+    puts "================#{@reservation.inspect}===================="
+  end
+
+  def userdelete
+    @reservation = Reservation.find(params[:id])
+    puts "================#{@reservation.inspect}===================="
+    if @reservation.delete_status === "hostdelete"
+      @reservation.delete_status = "bothdelete"
+      @reservation.save
+      if current_user.user_status === "Host"
+        redirect_back(fallback_location: root_path)
+      else
+        redirect_to reservations_url
+      end
+    else
+      @reservation.delete_status = "userdelete"
+      @reservation.save
+      if current_user.user_status === "Host"
+        redirect_back(fallback_location: root_path)
+      else
+        redirect_to reservations_url
+      end
+    end
+    puts "================#{@reservation.inspect}===================="
+  end
+
   # ADDED FOR SHOWING HOSTS RESERVATIONS FOR THEIR MEALS
   def outgoingreservations
     if current_user.user_status === "Host"
