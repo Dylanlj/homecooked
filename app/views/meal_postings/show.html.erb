@@ -22,10 +22,10 @@
 
 <!-- Shows as many meal postings as the user currently has -->
 <div class="container">
-  <div class="row meal-div">
+  <div class="row">
     <% @ordered_meal_ids.each do |meal_id| %>
     <% meal_posting = @usermeals.find(meal_id) %>
-    <div class="row">
+    <div class="row meal-div">
       <div class="col-xs-4 col-sm-3 col-md-3">
         <% if meal_posting.image %>
           <%= cl_image_tag(meal_posting.image, class: 'circle img-thumbnail img-box') %>
@@ -140,7 +140,6 @@
         </div>
       </div>
     </div>
-    <hr>
     <% end %>
   </div>
 </div>
