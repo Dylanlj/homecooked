@@ -18,7 +18,7 @@
 
       <% @user.meal_postings.each do |meal_posting| %>
         <% meal_posting.reservations.each do |reservation| %>
-
+        <!-- Won't show up on page if host has deleted or if both have deleted, but will show up on user reservations page -->
           <% if reservation.delete_status != "hostdelete" && reservation.delete_status != "bothdelete" %>
 
           <div class="row">
@@ -93,9 +93,8 @@
         <h1>Your Current Reservations: </h1>
       <% end %>
       <% @user.reservations.each do |reservation| %>
-
+        <!-- Won't show up on page if user has deleted or if both have deleted, but will show up on host reservations page -->
         <% if reservation.delete_status != "userdelete" && reservation.delete_status != "bothdelete" %>
-
 
           <div class="row">
             <div class="col-xs-4 col-sm-3 col-md-3">
