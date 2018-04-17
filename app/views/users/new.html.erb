@@ -1,8 +1,22 @@
+
 <h2 class="new-user-header">Sign Up</h2>
 
- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA" async defer></script>
+
 
 <%= render 'form', user: @user %>
 
 <!-- Now Links back to the Home/Root -->
-<div class="back-button"><%= link_to 'Back', root_path, class: "btn btn-primary" %></div>
+<div class="back-button" ><%= link_to 'Back', root_path, class: "btn btn-primary" %></div>
+
+
+
+<script type="text/javascript">
+  if(! window.google) {
+    $.ajax("https://maps.googleapis.com/maps/api/js?key=AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA&callback=watchRegister", {
+        crossDomain: true,
+        dataType: 'script'
+    })
+  } else {
+    watchRegister()
+  }
+</script>

@@ -1,32 +1,33 @@
 <body>
 
-<!-- User information at top of page -->
-<div class="container meal-posting-user-info user-show">
-  <div class="row">
+  <!-- User information at top of page -->
+  <div class="container meal-posting-user-info user-show">
     <div class="row">
-      <div class="col-xs-5 col-sm-5 col-md-5">
-          <div class="profile-picture-div">
-            <span class="helper"></span>
-            <%= cl_image_tag(@user.image, class: 'circle img-thumbnail img-box profile-pic') %>
+      <div class="row">
+        <div class="col-xs-5 col-sm-5 col-md-5">
+            <div class="profile-picture-div">
+              <span class="helper"></span>
+              <%= cl_image_tag(@user.image, class: 'circle img-thumbnail img-box profile-pic') %>
+            </div>
           </div>
+        <div class="col-xs-7 col-sm-7 col-md-7 user-info">
+          <% if @user.user_status == 'host' %>
+            <h1 class="user-info-title">Host Information: </h1>
+          <% else %>
+            <h1 class="user-info-title">User Information: </h1>
+          <% end %>
+          <h3>Name: <%= @user.name %></h3>
+          <h3>Address: <%= @user.address %></h3>
+          <h3>Phone: <%= @user.phone_number %></h3>
+          <h3>Email: <%= @user.email %></h3>
         </div>
-      <div class="col-xs-7 col-sm-7 col-md-7 user-info">
-        <% if @user.user_status == 'host' %>
-          <h1 class="user-info-title">Host Information: </h1>
-        <% else %>
-          <h1 class="user-info-title">User Information: </h1>
-        <% end %>
-        <h3>Name: <%= @user.name %></h3>
-        <h3>Address: <%= @user.address %></h3>
-        <h3>Phone: <%= @user.phone_number %></h3>
-        <h3>Email: <%= @user.email %></h3>
       </div>
     </div>
   </div>
-</div>
 
-<hr class="user-meal-posting-separate">
+  <hr class="user-meal-posting-separate">
 
+<<<<<<< HEAD
 <div class="container">
   <% if current_user === @user && current_user.user_status == "Host" %>
     <div class="new-meal-button">
@@ -36,48 +37,46 @@
   <div class="view-meals-button">
     <%= button_to "View All Meals", meal_posting_path, :method => :get, :id => @firstmeal, :class => "btn btn-danger btn-md"%>
   </div>
-  <% if current_user and current_user.id != @user.id %>
-    <h2>Add a review:</h2>
-    <!-- Displays error messages if form submission is not correct -->
-    <% flash.each do |key, value| %>
-        <div class="<%= flash_class(key) %> flash-msg">
-          <h3>~ERROR: <%= value %>~</h3>
-        </div>
+    <% if current_user and current_user.id != @user.id %>
+      <h2>Add a review:</h2>
+      <!-- Displays error messages if form submission is not correct -->
+      <% flash.each do |key, value| %>
+          <div class="<%= flash_class(key) %> flash-msg">
+            <h3>~ERROR: <%= value %>~</h3>
+          </div>
+      <% end %>
+
+      <%= form_for [@user, @review] do |f| %>
+        <%= f.hidden_field :ratee_id,  value: @user.id %>
+        <dt>Comment: </dt>
+        <dd><%= f.text_area :comment, class: "user-review-text" %></dd>
+        <dt>Rating: <%= f.select :rating, [10, 9, 8, 7, 6, 5, 4, 3, 2, 1] %></dt>
+        <dd class="submit"><%= f.submit "Submit", class: "btn btn-warning submit-user-review" %></dd>
+      <% end %>
     <% end %>
 
-    <%= form_for [@user, @review] do |f| %>
-      <%= f.hidden_field :ratee_id,  value: @user.id %>
-      <dt>Comment: </dt>
-      <dd><%= f.text_area :comment, class: "user-review-text" %></dd>
-      <dt>Rating: <%= f.select :rating, [10, 9, 8, 7, 6, 5, 4, 3, 2, 1] %></dt>
-      <dd class="submit"><%= f.submit "Submit", class: "btn btn-warning submit-user-review" %></dd>
-    <% end %>
-  <% end %>
-
-  <% if @user.received_ratings.any? %>
+    <% if @user.received_ratings.any? %>
 
   <div class="user-reviews">
     <h2>Reviews: </h2>
     <table class = "table table-bordered review-table">
       <thead>
-        <tr>
-          <th class="review-rating">Rating</th>
-          <th class="review-comment">Comment</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @user.received_ratings.reverse.each do |review| %>
           <tr>
-            <td class="review-rating"><%= review.rating %> / 10</td>
-            <td class="review-comment"><%= review.comment %></td>
-
-
-            <% if review.user.id == current_user.id %>
-            <td> Sup </td>
-            <% end %>
-
-
+            <th class="review-rating">Rating</th>
+            <th class="review-comment">Comment</th>
           </tr>
+        </thead>
+        <tbody>
+          <% @user.received_ratings.reverse.each do |review| %>
+            <tr>
+              <td class="review-rating"><%= review.rating %> / 10</td>
+              <td class="review-comment"><%= review.comment %></td>
+
+              <!-- IMPLEMENT DELETE BUTTON FOR COMMENTS HERE, ONLY IF CURRENT USER POSTED THE COMMENT -->
+              <% if current_user && review.user.id == current_user.id %>
+              <td><%= button_to 'Delete', { :controller => "user_ratings", :action => "destroy", user_id: current_user.id, id: review.id }, :method => :delete, :class => "btn btn-primary btn-md delete" %></td>
+              <% end %>
+            </tr>
         <% end %>
       </tbody>
     </table>

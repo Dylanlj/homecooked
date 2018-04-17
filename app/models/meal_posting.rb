@@ -16,5 +16,23 @@ class MealPosting < ApplicationRecord
   validates :servings, presence: true
   validates :cost, presence: true
   validates :date, presence: true
+  validate  :end_time_cannot_be_earlier_than_start_time
+  validate  :date_cannot_be_in_the_past
 
+  def end_time_cannot_be_earlier_than_start_time
+
+    if end_time
+      if base_time > end_time
+        errors.add(:end_time, "can't be earlier than the start time")
+      end
+    end
+  end
+
+  def date_cannot_be_in_the_past
+    if date
+      if date < Time.now
+        errors.add(:date, "can't be set in the past")
+      end
+    end
+  end
 end

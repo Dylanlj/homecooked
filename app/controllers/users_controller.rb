@@ -24,8 +24,8 @@ class UsersController < ApplicationController
   def create
 
     @user = User.new(user_params)
-    puts @user.address
     puts "------------------"
+    puts user_params
     respond_to do |format|
       if @user.save
         # This is another way to upload images (or video), in case its needed later.
@@ -47,9 +47,10 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user }#, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -63,7 +64,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url }#, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
