@@ -1,17 +1,19 @@
 <div class="container">
   <div class="row">
-    <% if @user.reservations.length <= 0 %>
-      <h4 class="outgoing-reservations-link"><%= link_to "To Your Incoming Reservations", reservations_path %></h4>
-      <h1>No Current Reservations</h1>
-    <% else %>
-      <h4 class="outgoing-reservations-link"><%= link_to "To Your Incoming Reservations", reservations_path %></h4>
-      <h1>Your Current Reservations: </h1>
-    <% end %>
+
+      <% if @user.reservations.length <= 0 %>
+        <h1>No Current Reservations</h1>
+        <h4 class="outgoing-reservations-link"><%= link_to "To Your Incoming Reservations", reservations_path %></h4>
+      <% else %>
+        <h1>Your Current Reservations: </h1>
+        <h4 class="outgoing-reservations-link"><%= link_to "To Your Incoming Reservations", reservations_path %></h4>
+      <% end %>
+
     <% @user.reservations.each do |reservation| %>
 
       <% if reservation.delete_status != "userdelete" && reservation.delete_status != "bothdelete" %>
 
-      <div class="row">
+      <div class="row meal-div">
         <div class="col-xs-4 col-sm-3 col-md-3">
           <%= cl_image_tag(reservation.meal_posting.image, class: 'circle img-thumbnail img-box reservation-pic') %>
         </div>

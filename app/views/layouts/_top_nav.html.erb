@@ -8,19 +8,6 @@
       <% if current_user && !current_page?(user_path(current_user)) %>
         <li><%= link_to user_path(current_user) do %><span class="glyphicon glyphicon-home"></span> Home <% end %></li></li>
       <% end %>
-      <% if current_page?("/") %>
-        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Categories
-        <span class="caret glyphicon glyphicon-list-alt"></span></button>
-        <ul class="dropdown-menu">
-          <% @categories.each do |category| %>
-            <li>
-              <%= link_to meals_category_path(id: category.id), method: :put do %>
-                <%= category.name %>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
 
       <% if current_user %>
         <li><%= link_to reservations_path do %><span class="glyphicon glyphicon-list-alt"></span> Reservations <% end %></li>

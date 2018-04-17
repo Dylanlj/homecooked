@@ -9,6 +9,25 @@ class MealPostingsController < ApplicationController
     if params[:category]
       @meal_postings = MealPosting.where("category_id = #{params[:id].to_i}")
     end
+
+    if current_user
+      m_lat = current_user.latitude
+      m_lng = current_user.longitude
+    else
+      m_lat = 43.644881
+      m_lng = -79.395208
+    end
+
+    @meal_postings = @meal_postings.sort  {|a, b|
+      a_lat = a.user.latitude
+      a_lng = a.user.longitude
+      b_lat = b.user.latitude
+      b_lng = b.user.longitude
+      distance_a = Math.sqrt((m_lat - a_lat) ** 2 + (m_lng - a_lng) ** 2)
+      distance_b = Math.sqrt((m_lat - b_lat) ** 2 + (m_lng - b_lng) ** 2)
+      distance_a <=> distance_b
+    }
+
     @categories = Category.all
   end
 
