@@ -17,10 +17,7 @@ class MealPostingsController < ApplicationController
       m_lat = 43.644881
       m_lng = -79.395208
     end
-    puts current_user_latitude
-    puts m_lat
-    puts "=============="
-puts @meal_postings
+
     @meal_postings = @meal_postings.sort {|a, b|
       a_lat = a.user.latitude
       a_lng = a.user.longitude
@@ -30,7 +27,7 @@ puts @meal_postings
       distance_b = Math.sqrt((m_lat - b_lat) ** 2 + (m_lng - b_lng) ** 2)
       distance_a <=> distance_b
     }
-puts @meal_postings
+
 
     @categories = Category.all
   end
@@ -87,8 +84,6 @@ puts @meal_postings
     @meal_posting = MealPosting.new(meal_posting_params)
     @meal_posting.user = current_user
 
-puts @meal_posting
-puts @meal_posting.date
     respond_to do |format|
       if @meal_posting.save
         format.html { redirect_to @meal_posting }#, notice: 'Meal posting was successfully created.' }
