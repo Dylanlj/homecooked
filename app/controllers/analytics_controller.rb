@@ -1,5 +1,5 @@
 class AnalyticsController < ApplicationController
   def index
-    @hello = "hello"
+    # @reservations
   end
 end
