@@ -4,11 +4,11 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>An order has been placed from <%= @meal_buyer.name %></h1>
-    <p>
-      You have <%= @reservation_details.number_of_people %> request(s) for <%= @meal.title %> at <%= @reservation_details.time %>.
-    </p>
-
-    <h2>Thank you for using HomeCooked!</h2>
+    <h4>An order has been placed by <%= @meal_buyer.name %>!</h4>
+    <h4>
+      You have <%= @reservation_details.number_of_people %> request(s) for <%= @meal.title %> on <%= @meal.date %> at <%= @reservation_details.time.strftime("%I:%M %p") %>.
+    </h4>
+    <hr/>
+    <h4>Thank you for using <a href="https://serene-woodland-26435.herokuapp.com/">HomeCooked!</a></h4>
   </body>
 </html>
