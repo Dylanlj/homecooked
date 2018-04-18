@@ -2,7 +2,7 @@
 
 <!-- IF USER IS A HOST, THEIR RESERVATION PAGE LOOKS LIKE THIS -->
 <% if @user.user_status === "Host" %>
-  <div class="container">
+  <div class="container container-res">
 
 
     <h4 class="outgoing-reservations-link"><%= link_to "Your Outgoing Reservations", reservations_outgoing_path(@user) %></h4>
@@ -83,7 +83,7 @@
 
 <!-- IF USER IS NOT A HOST, THEIR RESERVATION PAGE LOOKS LIKE THIS -->
 <% elsif @user.user_status === "User" %>
-  <div class="container">
+  <div class="container container-res">
     <div class="row">
       <% if @user.reservations.length <= 0 %>
         <h1>No Current Reservations</h1>
