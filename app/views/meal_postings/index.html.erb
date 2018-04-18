@@ -79,7 +79,7 @@
             <div class="row row-footer">
               <div class="col-xs-8 marker-space">
                 <div class="marker-circle col-xs-4">A</div>
-                <div class="address"> <%=meal_posting.user.address%></div>
+                <div class="address"><%=meal_posting.user.address%></div>
               </div>
               <div class="col-xs-4">
                 <!-- <button type="button" class="btn btn-primary">Order Info</button> -->
@@ -102,8 +102,8 @@
 
 <script type="text/javascript">
 
-  if(window.google && document.getElementById('googleMap').dataset.userLocation){
-    initialize(document.getElementById('googleMap').dataset.userLocation)
+  if(window.google) {
+    initialize()
     locationSearch()
   } else {
     $.ajax("https://maps.googleapis.com/maps/api/js?key=AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA&callback=initialize", {
