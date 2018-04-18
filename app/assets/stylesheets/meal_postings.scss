@@ -184,7 +184,8 @@
     border: 1px solid #ddd;
     border-radius: 3px;
     background-color: white;
-    height: 16vw;
+    height: auto;
+    padding-bottom: 10px;
   }
 }
 
@@ -348,9 +349,8 @@ div.col-xs-4 {
 
 .img-thumbnail {
   margin-top: 10%;
-  margin-bottom: 10%;
   padding: 0%;
-  max-height: 80%;
+  height: 100%;
   width: 100%;
 }
 
