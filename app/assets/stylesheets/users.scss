@@ -89,8 +89,8 @@ h2.login-header {
 }
 
 .profile-picture-div {
-  height: 250px;
-  width: 300px;
+  height: 230px;
+  width: 250px;
   overflow: hidden;
   float: right;
   display: flex;
@@ -169,10 +169,10 @@ h1.user-info-title {
   margin-top: 37px;
   margin-bottom: 15px;
 }
-
-.outgoing-reservations-link {
-  float: right;
+.reserve-header {
+  display:inline;
 }
+
 
 
 #profile-reviews{

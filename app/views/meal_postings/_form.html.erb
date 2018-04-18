@@ -60,7 +60,7 @@
     <tr>
       <div class="form-group">
         <th class="new-meal-field"><%= form.label :date %></th>
-        <td><%= form.date_field :date, id: :meal_posting_date %></td>
+        <td><%= form.date_field :date, id: :meal_posting_date, min: Date.today %></td>
       </div>
     </tr>
 

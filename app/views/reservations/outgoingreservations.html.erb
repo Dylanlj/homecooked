@@ -1,12 +1,13 @@
 <div class="container container-res">
   <div class="row">
-    <% if @user.reservations.length <= 0 %>
-      <h4 class="outgoing-reservations-link"><%= link_to "To Your Incoming Reservations", reservations_path %></h4>
-      <h1>No Current Reservations</h1>
-    <% else %>
-      <h4 class="outgoing-reservations-link"><%= link_to "To Your Incoming Reservations", reservations_path %></h4>
-      <h1>Your Current Reservations: </h1>
-    <% end %>
+
+      <% if @user.reservations.length <= 0 %>
+        <h1>No Current Reservations</h1>
+        <h4 class="outgoing-reservations-link"><%= link_to "To Your Incoming Reservations", reservations_path %></h4>
+      <% else %>
+        <h1>Your Current Reservations: </h1>
+        <h4 class="outgoing-reservations-link"><%= link_to "To Your Incoming Reservations", reservations_path %></h4>
+      <% end %>
 
 
     <% @user.reservations.each do |reservation| %>
@@ -25,10 +26,11 @@
                 <p><strong>Host Name: </strong><%= link_to "#{reservation.meal_posting.user.name}", user_path(reservation.meal_posting.user.id) %></p>
                 <p><strong>Servings: </strong><%= reservation.number_of_people %></p>
                 <% if reservation.time %>
-                  <p><strong>Time: </strong><%= reservation.time %></p>
+                  <p><strong>Time: </strong><%= reservation.time.strftime("%I:%M %p") %></p>
                 <% else %>
-                  <p><strong>Time: </strong><%= reservation.meal_posting.base_time %></p>
+                  <p><strong>Time: </strong><%= reservation.meal_posting.base_time.strftime("%I:%M %p") %></p>
                 <% end %>
+                <p><strong>Date: </strong><%= reservation.meal_posting.date.to_date() %></p>
                 <% if reservation.meal_posting.allergy_notice %>
                   <p><strong>Allergy Notice: </strong><%= reservation.meal_posting.allergy_notice %></p>
                 <% end %>
