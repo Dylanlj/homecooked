@@ -30,7 +30,7 @@ class MealPosting < ApplicationRecord
 
   def date_cannot_be_in_the_past
     if date
-      if date < Time.now
+      if date < Date.today
         errors.add(:date, "can't be set in the past")
       end
     end
