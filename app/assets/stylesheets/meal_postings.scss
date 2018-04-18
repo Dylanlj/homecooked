@@ -29,9 +29,9 @@
     background-color: #f4511e;
     z-index: 9999;
     border: 0;
-    font-size: 14px;
-    line-height: 1.42857143;
-    letter-spacing: 4px;
+    font-size: 1vw;
+    line-height: 1vw;
+    letter-spacing: 0.1vw;
     border-radius: 0;
     margin: 0;
     padding: 0;
@@ -40,12 +40,26 @@
       float:right;
     }
 
+    .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+    }
+
     li a, .navbar-brand {
       color: #fff !important;
     }
 
+    .analytics{
+      margin-right: 15px;
+      span{
+        margin-right: 10px;
+      }
+    }
+
     .navbar-nav{
       height: 100%;
+      padding: 0;
+      margin: 0;
       .cat-link a:hover, .cat-link.active a{
         color: #f4511e !important;
         background-color: #fff !important;
@@ -62,30 +76,12 @@
         padding-top: 0;
         padding-bottom: 0;
       }
-    }
-
-    // .navbar-nav li a:hover, .navbar-nav li.active a {
-    //   color: #f4511e !important;
-    //   background-color: #fff !important;
-    // }
-
-    .navbar-default .navbar-toggle {
-      border-color: transparent;
-      color: #fff !important;
-    }
-
-    .dropdown{
-      height: 100%;
-
-      .dropdown-toggle{
+      .dropdown{
         height: 100%;
+        .dropdown-toggle{
+          height: 100%;
+        }
       }
-    }
-
-
-    .navbar-nav{
-      padding: 0;
-      margin: 0;
     }
 }
 
@@ -138,13 +134,6 @@
   height: 7vh;
   width: 55%;
   margin-bottom: 7px;
-  // background: repeating-radial-gradient(
-  //   circle,
-  //   #f4511e,
-  //   #f4511e 80px,
-  //   #ffffff 20px,
-  //   #ffffff 100px
-  // );
 }
 
 .marker-circle {
@@ -178,7 +167,7 @@
 }
 
 .postings-list {
-  height: 85vh;
+  height: 91vh;
   overflow: scroll;
 }
 
@@ -186,42 +175,44 @@
   margin: 10px;
   border: 1px solid #ddd;
   border-radius: 3px;
-
   background-color: white;
+  height: 11vw;
 }
 
 // The media-object (image) height should be the same as the media-body (text) height below
-.media-object {
-  height: 15vh;
-  margin: 8%;
-  padding: 0%;
-  width: 10vw;
-}
 
-.media-body {
-  height: 15vh;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  .media-container {
-    height: 100%;
-    font-size: 1.5vw;
-    .row-heading {
-
-        // background-color: blue;
-    }
-    .row-body {
+.media{
+  .media-object {
+    height: 15vh;
+    margin: 8%;
+    padding: 0%;
+    width: 10vw;
+  }
+  .media-body {
+    height: 15vh;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    .media-container {
+      height: 100%;
+      font-size: 1vw;
+      .row-heading {
+      // background-color: blue;
+      }
+      .row-body {
         height: 30%;
         // background-color: red;
-    }
-    .row-footer {
+      }
+      .row-footer {
         height: 50px;
         .address {
           justify-content: center;
           align-items: center;
         }
         // background-color: green;
+      }
     }
   }
 }
+
 
 .order-info {
   height: 2.2vw;
