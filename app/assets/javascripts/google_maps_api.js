@@ -25,7 +25,6 @@ function codeAddress(address, callback) {
     } else {
       callback(results)
       console.log('Geocode was not successful for the following reason: ' + status);
-      invalidAddress()
     }
   });
 }
@@ -34,10 +33,7 @@ function codeAddress(address, callback) {
 //////////////////////////
 //USER REGISTRATION CALL//
 //////////////////////////
-function invalidAddress(){
-  $("#geocode-address-error").text("Could not find address, please try again")
 
-}
 
 function giveProperAddress (geoObject) {
 
@@ -49,13 +45,22 @@ function giveProperAddress (geoObject) {
       lng.promise().done(function() {
         $("#register-form").trigger("submit")
       })
+  } else {
+    $("#user_address").val("not_found")
+    let lng = $("#longitude").val("not_found")
+      lng.promise().done(function() {
+        $("#register-form").trigger("submit")
+      })
   }
 }
 
 
 function watchRegister () {
+
   $("#register-form").submit("submit", function(event){
-   if ($("#longitude").val() === "false") {
+
+   if ($("#longitude").val() === "") {
+    alert("preventDefault")
       event.preventDefault()
       let enteredAddress
       enteredAddress = $("#user_address").val()
@@ -150,6 +155,7 @@ function addLabelsToDOM (marker, allMarkers) {
 ///////////////////
 
 function initialize() {
+
   infoWindow = new google.maps.InfoWindow()
 
   labelIndex = 0
@@ -160,17 +166,10 @@ function initialize() {
   let latitude = 43.644866
   let longitude = -79.395176
 
-  latitude = parseFloat($('#googleMap').data().userLatitude)
-  longitude = parseFloat($('#googleMap').data().userLongitude)
-
-  // let latlng = {lat: latitude, lng: longitude}
-
-
-  //only if there is a current user
-  // if(geoObject[0]){
-  //   let userLocation = geoObject[0].geometry.location
-  //   latlng = new google.maps.LatLng(userLocation.lat(), userLocation.lng())
-  // }
+  if (parseFloat($('#googleMap').data().userLatitude)) {
+    latitude = parseFloat($('#googleMap').data().userLatitude)
+    longitude = parseFloat($('#googleMap').data().userLongitude)
+  }
 
 
   let latlng = {lat: latitude, lng: longitude }

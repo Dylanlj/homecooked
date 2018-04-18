@@ -6,7 +6,7 @@
   <body>
     <h1>An order has been placed from <%= @meal_buyer.name %></h1>
     <p>
-      You have <%= @reservation_details.number_of_people %> request(s) for <%= @meal.title %> at <%= @reservation_details.time %>.
+      You have <%= @reservation_details.number_of_people %> request(s) for <%= @meal.title %> at <%= @reservation_details.time.strftime("%I:%M %p") %>.
     </p>
 
     <h2>Thank you for using HomeCooked!</h2>

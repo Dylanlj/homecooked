@@ -11,6 +11,15 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 5 }
   validates :password_confirmation, presence: true
   validates :password_digest, presence: true
+  validate :requires_proper_address
+
+  def requires_proper_address
+    if address
+      if address == "not_found"
+        errors.add(:address, "must be valid")
+      end
+    end
+  end
 
   # Changes email to lower case before saving to database
   before_save :downcase_email
