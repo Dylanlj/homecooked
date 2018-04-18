@@ -170,15 +170,25 @@
 .postings-list {
   height: 91vh;
   overflow: scroll;
+    .meal-div{
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: white;
+    height: 11vw;
+  }
 }
 
-.meal-div{
-  margin: 10px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  background-color: white;
-  height: 11vw;
+.container {
+ .meal-div{
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: white;
+    height: 16vw;
+  }
 }
+
 
 // The media-object (image) height should be the same as the media-body (text) height below
 
@@ -267,7 +277,6 @@ table.new-meal-table {
 ////////////////////////////
 
 
-
 .meal-posting-bottom-info {
   margin-top: 18px;
 }
@@ -319,12 +328,16 @@ table.new-meal-table {
 }
 
 div.col-xs-4 {
-  margin-bottom: 15px;
+  // margin-bottom: 15px;
+  height: 100%;
 }
 
 .img-thumbnail {
   margin-top: 10%;
+  margin-bottom: 10%;
   padding: 0%;
+  max-height: 80%;
+  width: 100%;
 }
 
 .host-info {
