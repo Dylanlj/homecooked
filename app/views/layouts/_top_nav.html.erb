@@ -33,7 +33,6 @@
       <% if current_user && !current_page?(user_path(current_user)) %>
         <li class="cat-link"><%= link_to user_path(current_user) do %><span class="glyphicon glyphicon-home"></span> <%= current_user.name %> <% end %></li>
       <% end %>
-
       <% if current_user %>
         <li class="cat-link"><%= link_to reservations_path do %><span class="glyphicon glyphicon-list-alt"></span> Reservations <% end %></li>
       <% end %>
