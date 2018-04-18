@@ -35,7 +35,8 @@ class UsersController < ApplicationController
 
         # Setting cookie to recognize logged in user
         session[:user_id] = @user.id
-        session[:user_address] = @user.address
+        session[:user_latitude] = @user.latitude
+        session[:user_longitude] = @user.longitude
         format.html { redirect_to root_path }#, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else

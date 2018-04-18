@@ -66,38 +66,53 @@ function watchRegister () {
   });
 }
 
-///////////////////
-//INDEX HOME PAGE//
-///////////////////
 
-function initialize() {
-  infoWindow = new google.maps.InfoWindow()
+///////////////////////
+//SEARCH FOR LOCATION//
+///////////////////////
+function locationSearch() {
 
-  labelIndex = 0
+  $("#google-search form").on("submit", function(event){
 
-  geocoder = new google.maps.Geocoder();
-
-  function setUpMap (geoObject) {
-    let latlng = {lat: 43.644866, lng: -79.395176}
-    if(geoObject[0]){
-      let userLocation = geoObject[0].geometry.location
-      latlng = new google.maps.LatLng(userLocation.lat(), userLocation.lng())
+    if($('#latitude_change').val() === "false"){
+      event.preventDefault()
+      codeAddress(($(this).find("#location-form").val()), changeYourMarkerLocation)
     }
+    // yourMarker.setMap(null)
 
-    let mapOptions = {
-      zoom: 15,
-      center: latlng
-    }
-    map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
-    yourMarker = new google.maps.Marker({
-      map: map,
-      position: latlng
-    });
-    mealPostingMarkers()
+
+  })
+}
+
+function changeYourMarkerLocation (geoObject){
+
+  if(geoObject[0]){
+    let latitude = geoObject[0].geometry.location.lat()
+    let longitude = geoObject[0].geometry.location.lng()
+
+    $("#google-search form").find('#latitude_change').val(latitude)
+    let lng = $("#google-search form").find('#longitude_change').val(longitude)
+    console.log($('#latitude').val(latitude))
+    console.log($('#latitude').val(latitude))
+      lng.promise().done(function() {
+        $("#google-search form").trigger("submit")
+      })
+
+  } else {
+
   }
 
-  codeAddress(document.getElementById('googleMap').dataset.userLocation, setUpMap)
 }
+
+
+
+
+// function reOrderMeals () {
+
+//   for (let marker of postingMarkers){
+//     $(".postings-list").append($(`.meal-div:contains(${marker.formattedAddress})`))
+//   }
+// }
 
 
 function orderMarkerByProximity(myLocationMarker) {
@@ -130,6 +145,54 @@ function addLabelsToDOM (marker, allMarkers) {
 
 }
 
+
+///////////////////
+//INDEX HOME PAGE//
+///////////////////
+
+function initialize() {
+  infoWindow = new google.maps.InfoWindow()
+
+  labelIndex = 0
+
+  geocoder = new google.maps.Geocoder();
+
+
+  let latitude = 43.644866
+  let longitude = -79.395176
+
+  latitude = parseFloat($('#googleMap').data().userLatitude)
+  longitude = parseFloat($('#googleMap').data().userLongitude)
+
+  // let latlng = {lat: latitude, lng: longitude}
+
+
+  //only if there is a current user
+  // if(geoObject[0]){
+  //   let userLocation = geoObject[0].geometry.location
+  //   latlng = new google.maps.LatLng(userLocation.lat(), userLocation.lng())
+  // }
+
+
+  let latlng = {lat: latitude, lng: longitude }
+
+
+  let mapOptions = {
+    zoom: 15,
+    center: latlng
+  }
+  map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
+  yourMarker = new google.maps.Marker({
+    map: map,
+    position: latlng
+  });
+  mealPostingMarkers()
+
+
+  // codeAddress(document.getElementById('googleMap').dataset.userLocation, setUpMap)
+}
+
+
 function mealMarkerCallback (addressData) {
   let latitude = parseFloat(addressData.latitude)
   let longitude = parseFloat(addressData.longitude)
@@ -159,8 +222,7 @@ function mealMarkerCallback (addressData) {
 }
 
 
-
-function mealPostingMarkers() {
+function mealPostingMarkers(search) {
 
   for (let marker of postingMarkers){
     marker.setMap(null)
@@ -177,15 +239,7 @@ function mealPostingMarkers() {
     }
   }
 
-  reOrderMeals()
-}
 
-
-function reOrderMeals () {
-
-  for (let marker of postingMarkers){
-    $(".postings-list").append($(`.meal-div:contains(${marker.formattedAddress})`))
-  }
 }
 
 
