@@ -21,62 +21,60 @@
         <!-- Won't show up on page if host has deleted or if both have deleted, but will show up on user reservations page -->
           <% if reservation.delete_status != "hostdelete" && reservation.delete_status != "bothdelete" %>
 
-          <div class="row meal-div">
-            <div class="col-xs-4 col-sm-3 col-md-3">
-              <%= cl_image_tag(reservation.meal_posting.image, class: 'circle img-thumbnail img-box reservation-pic') %>
-            </div>
-            <div class="col-xs-4 col-sm-9 col-md-9">
-              <h4><%= reservation.meal_posting.title %></h4>
-              <div class="list-group-item meal-post-desc">
-                <p><strong>Guest Name: </strong><%= link_to "#{reservation.user.name}", user_path(reservation.user.id) %></p>
-                <p><strong>Servings: </strong><%= reservation.number_of_people %></p>
-                <% if reservation.time %>
-                  <p><strong>Time: </strong><%= reservation.time.strftime("%I:%M %p") %></p>
-                  <p><strong>Date: </strong><%= reservation.meal_posting.date.to_date() %></p>
-                <% else %>
-                  <p><strong>Time: </strong><%= reservation.meal_posting.base_time %></p>
-                <% end %>
-                <% if reservation.allergies %>
-                  <p><strong>Allergies: </strong><%= reservation.allergies %></p>
-                <% end %>
-                <% if reservation.paid %>
-                  <p><strong>Status: </strong>Paid</p>
-                <% else %>
-                  <p><strong>Status: </strong><%= reservation.status %></p>
-                <% end %>
+            <div class="row meal-div">
+              <div class="col-xs-4 col-sm-3 col-md-3">
+                <%= cl_image_tag(reservation.meal_posting.image, class: 'circle img-thumbnail img-box reservation-pic') %>
               </div>
-              <div class="row">
-                <!-- ALLOW HOST TO DELETE POSTING TO CLEAR SPACE ONCE ACCEPTED OR REJECTED -->
-                <div class="meal-reviews-button">
-                  <%= button_to 'Meal Reviews', meal_posting_reviews_path(reservation.meal_posting), :method => :get, :class => "btn btn-warning btn-md basic" %>
+              <div class="col-xs-4 col-sm-9 col-md-9">
+                <h4><%= reservation.meal_posting.title %></h4>
+                <div class="list-group-item meal-post-desc">
+                  <p><strong>Guest Name: </strong><%= link_to "#{reservation.user.name}", user_path(reservation.user.id) %></p>
+                  <p><strong>Servings: </strong><%= reservation.number_of_people %></p>
+                  <% if reservation.time %>
+                    <p><strong>Time: </strong><%= reservation.time.strftime("%I:%M %p") %></p>
+                    <p><strong>Date: </strong><%= reservation.meal_posting.date.to_date() %></p>
+                  <% else %>
+                    <p><strong>Time: </strong><%= reservation.meal_posting.base_time %></p>
+                  <% end %>
+                  <% if reservation.allergies %>
+                    <p><strong>Allergies: </strong><%= reservation.allergies %></p>
+                  <% end %>
+                  <% if reservation.paid %>
+                    <p><strong>Status: </strong>Paid</p>
+                  <% else %>
+                    <p><strong>Status: </strong><%= reservation.status %></p>
+                  <% end %>
                 </div>
+                <div class="row">
+                  <!-- ALLOW HOST TO DELETE POSTING TO CLEAR SPACE ONCE ACCEPTED OR REJECTED -->
+                  <div class="meal-reviews-button">
+                    <%= button_to 'Meal Reviews', meal_posting_reviews_path(reservation.meal_posting), :method => :get, :class => "btn btn-warning btn-md basic" %>
+                  </div>
 
-                <div class="user-reviews-button">
-                  <%= button_to 'User Reviews', user_path(reservation.user), :method => :get, :class => "btn btn-warning btn-md basic" %>
+                  <div class="user-reviews-button">
+                    <%= button_to 'User Reviews', user_path(reservation.user), :method => :get, :class => "btn btn-warning btn-md basic" %>
+                  </div>
+
+                  <!-- SHOULD THIS JUST BE "REJECTED"? DO WE WANT TO LET HOST DELETE POSTING THAT IS ACCEPTED BUT NOT PAID? -->
+                  <% if reservation.paid || reservation.status === "Rejected" %>
+                    <div class="delete-button">
+                      <%= button_to 'Delete', { :controller => "reservations", :action => "hostdelete", id: reservation.id }, :method => :put, :class => "btn btn-primary btn-md delete" %>
+                    </div>
+                  <% elsif reservation.status === "Pending Approval" %>
+                    <div class="reject-button">
+                      <%= button_to 'Reject', {:controller => "reservations", :action => "reject", id: reservation.id}, :method => :put, :remote => true, :class => "btn btn-warning btn-md basic" %>
+                    </div>
+                    <div class="accept-button">
+                      <%= button_to 'Accept', {:controller => "reservations", :action => "accept", id: reservation.id}, :method => :put, :remote => true, :class => "btn btn-success btn-md accept" %>
+                    </div>
+
+                  <% end %>
                 </div>
-
-                <!-- SHOULD THIS JUST BE "REJECTED"? DO WE WANT TO LET HOST DELETE POSTING THAT IS ACCEPTED BUT NOT PAID? -->
-                <% if reservation.paid || reservation.status === "Rejected" %>
-                  <div class="delete-button">
-                    <%= button_to 'Delete', { :controller => "reservations", :action => "hostdelete", id: reservation.id }, :method => :put, :class => "btn btn-primary btn-md delete" %>
-                  </div>
-                <% elsif reservation.status === "Pending Approval" %>
-                  <div class="reject-button">
-                    <%= button_to 'Reject', {:controller => "reservations", :action => "reject", id: reservation.id}, :method => :put, :remote => true, :class => "btn btn-warning btn-md basic" %>
-                  </div>
-                  <div class="accept-button">
-                    <%= button_to 'Accept', {:controller => "reservations", :action => "accept", id: reservation.id}, :method => :put, :remote => true, :class => "btn btn-success btn-md accept" %>
-                  </div>
-
-                <% end %>
               </div>
             </div>
-          </div>
-          <hr>
-
+            <hr>
 
           <% end %>
-
 
         <% end %>
       <% end %>
@@ -161,7 +159,6 @@
                 </div>
               <% end %>
 
-
               <!-- USER CAN DELETE RESERVATION FROM PAGE TO CLEAR SPACE IF IT WAS REJECTED  -->
               <% if reservation.status === "Rejected" %>
                 <div class="row">
@@ -182,7 +179,7 @@
   </div>
 
 <% else %>
-  <h2> Please refer back to Hom Page </h2>
+  <h2> Please refer back to Home Page </h2>
 <% end %>
 
 

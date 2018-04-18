@@ -312,14 +312,20 @@ table.new-meal-table {
     }
     .profile-pic {
       margin: 20px;
+      width: 100%;
+      height: 100%;
     }
     .show-pic {
+      content-align: center;
+      padding-left: 0px;
+      padding-bottom: 55px;
+      margin-right: 25px;
+      overflow: hidden;
       height: 300px;
       width: 400px;
     }
     .profile-info {
       margin-left:400px;
-
     }
     #show-meals {
       margin-left: 28%;

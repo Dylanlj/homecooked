@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :email
       t.string :password_digest
       t.string :phone_number
-      t.string :image, default: "http://slogreengoods.com/wp-content/uploads/profile-pic-generic.jpg"
+      t.string :image, default: "http://res.cloudinary.com/drdumqp4e/image/upload/v1524003947/profile-pic-generic.jpg"
 
       t.timestamps
     end
