@@ -37,12 +37,10 @@ Rails.application.routes.draw do
     put '/reservations/:id/accept' => 'reservations#accept'
     put '/reservations/:id/reject' => 'reservations#reject'
 
-    ################ FOR hostdelete and userdelete ###############
+    ############## FOR hostdelete and userdelete ###############
     put '/reservations/:id/hostdelete' => 'reservations#hostdelete'
     put '/reservations/:id/userdelete' => 'reservations#userdelete'
-                                                    # FIGURE OUT THIS PART BELOW #
     put '/reservations/outgoing/:id/userdelete' => 'reservations#userdelete'
-    ##################################################################################
 
     delete 'reservations/:id/destroy' => 'reservations#destroy'
     put '/reservations/:id/order' => 'reservations#order', :as => :reservation_order
@@ -53,6 +51,6 @@ Rails.application.routes.draw do
     # CREATED FOR A MEALPOSTING REVIEWS
     get '/meal_posting/:id/reviews' => 'meal_postings#meal_posting_reviews', :as => :meal_posting_reviews
 
-    # USER MEAL POSTINGS
-    # get '/users/:user_id/meal_postings' => 'meal_postings#user_meals', :as => :user_meal_postings
+    # CREATED FOR ANALYTICS
+    get '/analytics' => 'analytics#index', :as => :analytics
 end

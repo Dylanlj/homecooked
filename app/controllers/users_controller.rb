@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   def create
 
     @user = User.new(user_params)
+
     respond_to do |format|
       if @user.save
         # This is another way to upload images (or video), in case its needed later.

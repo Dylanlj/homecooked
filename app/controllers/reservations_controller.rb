@@ -35,7 +35,7 @@ class ReservationsController < ApplicationController
         msg = { :status => "failed_rel", :message => { errmsg: "Not enough servings remaining in #{@reservation.meal_posting.title}" }, :id => reservation_params[:meal_posting_id]}
         format.json { render :json => msg }
       else
-       if @reservation.save
+        if @reservation.save
           msg = { :status => "ok", :message => "Reservation request sent", :id => reservation_params[:meal_posting_id] }
           format.json { render :json => msg }
 

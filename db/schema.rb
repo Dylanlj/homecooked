@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20180416214627) do
     t.integer "cost"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
+    t.string "image", default: "http://res.cloudinary.com/drdumqp4e/image/upload/v1524003936/table-place-setting.jpg"
     t.date "date"
   end
 
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 20180416214627) do
     t.string "email"
     t.string "password_digest"
     t.string "phone_number"
-    t.string "image"
+    t.string "image", default: "http://res.cloudinary.com/drdumqp4e/image/upload/v1524003947/profile-pic-generic.jpg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "latitude", precision: 15, scale: 13

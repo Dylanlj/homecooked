@@ -115,6 +115,10 @@
                           <td><%= form.label :allergies %></td>
                           <td><%= form.text_field :allergies, id: :allergies %></td>
                         </tr>
+                        <tr class="modal-form-group">
+                          <td>Date:</td>
+                          <td><%= meal_posting.date %></td>
+                        </tr>
                         <% if meal_posting.end_time %>
                         <tr class="modal-form-group">
                           <td><%= form.label :reservation_time %></td>

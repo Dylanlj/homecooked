@@ -14,4 +14,5 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
 # Using this for page-specific JS (Piotr)
+# Rails.application.config.assets.precompile += %w( analytics.js )
 Rails.application.config.assets.precompile += %w( meal_postings.js )

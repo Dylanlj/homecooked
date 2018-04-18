@@ -25,37 +25,65 @@
 ////////////////////////////
 
 
-.nav {
-  height: 7vh;
-}
-
 .navbar {
-    margin-bottom: 5px;
     background-color: #f4511e;
     z-index: 9999;
     border: 0;
-    font-size: 14px;
-    line-height: 1.42857143;
-    letter-spacing: 4px;
+    font-size: 1vw;
+    line-height: 1vw;
+    letter-spacing: 0.1vw;
     border-radius: 0;
-}
+    margin: 0;
+    padding: 0;
 
-.navbar-header {
-  float:right;
-}
+    .navbar-header {
+      float:right;
+    }
 
-.navbar li a, .navbar .navbar-brand {
-    color: #fff !important;
-}
+    .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+    }
 
-.navbar-nav li a:hover, .navbar-nav li.active a {
-    color: #f4511e !important;
-    background-color: #fff !important;
-}
+    li a, .navbar-brand {
+      color: #fff !important;
+    }
 
-.navbar-default .navbar-toggle {
-    border-color: transparent;
-    color: #fff !important;
+    .analytics{
+      margin-right: 15px;
+      span{
+        margin: 0 10px 0 0;
+        padding: 0;
+      }
+    }
+
+    .navbar-nav{
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      .cat-link a:hover, .cat-link.active a{
+        color: #f4511e !important;
+        background-color: #fff !important;
+      }
+      .cat-list:hover, .cat-list.active {
+        color: #f4511e !important;
+        background-color: #fff !important;
+      }
+      .cat-list{
+        color: #fff !important;
+        background-color: #f4511e !important;
+      }
+      .dropdown-menu{
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+      .dropdown{
+        height: 100%;
+        .dropdown-toggle{
+          height: 100%;
+        }
+      }
+    }
 }
 
 /////////////////////////////
@@ -107,13 +135,6 @@
   height: 7vh;
   width: 55%;
   margin-bottom: 7px;
-  background: repeating-radial-gradient(
-    circle,
-    #f4511e,
-    #f4511e 80px,
-    #ffffff 20px,
-    #ffffff 100px
-  );
 }
 
 .marker-circle {
@@ -147,50 +168,62 @@
 }
 
 .postings-list {
-  height: 85vh;
+  height: 91vh;
   overflow: scroll;
+    .meal-div{
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: white;
+    height: 11vw;
+  }
 }
 
-.meal-div{
-  margin: 10px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-
-  background-color: white;
+.container {
+ .meal-div{
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: white;
+    height: 16vw;
+  }
 }
+
 
 // The media-object (image) height should be the same as the media-body (text) height below
-.media-object {
-  height: 15vh;
-  margin: 8%;
-  padding: 0%;
-  width: 10vw;
-}
 
-.media-body {
-  height: 15vh;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  .media-container {
-    height: 100%;
-    font-size: 1.5vw;
-    .row-heading {
-
-        // background-color: blue;
-    }
-    .row-body {
+.media{
+  .media-object {
+    height: 15vh;
+    margin: 8%;
+    padding: 0%;
+    width: 10vw;
+  }
+  .media-body {
+    height: 15vh;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    .media-container {
+      height: 100%;
+      font-size: 1vw;
+      .row-heading {
+      // background-color: blue;
+      }
+      .row-body {
         height: 30%;
         // background-color: red;
-    }
-    .row-footer {
+      }
+      .row-footer {
         height: 50px;
         .address {
           justify-content: center;
           align-items: center;
         }
         // background-color: green;
+      }
     }
   }
 }
+
 
 .order-info {
   height: 2.2vw;
@@ -244,7 +277,6 @@ table.new-meal-table {
 ////////////////////////////
 
 
-
 .meal-posting-bottom-info {
   margin-top: 18px;
 }
@@ -279,14 +311,20 @@ table.new-meal-table {
 
     .profile-pic {
       margin: 20px;
+      width: 100%;
+      height: 100%;
     }
     .show-pic {
+      content-align: center;
+      padding-left: 0px;
+      padding-bottom: 55px;
+      margin-right: 25px;
+      overflow: hidden;
       height: 300px;
       width: 400px;
     }
     .profile-info {
       margin-left:400px;
-
     }
     #show-meals {
       margin-left: 28%;
@@ -298,12 +336,16 @@ table.new-meal-table {
   }
 
 div.col-xs-4 {
-  margin-bottom: 15px;
+  // margin-bottom: 15px;
+  height: 100%;
 }
 
 .img-thumbnail {
   margin-top: 10%;
+  margin-bottom: 10%;
   padding: 0%;
+  max-height: 80%;
+  width: 100%;
 }
 
 .host-info {

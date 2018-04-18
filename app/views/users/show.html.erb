@@ -1,87 +1,80 @@
 <body>
-
   <!-- User information at top of page -->
-<div class=" meal-posting-user-info" id="show-page">
+
+  <div class=" meal-posting-user-info" id="show-page">
       <div class="row col-xs-4 col-sm-3 col-md-3 show-pic">
-        <%= cl_image_tag(@user.image, class: 'circle img-thumbnail img-box profile-pic') %>
-      </div >
+          <%= cl_image_tag(@user.image, class: 'circle img-box profile-pic') %>
+        </div >
         <div class="profile-info">
-        <h1><strong>Host Information: </strong></h1>
-        <h1><strong>Name: <%= @user.name %></strong></h1>
-        <h3><strong>Address: <%= @user.address %></strong></h3>
-        <h3><strong>Phone: <%= @user.phone_number %></strong></h3>
-        <h3><strong>Email: <%= @user.email %></strong></h3>
-    <br>
-  </div>
-</div>
-
-  <hr class="user-meal-posting-separate">
-
-<div class="container">
-  <% if current_user === @user && current_user.user_status == "Host" %>
-    <div class="new-meal-button">
-      <%= button_to "Create a Meal", new_user_meal_posting_path(@user), :method => :get, :class => "btn btn-warning btn-md"%>
+          <h1><strong>Host Information: </strong></h1>
+          <h1><strong>Name: <%= @user.name %></strong></h1>
+          <h3><strong>Address: <%= @user.address %></strong></h3>
+          <h3><strong>Phone: <%= @user.phone_number %></strong></h3>
+          <h3><strong>Email: <%= @user.email %></strong></h3>
+      <br>
     </div>
-    <% if @firstmeal %>
-      <div class="view-meals-button">
-        <%= button_to "View All Meals", meal_posting_path(@firstmeal), :method => :get, :id => @firstmeal, :class => "btn btn-danger btn-md"%>
-      </div>
-    <% end %>
-  <% end %>
-    <% if current_user and current_user.id != @user.id %>
-      <h2>Add a review:</h2>
-      <!-- Displays error messages if form submission is not correct -->
-      <% flash.each do |key, value| %>
-          <div class="<%= flash_class(key) %> flash-msg">
-            <h3>~ERROR: <%= value %>~</h3>
-          </div>
-      <% end %>
-
-      <%= form_for [@user, @review] do |f| %>
-        <%= f.hidden_field :ratee_id,  value: @user.id %>
-        <dt>Comment: </dt>
-        <dd><%= f.text_area :comment, class: "user-review-text" %></dd>
-        <dt>Rating: <%= f.select :rating, [10, 9, 8, 7, 6, 5, 4, 3, 2, 1] %></dt>
-        <dd class="submit"><%= f.submit "Submit", class: "btn btn-warning submit-user-review" %></dd>
-      <% end %>
-    <% end %>
-
-    <% if @user.received_ratings.any? %>
-
-  <div class="user-reviews">
-    <h2>Reviews: </h2>
-    <table class = "table table-bordered review-table">
-      <thead>
-          <tr>
-            <th class="review-rating">Rating</th>
-            <th class="review-comment">Comment</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @user.received_ratings.reverse.each do |review| %>
-            <tr>
-              <td class="review-rating"><%= review.rating %> / 10</td>
-              <td class="review-comment"><%= review.comment %></td>
-
-              <!-- IMPLEMENT DELETE BUTTON FOR COMMENTS HERE, ONLY IF CURRENT USER POSTED THE COMMENT -->
-              <% if current_user && review.user.id == current_user.id %>
-              <td><%= button_to 'Delete', { :controller => "user_ratings", :action => "destroy", user_id: current_user.id, id: review.id }, :method => :delete, :class => "btn btn-primary btn-md delete" %></td>
-              <% end %>
-            </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% else %>
-    <h3>No Reviews For This User</h3>
-  <% end %>
   </div>
-</div>
+
+    <hr class="user-meal-posting-separate">
+
+  <div class="container">
+    <% if current_user === @user && current_user.user_status == "Host" %>
+      <div class="new-meal-button">
+        <%= button_to "Create a Meal", new_user_meal_posting_path(@user), :method => :get, :class => "btn btn-warning btn-md"%>
+      </div>
+      <% if @firstmeal %>
+        <div class="view-meals-button">
+          <%= button_to "View All Meals", meal_posting_path(@firstmeal), :method => :get, :id => @firstmeal, :class => "btn btn-danger btn-md"%>
+        </div>
+      <% end %>
+    <% end %>
+      <% if current_user and current_user.id != @user.id %>
+        <h2>Add a review:</h2>
+        <!-- Displays error messages if form submission is not correct -->
+        <% flash.each do |key, value| %>
+            <div class="<%= flash_class(key) %> flash-msg">
+              <h3>~ERROR: <%= value %>~</h3>
+            </div>
+        <% end %>
+
+        <%= form_for [@user, @review] do |f| %>
+          <%= f.hidden_field :ratee_id,  value: @user.id %>
+          <dt>Comment: </dt>
+          <dd><%= f.text_area :comment, class: "user-review-text" %></dd>
+          <dt>Rating: <%= f.select :rating, [10, 9, 8, 7, 6, 5, 4, 3, 2, 1] %></dt>
+          <dd class="submit"><%= f.submit "Submit", class: "btn btn-warning submit-user-review" %></dd>
+        <% end %>
+      <% end %>
+
+      <% if @user.received_ratings.any? %>
+
+    <div class="user-reviews">
+      <h2>Reviews: </h2>
+      <table class = "table table-bordered review-table">
+        <thead>
+            <tr>
+              <th class="review-rating">Rating</th>
+              <th class="review-comment">Comment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @user.received_ratings.reverse.each do |review| %>
+              <tr>
+                <td class="review-rating"><%= review.rating %> / 10</td>
+                <td class="review-comment"><%= review.comment %></td>
+
+                <!-- IMPLEMENT DELETE BUTTON FOR COMMENTS HERE, ONLY IF CURRENT USER POSTED THE COMMENT -->
+                <% if current_user && review.user.id == current_user.id %>
+                <td><%= button_to 'Delete', { :controller => "user_ratings", :action => "destroy", user_id: current_user.id, id: review.id }, :method => :delete, :class => "btn btn-primary btn-md delete" %></td>
+                <% end %>
+              </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <h3>No Reviews For This User</h3>
+    <% end %>
+    </div>
+  </div>
 
 </body>
-
-
-
-<!-- <%= link_to 'Edit', edit_user_path(@user) %> | -->
-
-<!-- Now Links back to the Home/Root -->
-<!-- <%= link_to 'Back', root_path %> -->
