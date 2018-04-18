@@ -77,17 +77,26 @@ function watchRegister () {
 ///////////////////////
 function locationSearch() {
 
+//when someone uses the search bar
   $("#google-search form").on("submit", function(event){
-
     if($('#latitude_change').val() === "false"){
       event.preventDefault()
       codeAddress(($(this).find("#location-form").val()), changeYourMarkerLocation)
     }
-    // yourMarker.setMap(null)
+  })
 
-
+//moving map center
+  $(".marker-circle").on("click", function(){
+    let findThis = $(this).siblings(".address").text()
+    for(let marker of postingMarkers) {
+      if (marker.formattedAddress === findThis) {
+        console.log("marker")
+        map.setCenter(marker.getPosition())
+      }
+    }
   })
 }
+
 
 function changeYourMarkerLocation (geoObject){
   let latitude
