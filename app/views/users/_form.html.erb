@@ -66,8 +66,8 @@
           <td><%= form.password_field(:password_confirmation, {id: :user_password_confirmation}) %></td>
         </div>
       </tr>
-      <%= form.hidden_field(:latitude, {id: :latitude, value: false}) %>
-      <%= form.hidden_field(:longitude, {id: :longitude, value: false}) %>
+      <%= form.hidden_field(:latitude, {id: :latitude, value: ""}) %>
+      <%= form.hidden_field(:longitude, {id: :longitude, value: ""}) %>
     </table>
     <div class="actions">
       <%= form.submit class: 'new-user-submit btn btn-primary' %>
