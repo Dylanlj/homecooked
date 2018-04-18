@@ -14,8 +14,6 @@
         <!-- Won't show up on page if user has deleted or if both have deleted, but will show up on host reservations page -->
         <% if reservation.delete_status != "userdelete" && reservation.delete_status != "bothdelete" %>
 
-
-
           <div class="row meal-div">
             <div class="col-xs-4 col-sm-3 col-md-3">
               <%= cl_image_tag(reservation.meal_posting.image, class: 'circle img-thumbnail img-box reservation-pic') %>
@@ -49,7 +47,7 @@
 
               <!-- NEED TO IMPLEMENT STRIPE POPUP WHEN THIS BUTTON IS CLICKED -->
               <% if reservation.status === "Accepted" && !reservation.paid %>
-              <div class="row">
+              <div class="row payment-btn">
 
                 <div class="col-xs-12 pay-button">
                   <%= form_tag reservation_order_path(reservation), :method => "put" do %>
@@ -82,7 +80,7 @@
 
               <!-- USER CAN DELETE RESERVATION FROM PAGE TO CLEAR SPACE IF IT WAS REJECTED  -->
               <% if reservation.status === "Rejected" %>
-                <div class="row">
+                <div class="row delete-btn">
                   <div class="delete-button">
                     <%= button_to 'Delete', { :controller => "reservations", :action => "userdelete", id: reservation.id }, :method => :put, :class => "btn btn-primary btn-md delete" %>
                   </div>
