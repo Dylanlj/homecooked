@@ -56,15 +56,15 @@
         padding: 0;
       }
     }
-
+    .cat-link a:hover, .cat-link.active a{
+      color: #f4511e !important;
+      background-color: #fff !important;
+    }
     .navbar-nav{
       height: 100%;
       padding: 0;
       margin: 0;
-      .cat-link a:hover, .cat-link.active a{
-        color: #f4511e !important;
-        background-color: #fff !important;
-      }
+
       .cat-list:hover, .cat-list.active {
         color: #f4511e !important;
         background-color: #fff !important;
@@ -77,6 +77,7 @@
         padding-top: 0;
         padding-bottom: 0;
       }
+
       .dropdown{
         height: 100%;
         .dropdown-toggle{

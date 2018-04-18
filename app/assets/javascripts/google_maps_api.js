@@ -85,22 +85,21 @@ function locationSearch() {
 }
 
 function changeYourMarkerLocation (geoObject){
+  let latitude
+  let longitude
 
   if(geoObject[0]){
-    let latitude = geoObject[0].geometry.location.lat()
-    let longitude = geoObject[0].geometry.location.lng()
-
-    $("#google-search form").find('#latitude_change').val(latitude)
-    let lng = $("#google-search form").find('#longitude_change').val(longitude)
-    console.log($('#latitude').val(latitude))
-    console.log($('#latitude').val(latitude))
-      lng.promise().done(function() {
-        $("#google-search form").trigger("submit")
-      })
-
+    latitude = geoObject[0].geometry.location.lat()
+    longitude = geoObject[0].geometry.location.lng()
   } else {
-
+    latitude = parseFloat($('#googleMap').data().userLatitude)
+    longitude = parseFloat($('#googleMap').data().userLongitude)
   }
+  $("#google-search form").find('#latitude_change').val(latitude)
+  let lng = $("#google-search form").find('#longitude_change').val(longitude)
+    lng.promise().done(function() {
+      $("#google-search form").trigger("submit")
+    })
 
 }
 

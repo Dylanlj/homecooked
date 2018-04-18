@@ -116,18 +116,25 @@
                           <td><%= form.text_field :allergies, id: :allergies %></td>
                         </tr>
                         <tr class="modal-form-group">
-                          <td>Date:</td>
-                          <td><%= meal_posting.date %></td>
+                          <td><b>Date:</b></td>
+                          <td><%= meal_posting.date%></td>
                         </tr>
                         <% if meal_posting.end_time %>
                         <tr class="modal-form-group">
                           <td><%= form.label :reservation_time %></td>
-                            <td><%= form.time_select :time, {
+                            <td><%= form.time_select :time,
+                            {
+                              start_hour: meal_posting.base_time.strftime("%H").to_i,
+                              end_hour: meal_posting.end_time.strftime("%H").to_i,
                               ampm: true,
                               ignore_date: true
                             } %></td>
                         </tr>
                         <% else %>
+                          <tr class="modal-form-group">
+                            <td><b>Time</b></td>
+                            <td><%= meal_posting.base_time.strftime("%I:%M %p")%></td>
+                          </tr>
                           <%= form.hidden_field :time, value: meal_posting.base_time %>
                         <% end %>
                       </table>

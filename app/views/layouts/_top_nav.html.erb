@@ -2,11 +2,13 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-
-      <%= link_to analytics_path, class: "navbar-brand analytics" do %><span class="glyphicon glyphicon-eye-open navbar-brand"></span>Analytics<% end %>
-
+      <div class="cat-link">
+        <%= link_to analytics_path, class: "navbar-brand analytics cat-link" do %><span class="glyphicon glyphicon-eye-open"></span>Analytics<% end %>
+      </div>
     </div>
     <ul class="nav navbar-nav navbar-left">
+
+
       <l1 class="cat-link"><a class="navbar-brand title-home" href="/" >HomeCooked</a></l1>
       <% if @categories %>
         <li class="dropdown">
