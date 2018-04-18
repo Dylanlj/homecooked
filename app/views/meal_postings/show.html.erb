@@ -4,12 +4,12 @@
 <div class=" meal-posting-user-info">
   <div class="row">
     <div class="row">
-      <div class="col-xs-4 col-sm-3 col-md-3">
-        <%= cl_image_tag(@user.image, class: 'circle img-thumbnail img-box profile-pic') %>
+      <div class="col-xs-4 col-sm-3 col-md-3 profile-img-holder">
+        <%= cl_image_tag(@user.image, class: 'circle img-box profile-pic') %>
       </div >
-        <div class="profile-info" id="show-meals">
-        <h4>User Information: </h4>
-        <h5>Name: <%= @user.name %></h5>
+      <div class="profile-info" id="show-meals">
+        <h3>User Information: </h3>
+        <p>Name: <%= @user.name %></p>
         <p>Address: <%= @user.address %></p>
         <p>Phone: <%= @user.phone_number %></p>
         <p>Email: <%= @user.email %></p>
@@ -27,8 +27,8 @@
   <div class="row">
     <% @ordered_meal_ids.each do |meal_id| %>
     <% meal_posting = @usermeals.find(meal_id) %>
-    <div class="row meal-div">
-      <div class="col-xs-4 col-sm-3 col-md-3">
+    <div class="row meal-div meal-div-mealpostings-show">
+      <div class="col-xs-4 col-sm-3 col-md-3 meal-posting-meal-images">
         <% if meal_posting.image %>
           <%= cl_image_tag(meal_posting.image, class: 'circle img-thumbnail img-box') %>
         <% end %>

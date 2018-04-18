@@ -45,7 +45,7 @@
                     <p><strong>Status: </strong><%= reservation.status %></p>
                   <% end %>
                 </div>
-                <div class="row">
+                <div class="row reservation-show-buttons">
                   <!-- ALLOW HOST TO DELETE POSTING TO CLEAR SPACE ONCE ACCEPTED OR REJECTED -->
                   <div class="meal-reviews-button">
                     <%= button_to 'Meal Reviews', meal_posting_reviews_path(reservation.meal_posting), :method => :get, :class => "btn btn-warning btn-md basic" %>
