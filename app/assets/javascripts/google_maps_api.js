@@ -60,7 +60,6 @@ function watchRegister () {
   $("#register-form").submit("submit", function(event){
 
    if ($("#longitude").val() === "") {
-    alert("preventDefault")
       event.preventDefault()
       let enteredAddress
       enteredAddress = $("#user_address").val()
