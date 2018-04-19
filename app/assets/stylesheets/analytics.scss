@@ -12,13 +12,13 @@ $orange: #FAA43A;
 
 .chart {
   background:
-    conic-gradient($red 4%,
-      $gray 0 8%,
-      $blue 0 17%,
-      $yellow 0 48%,
-      $purple 0 54%,
-      $orange 0
-    );
+  conic-gradient($red 4%,
+    $gray 0 8%,
+    $blue 0 17%,
+    $yellow 0 48%,
+    $purple 0 74%,
+    $orange 0
+  );
   border-radius: 50%;
   width: 50%;
   height: 100%;

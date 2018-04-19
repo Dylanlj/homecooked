@@ -123,6 +123,7 @@ user8 = User.create!({
  user_status: "Host",
  name: "Gordon Ramsay",
  email: "cheframsay@masterchef.com",
+ # email: "gdavis111@live.ca",
  address: "200 Bay Street Toronto",
  latitude: 43.646667,
  longitude: -79.379946,
