@@ -46,7 +46,7 @@ function giveProperAddress (geoObject) {
         $("#register-form").trigger("submit")
       })
   } else {
-    $("#user_address").val("not_found")
+    $("#user_address").val("")
     let lng = $("#longitude").val("not_found")
       lng.promise().done(function() {
         $("#register-form").trigger("submit")
