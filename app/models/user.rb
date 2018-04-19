@@ -5,7 +5,6 @@ class User < ApplicationRecord
   mount_uploader :image, AvatarUploader
 
   validates :name, presence: true
-  validates :address, presence: true
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :phone_number, presence: true
   validates :password, presence: true, length: { minimum: 5 }
@@ -14,10 +13,8 @@ class User < ApplicationRecord
   validate :requires_proper_address
 
   def requires_proper_address
-    if address
-      if address == "not_found"
+    if address == ""
         errors.add(:address, "must be valid")
-      end
     end
   end
 
