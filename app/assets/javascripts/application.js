@@ -16,3 +16,4 @@
 //= require turbolinks
 //= require cable
 //= require google_maps_api
+//= require analytics
