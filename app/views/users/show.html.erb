@@ -5,7 +5,7 @@
           <%= cl_image_tag(@user.image, class: 'circle img-box profile-pic') %>
     </div >
       <div class="profile-info">
-        <h1><strong>Host Information: </strong></h1>
+        <h1><strong><%= @user.user_status%> Information: </strong></h1>
         <h3><strong>Name: <%= @user.name %></strong></h3>
         <h3><strong>Address: <%= @user.address %></strong></h3>
         <h3><strong>Phone: <%= @user.phone_number %></strong></h3>
