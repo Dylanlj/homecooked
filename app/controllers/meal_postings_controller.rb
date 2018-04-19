@@ -5,7 +5,6 @@ class MealPostingsController < ApplicationController
   # GET /meal_postings.json
   def index
     @meal_postings = MealPosting.all
-    puts "=====Hello===== #{@meal_postings.class}"
     if params[:category]
       @meal_postings = MealPosting.where("category_id = #{params[:id].to_i}")
     end
