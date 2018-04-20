@@ -1,70 +1,33 @@
-# README
-
-Rails recommendations:
-* Ruby version
-* System dependencies
-* Configuration
-* Database creation
-* Database initialization
-* How to run the test suite
-* Services (job queues, cache servers, search engines, etc.)
-* Deployment instructions
-* ...
+# HomeCooked
 
 ## Summary
 
-Project name: Homecooked
+HomeCooked is a website for those who love cooking and want to share their creations with other people and potentially make some money on the side. After a host creates a meal posting users can then reserve and attend meals or pickup meals from the hosts. The Google Maps api allows users to find food based on their location and SendGrid sends an email notifying hosts when a reservation has been made.
 
-Project description: Web app that allows users to set up a small food sharing or selling business.
-They can either sell extra food they're making at a specific time, or set up a time window for drop-ins or online orders.
-Will integrate google maps to display nearby locations to potential customers on their smartphones.
+## Screenshots
+["HomePage"](https://github.com/bartnic1/homecooked/blob/master/docs/front-page.png)
+["Reserving a meal"](https://github.com/bartnic1/homecooked/blob/master/docs/reserve-a-meal.png)
 
-## Ideation Session
-- About the product, not the business, so don't worry about licensing probably!
+## Setup
+1. Fork & Clone
+2. Run bundle install to install dependencies
+3. Create psql database
+4. bin/rake db:reset
+5. signup for a stripe account and add the public and secret keys to a .ENV file
+6. run rails s
+7. go to http://localhost:3000/
 
-- Use info about food in a way that creates a different user experience
-- Most explosive growth in media about food is the 30 second video.
+Or simply go to https://serene-woodland-26435.herokuapp.com/ where it has been deployed on Heroku
 
-- Make the production of good media and data a part of the project experience.
-- Also consider not just images; possibly also gifs/videos of the food being shared!
-- The deliverable is the demo!
-
-- Check in with mentors every day! Talk about what you did, any roadblocks, make sure you communicate.
-
-- Try to iterate quickly. May be good to ask other users, how they would use your app, to get another view on how your app would work.
-
-## Pushing to development branch, updating master
-
-When pushing to a non-default branch, you need to specify the source ref (branch1) and the target ref (branch2):
-
-git push origin branch1:branch2
-
-To merge with master, first pull latest updates from development branch. This will be added to a local development branch.
-
-git pull origin development
-
-Then merge with your local master, and push to master.
-
-## Multiple local servers
-
-To override default (3000):
-
-rails s -p 4000 -b 0.0.0.0
-
-## Generate commands
-
-rails generate
-
-git reset --hard origin/master (or origin/branch)
-
-
-## Google maps keys
-
-Piotr: AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA
 
 ## Dependencies
 
-jquery
-stripe
-cloudinary
-sendgrid
+Ruby '2.3.5'
+Rails Rails 5.1.6  
+PostgreSQL 9.5.12  
+Bootstrap
+Jquery  
+Stripe  
+Cloudinary  
+SendGrid
+
