@@ -5,8 +5,8 @@
 HomeCooked is a website for those who love cooking and want to share their creations with other people and potentially make some money on the side. After a host creates a meal posting users can then reserve and attend meals or pickup meals from the hosts. The Google Maps api allows users to find food based on their location and SendGrid sends an email notifying hosts when a reservation has been made.
 
 ## Screenshots
-["HomePage"](https://github.com/bartnic1/homecooked/blob/master/docs/front-page.png)
-["Reserving a meal"](https://github.com/bartnic1/homecooked/blob/master/docs/reserve-a-meal.png)
+!["HomePage"](https://github.com/bartnic1/homecooked/blob/master/docs/front-page.png)
+!["Reserving a meal"](https://github.com/bartnic1/homecooked/blob/master/docs/reserve-a-meal.png)
 
 ## Setup
 1. Fork & Clone
