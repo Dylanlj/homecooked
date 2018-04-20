@@ -64,4 +64,7 @@ Piotr: AIzaSyBHyW__uRnMTsXjGPv54cP5Tli4MhL_vOA
 
 ## Dependencies
 
-
+jquery
+stripe
+cloudinary
+sendgrid
